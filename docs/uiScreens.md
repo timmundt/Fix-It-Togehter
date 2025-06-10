@@ -32,5 +32,3 @@ Wichtig: Die Screens sind noch nicht final und dienen als Orientierung. Eventuel
 
 ![Repairer](assets/repairer.png)
 
-## Zurück zur Startseite
-- [Startseite](index.md)

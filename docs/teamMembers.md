@@ -14,7 +14,3 @@ Zuständig für: Frontend and UX/UI
 ## Denizcan Gueney 
 
 Zuständig für: Backend and Team Communication
-
-## Zurück zur Startseite 
-
--[Startseite](index.md)
