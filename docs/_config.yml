@@ -1,2 +1,12 @@
 theme: minima
 title: Fix It Together 
+
+nav:
+    -title: Startseite
+    url: /index
+    -title: Data Model
+    url: /dataModel
+    -title: Team-Members
+    url: /teamMembers
+    -title: UI-Screens
+    url: /uiScreens

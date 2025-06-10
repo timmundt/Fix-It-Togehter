@@ -1,5 +1,5 @@
 ---
-title: Data Modle 
+title: Data Model
 layout: default 
 ---
 
