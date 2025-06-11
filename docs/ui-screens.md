@@ -1,6 +1,6 @@
 ---
 title: UI-Screens
-layout: default
+nav_order: 20
 ---
 
 Stand jetzt: Wir haben uns überlegt dass wir 6 UI Screens brauchen, damit der Customer und der

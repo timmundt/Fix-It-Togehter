@@ -1,12 +1,17 @@
-theme: minima
-title: Fix It Together 
-
-nav:
--title: Startseite
-url: /index
--title: Data Model
-url: /dataModel
--title: Team-Members
-url: /teamMembers
--title: UI-Screens
-url: /uiScreens
+title: Project Name
+remote_theme: just-the-docs/just-the-docs
+mermaid:
+  version: "10.9.0"
+callouts:
+  tip:
+    title: 🤍 Tip
+    color: purple
+  info:
+    title: ℹ️ Info
+    color: blue
+  attention:
+    title: ❕ Attention
+    color: yellow
+  download:
+    title: 💾 Download
+    color: grey-dk
