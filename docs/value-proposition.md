@@ -80,7 +80,7 @@ Die Lösung für das oben beschriebene Problem ist eine Plattformbasierte Websit
 
 ## Customer Journey
 
-'''mermaid
+```mermaid
 flowchart TD
 A[Startscreen] --> B[Login/Registrierung]
 B --> C[Login/Registrierung]
@@ -88,5 +88,6 @@ C --> D[Nach Repairern filtern]
 D --> E[Anfragen an Repairer senden]
 E --> G[Erfolgreich Repairer gefunden]
 G --> H[Kaffeemaschine repariert]
+```
 
 
