@@ -4,7 +4,9 @@ parent: Technical Docs
 nav_order: 2
 ---
 
-Für die Realisierung unsere Projektes brauchen laut jetztigen Stand 3 Tabellen, eine Tabelle für die Customer, eine Tabelle für die Repairer und eine Tabelle für die Tickets. Diese sehen wie folgt aus: 
+Für die Realisierung unsere Projektes brauchen laut jetztigen Stand 3 Tabellen, eine Tabelle für die Customer, eine Tabelle für die Repairer und eine Tabelle für die Tickets.
+
+Wichtig: Das ist die erste Einschätzung, wie die einzelnen Tabellen in unserm Data Model aussehen könnten und somit noch nicht final. Änderung werden entsprechend dokumentiert.
 
 ## Customer 
 

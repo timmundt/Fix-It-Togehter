@@ -1,5 +1,6 @@
 ---
 title: References 
-parent: Technicals Docs
+parent: Technical Docs
 nav_order: 3
 ---
+
