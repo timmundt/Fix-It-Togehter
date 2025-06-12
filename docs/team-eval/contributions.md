@@ -10,7 +10,7 @@ nav_order: 4
 
 <summary>List of Contributors</summary>
 
-1. Tim Mund
+1. Tim Lenart Mundt
 
 2. Denizcan Gueney
 
@@ -22,21 +22,21 @@ nav_order: 4
 Contributions
 : Erstellung GitHub Repo
 : Projektstruktur Erstellung
-: ...
+: Projektdokumentation
 
 ## [Denizcan Gueney]
 
 Contributions
 : Projektdokumentation
-: Tempor invidunt ut labore
-: ...
+: 
+: 
 
 ## [Baran Celik]
 
 Contributions
-: Diam nonumy eirmod
-: Tempor invidunt ut labore
-: ...
+: Projektdokumentation
+: 
+: 
 
 <!---
 Quelle von: https://github.com/hwrberlin/fswd-app/blob/main/docs/team-eval/contributions.md letzter Zugriff am: 12.06.2025

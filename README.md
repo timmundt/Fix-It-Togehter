@@ -5,7 +5,7 @@ This repository is an project work at the HWR Berlin in the moudle full stack de
 We hosted a website from our documentation via GitHub pages. 
 Link to the website -> https://timmundt.github.io/Fix-It-Togehter/
 
- >Note: Some sections of the documentation are under construction and will be completed soon.
+ >Note: Some sections of the documentation are under construction and will be completed in the future.
 
 
 
