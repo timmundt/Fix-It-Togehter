@@ -1,8 +1,10 @@
 from flask import Flask
+from routes import main
 from database import db, insert_skills
 
 
 app = Flask(__name__)
+app.register_blueprint(main)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///datastorage.db'
 db.init_app(app)
 
