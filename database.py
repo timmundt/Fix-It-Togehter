@@ -1,10 +1,11 @@
+from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Boolean, Date, DateTime, ForeignKey, LargeBinary, Null, orm, Column, Integer, String
 
 db = SQLAlchemy()
 
 
-class Customer(db.Model): 
+class Customer(db.Model, UserMixin): 
     __tablename__ = 'customer'
     customer_id=Column(Integer, primary_key=True, index=True)
     last_name=Column(String, nullable=False)
@@ -14,8 +15,11 @@ class Customer(db.Model):
 
     ticket_rl=db.relationship('Ticket', backref='customer')
 
+    def getbyemail(cls, email):
+        return cls.query.filter_by(email=email).first()
 
-class Repairer(db.Model):
+
+class Repairer(db.Model, UserMixin):
     __tablename__ = 'repairer'
     repairer_id=Column(Integer, primary_key=True)
     last_Name=Column(String, nullable=False)
@@ -25,6 +29,12 @@ class Repairer(db.Model):
 
     ticket_rl=db.relationship('Ticket',backref='repairer')
     skills_rl=db.relationship('Skill', secondary='repairer_skill', backref='repairer')
+
+    @classmethod
+    def getbyemail(cls, email):
+        return cls.query.filter_by(email=email).first()
+    
+    
 
 
 class Rezension(db.Model):

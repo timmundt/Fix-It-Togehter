@@ -1,17 +1,14 @@
 from flask import Flask
-from routes import main
+from blueprints.staticpage_routes import staticpages_r
+from blueprints.auth_routes import auth_r
 from database import db, insert_skills
 
 
 app = Flask(__name__)
-app.register_blueprint(main)
+app.register_blueprint(staticpages_r)
+app.register_blueprint(auth_r)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///datastorage.db'
 db.init_app(app)
-
-
-@app.route('/')
-def index():
-    return 'Hello, World!'
 
 if __name__ == '__main__':
     with app.app_context():
