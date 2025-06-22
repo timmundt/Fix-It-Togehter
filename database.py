@@ -15,6 +15,7 @@ class Customer(db.Model, UserMixin):
 
     ticket_rl=db.relationship('Ticket', backref='customer')
 
+    @classmethod
     def getbyemail(cls, email):
         return cls.query.filter_by(email=email).first()
 
