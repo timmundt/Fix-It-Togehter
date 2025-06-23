@@ -60,7 +60,7 @@ class Ticket(db.Model):
     ticket_id=Column(Integer, primary_key=True)
     customer_id=Column(Integer, ForeignKey('customer.customer_id'),nullable=False)
     repairer_id=Column(Integer, ForeignKey('repairer.repairer_id'),nullable=False)
-    modell=Column(String, nullable=False)
+    model=Column(String, nullable=False)
     accepted=Column(Boolean, nullable=True, default=None)
     finished=Column(Boolean, default=False)
 

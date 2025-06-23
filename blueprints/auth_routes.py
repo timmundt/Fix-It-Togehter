@@ -3,7 +3,7 @@ from flask_login import login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import db, Customer, Repairer
 
-auth_r= Blueprint('auth_r', __name__)
+auth_r= Blueprint('auth', __name__)
 
 #Nicht fertig
 @auth_r.route('/login',methods=['GET','POST'])
@@ -19,11 +19,11 @@ def login():
         
         if customer and check_password_hash(customer.password_hash, password):
             login_user(customer)
-            return redirect()
+            return render_template('customer_account.html')
         
         if repairer and check_password_hash(repairer.password_hash, password):
             login_user(repairer)
-            return redirect()
+            return redirect('repairer_account.html')
         
         flash('Ungültiges Passwort!')
         return redirect()
@@ -44,7 +44,7 @@ def register():
         password_hash=generate_password_hash(password)
         
         if Customer.getbyemail(email) or Repairer.getbyemail(email):
-            return ""
+            return flash("Email bereits vorhanden")
         
         if role == 'customer':
             customer=Customer(last_name=last_name,first_name=first_name,email=email, password_hash=password_hash)
