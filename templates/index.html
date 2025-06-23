@@ -23,7 +23,7 @@
 <body>
     <nav class = "navbar navbar -expand-lg navbar-dark bg-dark">
         <div class = "container-fluid">
-            <a class = "navbar-brand fw-bold" href = "{{ url_for('index') }}">Fix It Together</a>
+            <a class = "navbar-brand fw-bold" href = "{{ url_for('staticpages.index') }}">Fix It Together</a>
             <button class = "navbar-toggler" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navbarNav" aria-controls = "navbarNav" aria-expanded = "false" aria-label = "Toggle navigation">
                 <span class = "navbar-toggler-icon"></span>
             </button>
@@ -35,7 +35,7 @@
       <h1 class="display-4 fw-bold">Kaffeemaschine kaputt?</h1>
       <p class="lead">Finde jemanden, der sie mit dir gemeinsam repariert - nachhaltig, günstig und unkompliziert.</p>
       <img src="{{ url_for('static', filename='assets/index.jpg') }}" class="img-fluid rounded" alt="Eine defekte Kaffeemaschine">
-      <!--<a href="{{ url_for('register') }}" class="btn btn-primary btn-lg mt-3">Jetzt loslegen</a>-->
+      <!--<a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg mt-3">Jetzt loslegen</a>-->
     </div>
     </header>
 
@@ -116,9 +116,9 @@
         <div class = "Container">
             <p class = "mb-2">&copy; 2025 FixItTogether</p>
             <div>
-                <a href = "{{url_for('imprint')}}" class = "text-white me-3 text-decoration-none">Impressum</a> 
-                <a href = "{{url_for('terms_of_use')}}" class = "text-white text-decoration-none">Nutzungsbedingungen</a>
-                <a href = "{{url_for('privacy_policy')}}" class = "text-white ms-3 text-decoration-none">Datenschutz</a>
+                <a href = "{{url_for('staticpages.imprint')}}" class = "text-white me-3 text-decoration-none">Impressum</a> 
+                <a href = "{{url_for('staticpages.terms_of_use')}}" class = "text-white text-decoration-none">Nutzungsbedingungen</a>
+                <a href = "{{url_for('staticpages.privacy_policy')}}" class = "text-white ms-3 text-decoration-none">Datenschutz</a>
             </div>
         </div>
     </footer>             
