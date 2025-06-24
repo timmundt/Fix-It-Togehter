@@ -1,0 +1,30 @@
+/* Layout-Container */
+.customer-layout {
+  display: flex;
+  min-height: 80vh; 
+}
+
+/* Sidebar */
+.sidenav {
+  width: 200px;
+  background-color: #f0f0f0;
+  padding: 1rem;
+}
+
+/* Sidebar-Links */
+.sidenav a {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.sidenav a:hover {
+  text-decoration: underline;
+}
+
+/* Hauptinhalt */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{# Kundenansicht ändern (eventuell Name des eingeloggten Nutzers) #}
+{% block title %}Kundenansicht | FixItTogether{% endblock %}
+
+{% block content %}
+<div class="customer-layout">
+
+{# Sidebar #}
+  <div class="sidenav">
+        <a href="#">Konto</a>
+        <a href="#">Anfragen</a>
+        <a href="#">Aufträge</a>
+    </div>
+
+    <main class="main-content">
+        {% block customer_content %}
+        {% endblock %}
+    </main>
+</div>
+{% endblock %}
