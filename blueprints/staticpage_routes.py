@@ -11,7 +11,7 @@ def index():
 def home():
     return render_template('index.html')
 
-@staticpages_r.route('/impresseum')
+@staticpages_r.route('/impressum')
 def imprint():
     return render_template('imprint.html')
 

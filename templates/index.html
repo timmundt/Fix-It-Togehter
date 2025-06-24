@@ -5,20 +5,8 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Fix It Together</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel = "stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+    <link rel = "stylesheet" href = "{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <style>
-        /* Stil für alle dunklen Sektionen, inklusive Hero */
-        .section-dark {
-            background: linear-gradient(to right, #222, #444);
-            padding: 4rem 1rem; /* Einheitlicher Abstand für alle Sektionen */
-        }
-        .hero {
-             min-height: 70vh; /* Nur für den Hero-Bereich, um ihn höher zu machen */
-             display: flex;
-             align-items: center;
-        }
-    </style>
 </head>
 <body>
     <nav class = "navbar navbar -expand-lg navbar-dark bg-dark">
@@ -32,9 +20,9 @@
 
     <header class="section-dark hero text-white text-center d-flex align-items-center">
     <div class="container">
-      <h1 class="display-4 fw-bold">Kaffeemaschine kaputt?</h1>
-      <p class="lead">Finde jemanden, der sie mit dir gemeinsam repariert - nachhaltig, günstig und unkompliziert.</p>
-      <img src="{{ url_for('static', filename='assets/index.jpg') }}" class="img-fluid rounded" alt="Eine defekte Kaffeemaschine">
+      <h1 class="display-4 fw-bold">Deine De'Longhi Kaffeemaschine kaputt?</h1>
+      <p class="lead">Finde jemanden, der dir hilft deine Kaffeemaschine zu reparieren - nachhaltig, günstig und unkompliziert.</p>
+      <img src="{{ url_for('static', filename='assets/index.png') }}" class="img-fluid rounded" alt="Eine defekte Kaffeemaschine">
       <!--<a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg mt-3">Jetzt loslegen</a>-->
     </div>
     </header>
@@ -92,7 +80,7 @@
     
     <section class="py-5 bg-light">
     <div class="container text-center">
-        <h2 class="mb-5">Warum Fix It Together?</h2>
+        <h2 class="mb-5 text-dark">Warum FixItTogether?</h2>
         <div class="row">
             <div class="col-md-4 mb-4">
                 <h5>Nachhaltig</h5>

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Datenschutzerklärung | FixItTogether{% endblock %}
+
+{% block content %}
+<div class="section-dark text-light flex-grow-1">
+    <h1 class="mb-4">Datenschutzerklärung</h1>
+
+    <p><strong>FixItTogether</strong> ist ein nicht-kommerzielles Studierendenprojekt an der Hochschule für Wirtschaft und Recht Berlin.</p>
+
+    <h5 class="mt-4">1. Verantwortliche Stelle</h5>
+    <section class>
+        <div class="container">
+            <h2>verantwortlichen für den Inhalt:</h2>
+            <div class="card-container">
+
+                <div class="contact-card">
+                    <div class="name">Tim Lennart Mundt</div>
+                    <div class="info"><strong>Matr.-Nr.:</strong> 77207437046</div>
+                    <div class="info"><a href="mailto:s_mundt24@stud.hwr-berlin.de">s_mundt24@stud.hwr-berlin.de</a></div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="name">Denizcan Güney</div>
+                    <div class="info"><strong>Matr.-Nr.:</strong> 77207785271</div>
+                    <div class="info"><a href="mailto:s_gueny24@stud.hwr-berlin.de">s_gueny24@stud.hwr-berlin.de</a></div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="name">Baran Celik</div>
+                    <div class="info"><strong>Matr.-Nr.:</strong> 77211933192</div>
+                    <div class="info"><a href="mailto:s_celik22@stud.hwr-berlin.de">s_celik22@stud.hwr-berlin.de</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h5 class="mt-4">2. Zweck der Datenverarbeitung</h5>
+    <p>Die Webanwendung dient ausschließlich zu Lern- und Demonstrationszwecken. Es werden nur Daten verarbeitet, die für die Nutzung der Plattform notwendig sind (z. B. Benutzername, E-Mail, Beschreibung eines Problems).</p>
+
+    <h5 class="mt-4">3. Weitergabe von Daten</h5>
+    <p>Es erfolgt keine Weitergabe der erhobenen Daten an Dritte. Alle Daten werden ausschließlich innerhalb des Teams verarbeitet und nicht öffentlich gemacht.</p>
+
+    <h5 class="mt-4">4. Speicherdauer</h5>
+    <p>Personenbezogene Daten werden nur so lange gespeichert, wie es für die Zwecke des Projekts notwendig ist. Nach Projektabschluss werden alle Daten gelöscht.</p>
+
+    <h5 class="mt-4">5. Rechte der Nutzer</h5>
+    <p>Als Nutzer*in habt ihr das Recht auf Auskunft, Berichtigung und Löschung eurer personenbezogenen Daten. Anfragen dazu bitte per E-Mail an die Projektverantwortlichen.</p>
+
+    <h5 class="mt-4">6. Keine kommerzielle Nutzung</h5>
+    <p>Diese Anwendung wird ausschließlich im Rahmen eines Hochschulprojekts betrieben. Eine kommerzielle Nutzung oder Verwertung der Daten erfolgt nicht.</p>
+
+    <a href="{{ url_for('staticpages.index') }}" class="btn btn-secondary mt-4">Zurück zur Startseite</a>
+</div>
+{% endblock %}
