@@ -7,14 +7,15 @@ from database import User, db, insert_skills
 
 
 app = Flask(__name__)
-
 app.config['SECRET_KEY']='1234567890'
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///datastorage.db'
-
 db.init_app(app)
+
 login_manger=LoginManager()
 login_manger.init_app(app)
 login_manger.login_view='auth_r.login'
+
+#Quelle ChatGPT
 
 app.register_blueprint(staticpages_r)
 app.register_blueprint(auth_r)
@@ -25,6 +26,7 @@ app.register_blueprint(customer_r)
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+#Quelle ChatGPT
 
 
 if __name__ == '__main__':

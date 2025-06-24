@@ -1,9 +1,9 @@
 from flask import Flask, Blueprint, flash, render_template, redirect, request, url_for
 from flask_login import login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from database import db, Customer, Repairer
+from database import User, db, Customer, Repairer
 
-auth_r= Blueprint('auth', __name__)
+auth_r= Blueprint('auth_', __name__)
 
 #Nicht fertig
 @auth_r.route('/login',methods=['GET','POST'])
@@ -11,22 +11,25 @@ def login():
     if request.method=='POST':
         email=request.form.get('email')
         password=request.form.get('password')
-        customer=Customer.getbyemail(email)
-        repairer=Repairer.getbyemail(email)
-
-        if not repairer and not customer:
-            flash('Ungültige Email Adresse!')
+        user=User.query.filter_by(email=email).first()
         
-        if customer and check_password_hash(customer.password_hash, password):
-            login_user(customer)
+        if not user:
+            flash('Ungültige Email Adresse!')
+            return redirect(url_for('auth_r.login'))
+        
+        if not check_password_hash(user.password_hash, password):
+            flash('Ungültiges Passwort!')
+            return redirect(url_for('auth_r.login'))
+        
+        customer=Customer.query.filter_by(customer_id=user.user_id).first()
+        repairer=Repairer.query.filter_by(customer_id=user.user_id).first()
+        login(user)
+
+        if customer:
             return render_template('customer_account.html')
         
-        if repairer and check_password_hash(repairer.password_hash, password):
-            login_user(repairer)
-            return redirect('repairer_account.html')
-        
-        flash('Ungültiges Passwort!')
-        return redirect()
+        if repairer:
+            return render_template('repairer_account.html')
     
     else:
         return render_template('login.html')
@@ -43,17 +46,22 @@ def register():
         role=request.form.get('role')
         password_hash=generate_password_hash(password)
         
-        if Customer.getbyemail(email) or Repairer.getbyemail(email):
-            return flash("Email bereits vorhanden")
+        if User.query.filter_by(email=email).first():
+            flash('Email bereits vorhanden!')
+            return redirect(url_for('auth_r.register'))
+        
+        user=User(last_name=last_name,first_name=first_name,email=email, password_hash=password_hash, role=role)
+        db.session.add(user)
+        db.session.commit()
         
         if role == 'customer':
-            customer=Customer(last_name=last_name,first_name=first_name,email=email, password_hash=password_hash)
+            customer=Customer(customer_id=user.user_id)
             db.session.add(customer)
             db.session.commit()
             return redirect(url_for('auth_r.login'))
         
         if role == 'repairer':
-            repairer=Repairer(last_name=last_name, first_name=first_name,email=email,password_hash=password_hash)
+            repairer=Repairer(repairer_id=user.user_id)
             db.session.add(repairer)
             db.session.commit()
             return redirect(url_for('auth_r.login'))
