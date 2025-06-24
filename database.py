@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     role=Column(String, nullable=False)
 
     customer=db.relationship('Customer', backref='user', uselist=False)
-    repairer=db.relationship('Repairer', backref='repairer', uselist=False)
+    repairer=db.relationship('Repairer', backref='user', uselist=False)
 
 
 class Customer(db.Model): 
@@ -69,6 +69,7 @@ class ChatMessage(db.Model):
     message=Column(String, nullable=False)
     timestamp=Column(DateTime, nullable=False)
     picture=Column(LargeBinary)
+    sender_role=Column(String, nullable=False)
 
     ticket_rl=db.relationship('Ticket', backref='chatmessage')
 
