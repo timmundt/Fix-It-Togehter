@@ -5,42 +5,39 @@ from sqlalchemy import Boolean, Date, DateTime, ForeignKey, LargeBinary, Null, o
 db = SQLAlchemy()
 
 
-class Customer(db.Model, UserMixin): 
+class User(db.Model, UserMixin):
+    __tablename__='user'
+    user_id=Column(Integer,primary_key=True,index=True)
+    last_name=Column(String,nullable=False)
+    first_name=Column(String, nullable=False)
+    email=Column(String,nullable=False, unique=True,index=True)
+    password_hash=Column(String,nullable=False)
+    role=Column(String, nullable=False)
+
+    customer=db.relationship('Customer', backref='user', uselist=False)
+    repairer=db.relationship('Repairer', backref='repairer', uselist=False)
+
+
+class Customer(db.Model): 
     __tablename__ = 'customer'
     customer_id=Column(Integer, primary_key=True, index=True)
-    last_name=Column(String, nullable=False)
-    first_name=Column(String,nullable=False)
-    email=Column(String, nullable=False, unique=True, index=True)
-    password_hash=Column(String, nullable=False)
-
+    user_id=Column(Integer, ForeignKey('user.user_id'), nullable=False)
+    
     ticket_rl=db.relationship('Ticket', backref='customer')
-
-    @classmethod
-    def getbyemail(cls, email):
-        return cls.query.filter_by(email=email).first()
 
 
 class Repairer(db.Model, UserMixin):
     __tablename__ = 'repairer'
-    repairer_id=Column(Integer, primary_key=True)
-    last_Name=Column(String, nullable=False)
-    first_name=Column(String, nullable=False)
-    email=Column(String, nullable=False, unique=True, index=True)
-    password_hash=Column(String, nullable=False)
+    repairer_id=Column(Integer, primary_key=True, index=True)
+    user_id=Column(Integer, ForeignKey('user.user_id'), nullable=False)
 
     ticket_rl=db.relationship('Ticket',backref='repairer')
     skills_rl=db.relationship('Skill', secondary='repairer_skill', backref='repairer')
 
-    @classmethod
-    def getbyemail(cls, email):
-        return cls.query.filter_by(email=email).first()
-    
-    
-
 
 class Rezension(db.Model):
     __tablename__='rezension'
-    rezension_id=Column(Integer, primary_key=True)
+    rezension_id=Column(Integer, primary_key=True, index=True)
     ticket_id=Column(Integer,ForeignKey('ticket.ticket_id'), nullable=False)
     stars=Column(Integer, nullable=False)
     commentar=Column(String)
@@ -51,13 +48,13 @@ class Rezension(db.Model):
 
 class Skill(db.Model):
     __tablename__ = 'skill'
-    skill_id=Column(Integer, primary_key=True)
+    skill_id=Column(Integer, primary_key=True, index=True)
     model_series=Column(String, nullable=False)
 
 
 class Ticket(db.Model):
     __tablename__ = 'ticket'
-    ticket_id=Column(Integer, primary_key=True)
+    ticket_id=Column(Integer, primary_key=True, index=True)
     customer_id=Column(Integer, ForeignKey('customer.customer_id'),nullable=False)
     repairer_id=Column(Integer, ForeignKey('repairer.repairer_id'),nullable=False)
     model=Column(String, nullable=False)

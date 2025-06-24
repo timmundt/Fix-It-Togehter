@@ -41,7 +41,7 @@ def get_tickets():
 
 
 #Nicht Getestet
-@customer_r.route('/delete-ticket/<int:ticket_id>', methdos=['POST'])
+@customer_r.route('/delete-ticket/<int:ticket_id>', methods=['POST'])
 @login_required
 def deleteticket(ticket_id):
     ticket = Ticket.query.get(ticket_id)
