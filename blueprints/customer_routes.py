@@ -8,20 +8,19 @@ customer_r=Blueprint('customer_r', __name__)
 db =SQLAlchemy()
 
 
-
+#Nicht Getestet
 @customer_r.route('/filter-by-repairers', methods=['GET'])
 @login_required
 def filter_by_repairers():
     model_series=request.args.get('skill')
-    query=Repairer.query.join(Repairer.skills_rl).filter(Skill.model_series==model_series)
-    repaires= query.all()
+    repaires=Repairer.query.join(Repairer.skills_rl).filter(Skill.model_series==model_series).all()
     return render_template('customer_account-html', repaires=repaires)
 
 
-#Nicht Fertig
+#Nicht Getestet
 @customer_r.route('/create-ticket', methods=['POST'])
 @login_required
-def createticket():
+def create_ticket():
     repairer_id=request.args.get('repairer_id')
     model_series=request.args('model_series')
     ticket=Ticket(customer_id=current_user.customer_id, repairer_id=repairer_id, model=model_series)
@@ -32,18 +31,28 @@ def createticket():
     
 
 
+#Nicht Getestet
+@customer_r.route('/get-tickets', methods=['GET'])
+@login_required
+def get_tickets():
+    tickets=Ticket.query.filter_by(customer_id=current_user.customer_id).all()
+    return render_template('customer_account.html', tickets=tickets)
 
-#Nicht Fertig
-##@customer_r.route('/get-tickets', methods=['GET'])
-##def gettickets():
+
+
+#Nicht Getestet
+@customer_r.route('/delete-ticket/<int:ticket_id>', methdos=['POST'])
+@login_required
+def deleteticket(ticket_id):
+    ticket = Ticket.query.get(ticket_id)
+    db.session.delete(ticket)
+    db.session.commit()
+    return redirect (url_for('customer_r.get_tickets'))
     
 
 
-#Nicht Fertig
-#@customer_r.route('/delete-ticket/<id>', methdos=['POST'])
-#def deleteticket():
-    
-
-#@customer_r.route('/open-chat/<id>', methods=['GET'])
+#@customer_r.route('/open-chat/<int:chat_id>', methods=['GET'])
+#@login_required
 #def openchat():
+
     
