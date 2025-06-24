@@ -1,16 +1,31 @@
 from flask import Flask
+from flask_login import LoginManager
 from blueprints.staticpage_routes import staticpages_r
 from blueprints.auth_routes import auth_r
 from blueprints.customer_routes import customer_r
-from database import db, insert_skills
+from database import User, db, insert_skills
 
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY']='1234567890'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///datastorage.db'
+
+db.init_app(app)
+login_manger=LoginManager()
+login_manger.init_app(app)
+login_manger.login_view='auth_r.login'
+
 app.register_blueprint(staticpages_r)
 app.register_blueprint(auth_r)
 app.register_blueprint(customer_r)
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///datastorage.db'
-db.init_app(app)
+
+
+@login_manger.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
 
 if __name__ == '__main__':
     with app.app_context():
