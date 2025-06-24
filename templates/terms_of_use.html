@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Nutzungsbedingungen | FixItTogether{% endblock %}
+
+{% block content %}
+
+<div class="section-dark text-light flex-grow-1">
+    <div class="container py-5">
+        <h1 class="mb-4">Nutzungsbedingungen</h1>
+
+        <p><strong>FixItTogether</strong> ist ein Studierendenprojekt im Rahmen des Moduls „Full Stack Web Development“ an der Hochschule für Wirtschaft und Recht Berlin.</p>
+
+        <h5 class="mt-4">1. Geltungsbereich</h5>
+        <p>Diese Nutzungsbedingungen gelten für alle Nutzerinnen und Nutzer der Webanwendung „FixItTogether“. Mit der Nutzung der Plattform erklärst du dich mit diesen Bedingungen einverstanden.</p>
+
+        <h5 class="mt-4">2. Zweck der Anwendung</h5>
+        <p>FixItTogether dient ausschließlich der Demonstration von technischen Konzepten im Rahmen eines Hochschulprojekts. Die Plattform verfolgt keinen kommerziellen Zweck.</p>
+
+        <h5 class="mt-4">3. Registrierung und Nutzung</h5>
+        <p>Die Nutzung der Plattform erfordert ggf. eine Registrierung. Du verpflichtest dich, nur wahrheitsgemäße Angaben zu machen und die Plattform nicht missbräuchlich zu verwenden.</p>
+
+        <h5 class="mt-4">4. Inhalte durch Nutzer*innen</h5>
+        <p>Alle von dir eingestellten Inhalte (z. B. Beschreibungen von Defekten, Hilfeangebote) müssen sachlich und respektvoll sein. Beleidigende, diskriminierende oder illegale Inhalte sind untersagt.</p>
+
+        <h5 class="mt-4">5. Haftung</h5>
+        <p>Da es sich um ein nicht-kommerzielles Testsystem handelt, wird keine Haftung für Schäden, fehlerhafte Funktionen oder Datenverluste übernommen.</p>
+
+        <h5 class="mt-4">6. Beendigung der Nutzung</h5>
+        <p>Die Betreiber des Projekts behalten sich vor, Inhalte zu löschen oder Zugänge zu sperren, insbesondere bei Verstößen gegen diese Bedingungen.</p>
+
+        <h5 class="mt-4">7. Projektlaufzeit</h5>
+        <p>Diese Anwendung wird im Sommersemester 2025 im Rahmen des Moduls betrieben. Danach wird die Plattform ggf. deaktiviert.</p>
+
+        <a href="{{ url_for('staticpages.index') }}" class="btn btn-secondary mt-4">Zurück zur Startseite</a>
+    </div>
+</div>
+{% endblock %}
