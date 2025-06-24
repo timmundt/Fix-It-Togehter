@@ -1,25 +1,10 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset= "UTF-8">
-    <meta name= "viewport" content= "width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel = "stylesheet" href = "{{ url_for('static', filename='css/style.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <title>Impressum | FixItTogether</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="{{ url_for('staticpages.index') }}">Fix It Together</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+{% block title %}Impressum | FixItTogether{% endblock %}
 
-    <div class = "container section-dark  py-5">
+{% block content %}
+<div class="section-dark text-light flex-grow-1">
+    <div class = "container py-5">
         <h1 class = "mb-4">Impressum</h1>
 
         <p><strong>FixItTogether</strong> - Eine Webanwendung zur Förderung eigenständiger Reparaturen durch Hilfe eines Reparateurs</p>
@@ -28,41 +13,38 @@
         <p>Dieses Projekt ist Teil einer Studienleistung im Modul "Full Stack Web Development" an der Hochschule für Wirtschaft und Recht Berlin</p>
 
         <section class>
-        <div class="container">
-            <h2>Verantwortlich für den Inhalt:</h2>
-            <div class="card-container">
+            <div class="container">
+                <h2>Verantwortlich für den Inhalt:</h2>
+                <div class="card-container">
 
-                <div class="contact-card">
-                    <div class="name">Tim Lennart Mundt</div>
-                    <div class="info"><strong>Matr.-Nr.:</strong> 77207437046</div>
-                    <div class="info"><a href="mailto:s_mundt24@stud.hwr-berlin.de">s_mundt24@stud.hwr-berlin.de</a></div>
-                </div>
+                    <div class="contact-card">
+                        <div class="name">Tim Lennart Mundt</div>
+                        <div class="info"><strong>Matr.-Nr.:</strong> 77207437046</div>
+                        <div class="info"><a href="mailto:s_mundt24@stud.hwr-berlin.de">s_mundt24@stud.hwr-berlin.de</a></div>
+                    </div>
 
-                <div class="contact-card">
-                    <div class="name">Denizcan Güney</div>
-                    <div class="info"><strong>Matr.-Nr.:</strong> 77207785271</div>
-                    <div class="info"><a href="mailto:s_gueny24@stud.hwr-berlin.de">s_gueny24@stud.hwr-berlin.de</a></div>
-                </div>
+                    <div class="contact-card">
+                        <div class="name">Denizcan Güney</div>
+                        <div class="info"><strong>Matr.-Nr.:</strong> 77207785271</div>
+                        <div class="info"><a href="mailto:s_gueny24@stud.hwr-berlin.de">s_gueny24@stud.hwr-berlin.de</a></div>
+                    </div>
 
-                <div class="contact-card">
-                    <div class="name">Baran Celik</div>
-                    <div class="info"><strong>Matr.-Nr.:</strong> 77211933192</div>
-                    <div class="info"><a href="mailto:s_celik22@stud.hwr-berlin.de">s_celik22@stud.hwr-berlin.de</a></div>
+                    <div class="contact-card">
+                        <div class="name">Baran Celik</div>
+                        <div class="info"><strong>Matr.-Nr.:</strong> 77211933192</div>
+                        <div class="info"><a href="mailto:s_celik22@stud.hwr-berlin.de">s_celik22@stud.hwr-berlin.de</a></div>
+                    </div>
                 </div>
             </div>
-        </div>
         </section>
         <h5 class="mt-5">Kontakt:</h5>
-    <p>E-Mail: siehe oben (HWR-Studierendenaccounts)</p>
+        <p>E-Mail: siehe oben (HWR-Studierendenaccounts)</p>
 
-    <h5 class="mt-4">Haftungsausschluss:</h5>
-    <p>Diese Website dient ausschließlich zu Demonstrations- und Lernzwecken im Rahmen des Studiums. Es wird keine Haftung für die Inhalte oder etwaige Schäden übernommen.</p>
+        <h5 class="mt-4">Haftungsausschluss:</h5>
+        <p>Diese Website dient ausschließlich zu Demonstrations- und Lernzwecken im Rahmen des Studiums. Es wird keine Haftung für die Inhalte oder etwaige Schäden übernommen.</p>
 
-    <a href="{{url_for('staticpages.index')}}" class="btn btn-secondary mt-4">Zurück zur Startseite</a>
-  </div>
+        <a href="{{ url_for('staticpages.index') }}" class="btn btn-secondary mt-4">Zurück zur Startseite</a>
+        </div>
+</div>
 
-  <footer class="bg-dark text-white text-center py-3 mt-auto">
-    <small>&copy; 2025 FixItTogether | Studierendenprojekt HWR Berlin</small>
-  </footer>
-</body>
-</html>
+{% endblock %}
