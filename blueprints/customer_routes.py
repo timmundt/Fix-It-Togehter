@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 from flask_sqlalchemy import SQLAlchemy
 from database import ChatMessage, Repairer, Skill, Ticket, Customer, User
 
-customer_r=Blueprint('customer_r', __name__)
+customer_r=Blueprint('customer', __name__)
 db =SQLAlchemy()
 
 #Nicht getestet, template ändern
