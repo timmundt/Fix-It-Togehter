@@ -3,6 +3,7 @@ from flask_login import LoginManager
 from blueprints.staticpage_routes import staticpages_r
 from blueprints.auth_routes import auth_r
 from blueprints.customer_routes import customer_r
+from blueprints.repairer_routes import repairer_r
 from database import User, db, insert_skills
 
 
@@ -20,6 +21,7 @@ login_manger.login_view='auth_r.login'
 app.register_blueprint(staticpages_r)
 app.register_blueprint(auth_r)
 app.register_blueprint(customer_r)
+app.register_blueprint(repairer_r)
 
 
 @login_manger.user_loader
