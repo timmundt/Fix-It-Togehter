@@ -1,57 +1,58 @@
-<!DOCTYPE html>
-<html lang = "de">
-<head>
-    <meta charset = "UTF-8">
-    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-    <title>Fix It Together</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel = "stylesheet" href = "{{ url_for('static', filename='css/style.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-</head>
-<body>
-    <nav class = "navbar navbar -expand-lg navbar-dark bg-dark">
-        <div class = "container-fluid">
-            <a class = "navbar-brand fw-bold" href = "{{ url_for('staticpages.index') }}">Fix It Together</a>
-            <button class = "navbar-toggler" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navbarNav" aria-controls = "navbarNav" aria-expanded = "false" aria-label = "Toggle navigation">
-                <span class = "navbar-toggler-icon"></span>
-            </button>
-        </div>   
-    </nav>
+{% extends "base.html" %}
 
+{% block title %}FixItTogether{% endblock %}
+
+{% block content %}
+
+<body>
+
+    
     <header class="section-dark hero text-white text-center d-flex align-items-center">
-    <div class="container">
-      <h1 class="display-4 fw-bold">Deine De'Longhi Kaffeemaschine kaputt?</h1>
-      <p class="lead">Finde jemanden, der dir hilft deine Kaffeemaschine zu reparieren - nachhaltig, günstig und unkompliziert.</p>
-      <img src="{{ url_for('static', filename='assets/index.png') }}" class="img-fluid rounded" alt="Eine defekte Kaffeemaschine">
-      <!--<a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg mt-3">Jetzt loslegen</a>-->
-    </div>
+        <div class="container">
+            <h1 class="display-4 fw-bold">Deine De'Longhi Kaffeemaschine kaputt?</h1>
+            <p class="lead">Finde jemanden, der dir hilft deine Kaffeemaschine zu reparieren - nachhaltig, günstig und
+                unkompliziert.</p>
+            <img src="{{ url_for('static', filename='assets/index.png') }}" class="img-fluid rounded"
+                alt="Eine defekte Kaffeemaschine">
+            <!--<a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg mt-3">Jetzt loslegen</a>-->
+        </div>
     </header>
 
-    <section class = "section-dark text-light">
-        <div class= "container text = center">
-            <h2 class= "mb-5">In 3 einfachen Schritten zur Reparatur</h2>
+    <section class="section-dark text-light">
+        <div class="container text = center">
+            <h2 class="mb-5">In 3 einfachen Schritten zur Reparatur</h2>
             <div class="row">
-                <div class= "col-md-4 mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-pencil-square mb-3 text-light" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                <div class="col-md-4 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                        class="bi bi-pencil-square mb-3 text-light" viewBox="0 0 16 16">
+                        <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                        <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                     </svg>
                     <h4>1. Problem beschreiben</h4>
-                    <p class="text-white-50">Erstelle eine kostenlose Anfrage und beschreibe, was an deiner Kaffeemaschine kaputt ist.</p>
+                    <p class="text-white-50">Erstelle eine kostenlose Anfrage und beschreibe, was an deiner
+                        Kaffeemaschine kaputt ist.</p>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-people-fill mb-3 text-light" viewBox="0 0 16 16">
-                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                        class="bi bi-people-fill mb-3 text-light" viewBox="0 0 16 16">
+                        <path
+                            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
                     </svg>
                     <h4>2. Helfer finden</h4>
-                    <p class="text-white-50">Erhalte Hilfe von erfahrenen Bastlern und Reparatur-Experten aus Deutschland</p>
+                    <p class="text-white-50">Erhalte Hilfe von erfahrenen Bastlern und Reparatur-Experten aus
+                        Deutschland</p>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
-                        <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                        class="bi bi-tools" viewBox="0 0 16 16">
+                        <path
+                            d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
                     </svg>
                     <h4>3. Chatte mit deinem Helfer</h4>
-                    <p class="text-white-50">Tausche dich per Chat mit deinem Helfer aus und genieße bald wieder deinen Kaffee!</p>
+                    <p class="text-white-50">Tausche dich per Chat mit deinem Helfer aus und genieße bald wieder deinen
+                        Kaffee!</p>
                 </div>
             </div>
         </div>
@@ -66,7 +67,9 @@
                     <h2 class="mb-4">Das sagen unsere Nutzer</h2>
                     <figure>
                         <blockquote class="blockquote">
-                            <p>"Meine geliebte De'Longhi Kaffeemaschine war kaputt und ich dachte schon, ich muss sie ersetzen. Dank FixItTogether habe ich jemanden gefunden, der mir für kleines Geld geholfen hat. Super Plattform!"</p>
+                            <p>"Meine geliebte De'Longhi Kaffeemaschine war kaputt und ich dachte schon, ich muss sie
+                                ersetzen. Dank FixItTogether habe ich jemanden gefunden, der mir für kleines Geld
+                                geholfen hat. Super Plattform!"</p>
                         </blockquote>
                         <figcaption class="blockquote-footer text-white-50">
                             Anna M. aus <cite title="Source Title">Berlin</cite>
@@ -77,38 +80,26 @@
         </div>
     </section>
 
-    
+
     <section class="py-5 bg-light">
-    <div class="container text-center">
-        <h2 class="mb-5 text-dark">Warum FixItTogether?</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <h5>Nachhaltig</h5>
-                <p class="text-muted">Wirf Geräte nicht weg. Eine Reparatur schont die Umwelt und wertvolle Ressourcen.</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <h5>Günstig</h5>
-                <p class="text-muted">Spare dir die Kosten für eine teure Neuanschaffung oder einen professionellen Reparaturservice.</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <h5>Flexibel</h5>
-                <p class="text-muted">Egal wann, egal wie - dein Reparateur ist für dich da</p>
+        <div class="container text-center">
+            <h2 class="mb-5 text-dark">Warum FixItTogether?</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Nachhaltig</h5>
+                    <p class="text-muted">Wirf Geräte nicht weg. Eine Reparatur schont die Umwelt und wertvolle
+                        Ressourcen.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Günstig</h5>
+                    <p class="text-muted">Spare dir die Kosten für eine teure Neuanschaffung oder einen professionellen
+                        Reparaturservice.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Flexibel</h5>
+                    <p class="text-muted">Egal wann, egal wie - dein Reparateur ist für dich da</p>
+                </div>
             </div>
         </div>
-    </div>
     </section>
-
-
-
-    <footer class = "bg-dark text-white text-center py-3">
-        <div class = "Container">
-            <p class = "mb-2">&copy; 2025 FixItTogether</p>
-            <div>
-                <a href = "{{url_for('staticpages.imprint')}}" class = "text-white me-3 text-decoration-none">Impressum</a> 
-                <a href = "{{url_for('staticpages.terms_of_use')}}" class = "text-white text-decoration-none">Nutzungsbedingungen</a>
-                <a href = "{{url_for('staticpages.privacy_policy')}}" class = "text-white ms-3 text-decoration-none">Datenschutz</a>
-            </div>
-        </div>
-    </footer>             
-</body>
-</html>
+    {% endblock %}

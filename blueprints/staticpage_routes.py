@@ -15,7 +15,7 @@ def home():
 def imprint():
     return render_template('imprint.html')
 
-@staticpages_r.route('/nutzungsbedingung')
+@staticpages_r.route('/nutzungsbedingungen')
 def terms_of_use():
     return render_template('terms_of_use.html')
 
