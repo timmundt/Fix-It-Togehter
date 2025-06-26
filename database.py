@@ -6,7 +6,6 @@ db = SQLAlchemy()
 
 
 class User(db.Model, UserMixin):
-    __tablename__='user'
     user_id=Column(Integer,primary_key=True,index=True)
     last_name=Column(String,nullable=False)
     first_name=Column(String, nullable=False)
@@ -19,15 +18,13 @@ class User(db.Model, UserMixin):
 
 
 class Customer(db.Model): 
-    __tablename__ = 'customer'
     customer_id=Column(Integer, primary_key=True, index=True)
     user_id=Column(Integer, ForeignKey('user.user_id'), nullable=False)
     
     ticket_rl=db.relationship('Ticket', backref='customer')
 
 
-class Repairer(db.Model, UserMixin):
-    __tablename__ = 'repairer'
+class Repairer(db.Model):
     repairer_id=Column(Integer, primary_key=True, index=True)
     user_id=Column(Integer, ForeignKey('user.user_id'), nullable=False)
 
@@ -36,7 +33,6 @@ class Repairer(db.Model, UserMixin):
 
 
 class Rezension(db.Model):
-    __tablename__='rezension'
     rezension_id=Column(Integer, primary_key=True, index=True)
     ticket_id=Column(Integer,ForeignKey('ticket.ticket_id'), nullable=False)
     stars=Column(Integer, nullable=False)
@@ -47,23 +43,21 @@ class Rezension(db.Model):
 
 
 class Skill(db.Model):
-    __tablename__ = 'skill'
     skill_id=Column(Integer, primary_key=True, index=True)
     model_series=Column(String, nullable=False)
 
 
 class Ticket(db.Model):
-    __tablename__ = 'ticket'
     ticket_id=Column(Integer, primary_key=True, index=True)
     customer_id=Column(Integer, ForeignKey('customer.customer_id'),nullable=False)
     repairer_id=Column(Integer, ForeignKey('repairer.repairer_id'),nullable=False)
     model=Column(String, nullable=False)
+    init_message=Column(String, nullable=False)
     accepted=Column(Boolean, nullable=True, default=None)
     finished=Column(Boolean, default=False)
 
 
 class ChatMessage(db.Model):
-    __tablename__='chatmessage'
     chat_id=Column(Integer, primary_key=True)
     ticket_id=Column(Integer, ForeignKey('ticket.ticket_id'),nullable=False)
     message=Column(String, nullable=False)
