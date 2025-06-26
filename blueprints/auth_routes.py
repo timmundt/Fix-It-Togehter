@@ -1,17 +1,23 @@
 from flask import Flask, Blueprint, flash, render_template, redirect, request, url_for
 from flask_login import login_required, login_user, logout_user
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import User, db, Customer, Repairer
 
 auth_r= Blueprint('auth', __name__)
+db=SQLAlchemy()
 
-#Nicht fertig
+
+#Query nicht mehr benutzen 
+
+
+#Nicht getestet
 @auth_r.route('/login',methods=['GET','POST'])
 def login():
     if request.method=='POST':
         email=request.form.get('email')
         password=request.form.get('password')
-        user=User.query.filter_by(email=email).first()
+        user=db.session.execute(db.select(User).filter_by(email=email)).scalar_one_or_none()
         
         if not user:
             flash('Ungültige Email Adresse!')
@@ -21,9 +27,9 @@ def login():
             flash('Ungültiges Passwort!')
             return redirect(url_for('auth_r.login'))
         
-        customer=Customer.query.filter_by(customer_id=user.user_id).first()
-        repairer=Repairer.query.filter_by(customer_id=user.user_id).first()
-        login(user)
+        customer=db.session.execute(db.select(Customer).filter_by(customer_id=user.user_id)).scalar_one_or_none()
+        repairer=db.session.execute(db.select(Repairer).filter_by(repairer_id=user.user_id)).scalar_one_or_none()
+        login_user(user)
 
         if customer:
             return render_template('customer_account.html')
@@ -35,7 +41,7 @@ def login():
         return render_template('login.html')
 
 
-#Nicht fertig 
+#Nicht getestet
 @auth_r.route('/register', methods=['GET','POST'])
 def register():
     if request.method=='POST':
@@ -46,7 +52,7 @@ def register():
         role=request.form.get('role')
         password_hash=generate_password_hash(password)
         
-        if User.query.filter_by(email=email).first():
+        if db.session.execute(db.select(User).filter_by(email=email)).scalar_one_or_none():
             flash('Email bereits vorhanden!')
             return redirect(url_for('auth_r.register'))
         
@@ -69,6 +75,7 @@ def register():
     return render_template('register.html')
 
 
+#Nicht getestet
 @auth_r.route('/logout')
 @login_required
 def logout():
