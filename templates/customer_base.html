@@ -3,6 +3,10 @@
 {# Kundenansicht ändern (eventuell Name des eingeloggten Nutzers) #}
 {% block title %}Kundenansicht | FixItTogether{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/customer-style.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="customer-layout">
 
