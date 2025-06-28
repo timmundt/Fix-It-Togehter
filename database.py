@@ -16,6 +16,9 @@ class User(db.Model, UserMixin):
     customer=db.relationship('Customer', backref='user', uselist=False)
     repairer=db.relationship('Repairer', backref='user', uselist=False)
 
+    def get_id(self):
+        return str(self.user_id)
+
 
 class Customer(db.Model): 
     customer_id=Column(Integer, primary_key=True, index=True)
