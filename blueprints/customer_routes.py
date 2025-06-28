@@ -1,10 +1,9 @@
 from flask import Flask, Blueprint, flash, render_template, redirect, request, url_for
 from flask_login import current_user, login_required
-from flask_sqlalchemy import SQLAlchemy
-from database import ChatMessage, Repairer, Skill, Ticket, Customer, User
+from database import db, ChatMessage, Repairer, Skill, Ticket, Customer, User
 
 customer_r=Blueprint('customer', __name__)
-db =SQLAlchemy()
+
 
 #Nicht getestet, template ändern
 customer_r.route('/account-information', methods=['GET'])

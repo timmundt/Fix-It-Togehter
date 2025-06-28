@@ -5,7 +5,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from database import User, db, Customer, Repairer
 
 auth_r= Blueprint('auth', __name__)
-db=SQLAlchemy()
 
 
 #Query nicht mehr benutzen 
@@ -21,14 +20,14 @@ def login():
         
         if not user:
             flash('Ungültige Email Adresse!')
-            return redirect(url_for('auth_r.login'))
+            return redirect(url_for('auth.login'))
         
         if not check_password_hash(user.password_hash, password):
             flash('Ungültiges Passwort!')
-            return redirect(url_for('auth_r.login'))
+            return redirect(url_for('auth.login'))
         
-        customer=db.session.execute(db.select(Customer).filter_by(customer_id=user.user_id)).scalar_one_or_none()
-        repairer=db.session.execute(db.select(Repairer).filter_by(repairer_id=user.user_id)).scalar_one_or_none()
+        customer=db.session.execute(db.select(Customer).filter_by(user_id=user.user_id)).scalar_one_or_none()
+        repairer=db.session.execute(db.select(Repairer).filter_by(user_id=user.user_id)).scalar_one_or_none()
         login_user(user)
 
         if customer:
@@ -54,23 +53,23 @@ def register():
         
         if db.session.execute(db.select(User).filter_by(email=email)).scalar_one_or_none():
             flash('Email bereits vorhanden!')
-            return redirect(url_for('auth_r.register'))
+            return redirect(url_for('auth.register'))
         
         user=User(last_name=last_name,first_name=first_name,email=email, password_hash=password_hash, role=role)
         db.session.add(user)
         db.session.commit()
         
         if role == 'customer':
-            customer=Customer(customer_id=user.user_id)
+            customer=Customer(user=user)
             db.session.add(customer)
             db.session.commit()
-            return redirect(url_for('auth_r.login'))
+            return redirect(url_for('auth.login'))
         
         if role == 'repairer':
-            repairer=Repairer(repairer_id=user.user_id)
+            repairer=Repairer(user=user)
             db.session.add(repairer)
             db.session.commit()
-            return redirect(url_for('auth_r.login'))
+            return redirect(url_for('auth.login'))
     
     return render_template('register.html')
 
