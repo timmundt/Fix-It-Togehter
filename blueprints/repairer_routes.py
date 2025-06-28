@@ -36,14 +36,14 @@ def show_skills():
     return render_template('repairer_account.htmnl', skills=skills, all_skills=all_skills)
 
 
-@repairer_r.route('skills-hinzufügen', methods=['POST'])
+@repairer_r.route('/skills-hinzufügen', methods=['POST'])
 @login_required
 def add_skills(skill_id):
    repairer=db.session.execute(db.select(Repairer).filter_by(user_id=current_user.user_id)).one()
    repairer_skill= repairer_skill()
 
 
-@repairer_r.route('skill-löschen', methods=['POST'])
+@repairer_r.route('/skill-löschen', methods=['POST'])
 @login_required
 def delete_skill(skill_id):
     repairer=db.session.execute(db.select(Repairer).filter_by(user_id=current_user.user_id)).one()
