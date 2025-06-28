@@ -11,13 +11,13 @@
 <div class="customer-layout">
 
 {# Sidebar #}
-  <div class="sidenav">
+  <div class="sidenav text-white p-3">
         <a href="#">Konto</a>
-        <a href="#">Anfragen</a>
         <a href="#">Aufträge</a>
+        <a href="#" class="ticket-button">Anfrage stellen</a>
     </div>
 
-    <main class="main-content">
+    <main class="customer-content">
         {% block customer_content %}
         {% endblock %}
     </main>
