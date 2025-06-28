@@ -48,11 +48,16 @@ def register():
         first_name=request.form.get('first_name')
         email=request.form.get('email')
         password=request.form.get('password')
+        confirm_password=request.form.get('confirm_password')
         role=request.form.get('role')
         password_hash=generate_password_hash(password)
         
         if db.session.execute(db.select(User).filter_by(email=email)).scalar_one_or_none():
             flash('Email bereits vorhanden!')
+            return redirect(url_for('auth.register'))
+        
+        if password != confirm_password:
+            flash('Passwörter stimmen nicht überein!')
             return redirect(url_for('auth.register'))
         
         user=User(last_name=last_name,first_name=first_name,email=email, password_hash=password_hash, role=role)

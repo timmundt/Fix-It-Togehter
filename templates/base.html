@@ -30,10 +30,10 @@
                     {% if current_user.is_authenticated %}
                     {% if is_customer %}
                     <li class="nav-item"><a class="nav-link"
-                            href="{{ url_for('profile.customer_dashboard') }}">Kundenbereich</a></li>
+                            href="{{ url_for('staticpages.customer_profile') }}">Kundenbereich</a></li>
                     {% elif is_repairer %}
                     <li class="nav-item"><a class="nav-link"
-                            href="{{ url_for('profile.repairer_dashboard') }}">Reparateurbereich</a></li>
+                            href="{{ url_for('staticpages.repairer_profile') }}">Reparateurbereich</a></li>
                     {% endif %}
                     <li class="nav-item"><a class="nav-link text-danger"
                             href="{{ url_for('auth.logout') }}">Abmelden</a></li>
