@@ -23,4 +23,12 @@ def terms_of_use():
 def privacy_policy():
     return render_template('privacy_policy.html')
 
+@staticpages_r.route('/kunde')
+def customer_profile():
+    return render_template('customer_account.html')
+
+@staticpages_r.route('/reparateur')
+def repairer_profile():
+    return render_template('repairer_account.html')
+
     
