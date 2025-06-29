@@ -20,7 +20,8 @@ def get_account_information():
 @repairer_r.route('/meine-anfragen', methods=['GET'])
 @login_required
 def get_repairer_tickets():
-    repairer=db.session.execute(db.select(Repairer).filter_by(user_id=current_user.user_id)).one()
+    repairer=db.session.execute(
+        db.select(Repairer).filter_by(user_id=current_user.user_id)).scalar()
     tickets=repairer.ticket_rl
 
     return render_template('repairer_account.html', tickets=tickets)
@@ -29,9 +30,10 @@ def get_repairer_tickets():
 @repairer_r.route('/meine-skills', methods=['GET'])
 @login_required
 def show_skills():
-    repairer=db.session.execute(db.select(Repairer).filter_by(user_id=current_user.user_id)).one()
+    repairer=db.session.execute(
+        db.select(Repairer).filter_by(user_id=current_user.user_id)).one()
     skills=repairer.skills_rl
-    all_skills=db.session.execute(db.select(Skill)).scalars()
+    all_skills=db.session.execute(db.select(Skill)).scalars().all()
 
     return render_template('repairer_account.htmnl', skills=skills, all_skills=all_skills)
 
@@ -39,14 +41,19 @@ def show_skills():
 @repairer_r.route('/skills-hinzufügen', methods=['POST'])
 @login_required
 def add_skills(skill_id):
-   repairer=db.session.execute(db.select(Repairer).filter_by(user_id=current_user.user_id)).one()
+   repairer=db.session.execute(
+       db.select(Repairer).filter_by(user_id=current_user.user_id)).scalar_one()
    repairer_skill= repairer_skill()
+
+   return redirect(url_for('repairer.show_skills'))
 
 
 @repairer_r.route('/skill-löschen', methods=['POST'])
 @login_required
 def delete_skill(skill_id):
-    repairer=db.session.execute(db.select(Repairer).filter_by(user_id=current_user.user_id)).one()
+    repairer=db.session.execute(
+        db.select(Repairer).filter_by(user_id=current_user.user_id)).one()
+        
 
 
 
