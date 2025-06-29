@@ -14,7 +14,7 @@ db.init_app(app)
 
 login_manger=LoginManager()
 login_manger.init_app(app)
-login_manger.login_view='auth_r.login'
+login_manger.login_view='auth.login'
 
 #Quelle ChatGPT
 

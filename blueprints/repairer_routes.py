@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash
 repairer_r=Blueprint('repairer', __name__)
 
 
-#Nicht getestet
+
 @repairer_r.route('/accountinformation', methods=['GET', 'POST'])
 @login_required
 def get_account_info():
