@@ -7,13 +7,25 @@
 
 <ul>
   {% for skill in skills %}
-    <li>{{ skill.model_series }}</li>
+    <li>
+      {{ skill.model_series }}
+      <form action="{{ url_for('repairer.delete_skills') }}" method="post" style="display:inline;">
+        <input type="hidden" name="skill_id" value="{{ skill.skill_id }}">
+        <button type="submit">Löschen</button>
+      </form>
+    </li>
   {% endfor %}
 </ul>
 
 <ul>
   {% for skill in all_skills %}
-    <li>{{ skill.model_series }}</li>
+    <li>
+      {{ skill.model_series }}
+      <form action="{{ url_for('repairer.add_skills') }}" method="post" style="display:inline;">
+        <input type="hidden" name="skill_id" value="{{ skill.skill_id }}">
+        <button type="submit">Hinzufügen</button>
+      </form>
+    </li>
   {% endfor %}
 </ul>
 
