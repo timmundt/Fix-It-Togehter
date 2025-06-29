@@ -29,15 +29,20 @@ def ticket_step1():
 @customer_r.route('/ticket/step2', methods=['GET', "POST"])
 @login_required
 def ticket_step2():
+    print("DEBUG: STEP 2 ROUTE HIT")
+    print("SESSION VORHER:", session.get('ticket'))
+
     if 'ticket' not in session:
         flash("Bitte zuerst ein Modell auswählen.")
         return redirect(url_for('customer.ticket_step1'))
 
     if request.method == 'POST':
+        print("DEBUG: POST request erkannt")
         session['ticket']['init_message'] = request.form.get('init_message')
+        print("SESSION NACHHER:", session.get('ticket'))
         return redirect(url_for('customer.ticket_step3'))
 
-    return render_template('ticket_step2_message.html')
+    return render_template('ticket_step2_init_message.html')
 
 
 @customer_r.route('/ticket/step3', methods=['GET', 'POST'])
