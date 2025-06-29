@@ -34,7 +34,7 @@ def login():
             return redirect(url_for("customer.get_account_info"))
         
         if repairer:
-            return render_template('repairer_account.html')
+            return redirect(url_for("repairer.get_account_info"))
     
     else:
         return render_template('login.html')
