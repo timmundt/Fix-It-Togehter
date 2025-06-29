@@ -40,7 +40,7 @@ def get_repairer_tickets():
 @login_required
 def show_skills():
     repairer=db.session.execute(
-        db.select(Repairer).filter_by(user_id=current_user.user_id)).one()
+        db.select(Repairer).filter_by(user_id=current_user.user_id)).scalar_one()
     skills=repairer.skills_rl
     all_skills=db.session.execute(db.select(Skill)).scalars().all()
 
