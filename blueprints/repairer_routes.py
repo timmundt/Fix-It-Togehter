@@ -50,9 +50,14 @@ def show_skills():
 @repairer_r.route('/skills-hinzufügen', methods=['POST'])
 @login_required
 def add_skills(skill_id):
+   skill_id = request.form['skill_id']
+   skill = db.session.execute(db.select(Skill).filter_by(skill_id=skill_id)).scalar_one()
    repairer=db.session.execute(
        db.select(Repairer).filter_by(user_id=current_user.user_id)).scalar_one()
-   repairer_skill= repairer_skill()
+   
+   if skill not in repairer.skills_rl:
+        repairer.skills_rl.append(skill)
+        db.session.commit()
 
    return redirect(url_for('repairer.show_skills'))
 
