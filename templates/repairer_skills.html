@@ -2,3 +2,32 @@
 
 {% block title %}Meine Skills | FixItTogether{% endblock %}
 
+{% block user_content %}
+<h2 class="account-headline"> Meine Skills </h2> 
+
+<ul class="skills-list">
+  {% for skill in skills %}
+    <li>
+      {{ skill.model_series }}
+      <form action="{{ url_for('repairer.delete_skills') }}" method="post" class="inline-form">
+        <input type="hidden" name="skill_id" value="{{ skill.skill_id }}">
+        <button type="submit" class="skill-delete-button">Löschen</button>
+      </form>
+    </li>
+  {% endfor %}
+</ul>
+
+<h2 class="skills-headline">Alle Skills</h2>
+<ul class="skills-list">
+  {% for skill in all_skills %}
+    <li>
+      {{ skill.model_series }}
+      <form action="{{ url_for('repairer.add_skills') }}" method="post" class="inline-form">
+        <input type="hidden" name="skill_id" value="{{ skill.skill_id }}">
+        <button type="submit" class="skill-add-button">Hinzufügen</button>
+      </form>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
