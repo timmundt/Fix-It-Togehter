@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, flash, render_template, redirect, request, url_for
 from flask_login import current_user, login_required
 from database import db, ChatMessage, Repairer, Skill, Ticket, Customer, User
+from werkzeug.security import generate_password_hash
 
 customer_r=Blueprint('customer', __name__)
 
@@ -23,7 +24,7 @@ def get_account_info():
         #Quelle für Passwort ändern bei Eingabe,ChatGPT
         new_password = request.form["password"]
         if new_password.strip():
-            current_user.password_hash = new_password
+            current_user.password_hash = generate_password_hash(new_password)
         db.session.commit()
         flash("Daten wurden gespeichret")
         return redirect(url_for("customer.get_account_info"))
