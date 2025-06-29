@@ -49,7 +49,7 @@ def show_skills():
 
 @repairer_r.route('/skills-hinzufügen', methods=['POST'])
 @login_required
-def add_skills(skill_id):
+def add_skills():
    skill_id = request.form['skill_id']
    skill = db.session.execute(
        db.select(Skill).filter_by(skill_id=skill_id)).scalar_one()
@@ -65,7 +65,7 @@ def add_skills(skill_id):
 
 @repairer_r.route('/skills-löschen', methods=['POST'])
 @login_required
-def delete_skills(skill_id):
+def delete_skills():
     skill_id = request.form['skill_id']
     skill = db.session.execute(
         db.select(Skill).filter_by(skill_id=skill_id)).scalar_one()
