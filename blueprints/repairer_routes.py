@@ -1,13 +1,11 @@
 from flask import Flask, Blueprint, flash, render_template, redirect, request, url_for
 from flask_login import current_user, login_required
 from flask_sqlalchemy import SQLAlchemy
-from database import Repairer, Skill, Ticket, User
+from database import db, Repairer, Skill, Ticket, User
 from werkzeug.security import generate_password_hash
 
 
 repairer_r=Blueprint('repairer', __name__)
-
-db=SQLAlchemy()
 
 
 #Nicht getestet
