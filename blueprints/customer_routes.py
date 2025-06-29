@@ -34,7 +34,10 @@ def get_account_info():
 @customer_r.route('/repairers', methods=['GET'])
 @login_required
 def get_repairers():
-    repaires=Repairer.query.all()
+    repaires=db.session.execute(
+        db.select(User).
+        filter_by(role='repairer').order_by(User.last_name)).scalars()
+    
     return render_template('customer_account-html', repaires=repaires)
 
 
@@ -43,7 +46,12 @@ def get_repairers():
 @login_required
 def filter_by_repairers():
     model_series=request.args.get('skill')
-    repaires=Repairer.query.join(Repairer.skills_rl).filter(Skill.model_series==model_series).all()
+    repaires=db.session.execute(
+        db.select(User).
+        join(User.repairer).
+        join(Repairer.skills_rl).
+        where(model_series=model_series)).scalars()
+    
     return render_template('customer_account-html', repaires=repaires)
 
 
@@ -53,11 +61,11 @@ def filter_by_repairers():
 def create_ticket():
     repairer_id=request.args.get('repairer_id')
     model_series=request.args('model_series')
-    ticket=Ticket(customer_id=current_user.customer_id, repairer_id=repairer_id, model=model_series)
+    ticket=Ticket(customer_id=current_user.id, repairer_id=repairer_id, model=model_series)
     db.session.add(ticket)
     db.session.commit()
 
-    return redirect(url_for('customer_r.filter_by_repaires'))
+    return redirect(url_for('customer.filter_by_repaires'))
     
 
 
@@ -65,7 +73,9 @@ def create_ticket():
 @customer_r.route('/get-tickets', methods=['GET'])
 @login_required
 def get_tickets():
-    tickets=Ticket.query.filter_by(customer_id=current_user.customer_id).all()
+    tickets=db.session.execute(
+        db.select(Ticket).where(customer_id=current_user.id)).scalars()
+    
     return render_template('customer_account.html', tickets=tickets)
 
 
@@ -74,18 +84,21 @@ def get_tickets():
 @customer_r.route('/delete-ticket/<int:ticket_id>', methods=['POST'])
 @login_required
 def delete_ticket(ticket_id):
-    ticket = Ticket.query.get(ticket_id)
+    ticket = db.session.execute(db.select(Ticket).filter_by(ticket_id=ticket_id))
     db.session.delete(ticket)
     db.session.commit()
-    return redirect (url_for('customer_r.get_tickets'))
+    
+    return redirect (url_for('customer.get_tickets'))
     
 
 #Nicht Getestet, render template ändern
 @customer_r.route('/open-chat/<int:ticket_id>', methods=['GET'])
 @login_required
 def open_chat(ticket_id):
-    chat=ChatMessage.query.filter_by(ticket_id=ticket_id).order_by(ChatMessage.timestamp.asc()).all()
-    return render_template('chat.html',chat=chat)
+    chat_message=db.session.execute(
+        db.select(Ticket).filter_by(ticket_id=ChatMessage.ticket_id)).scalars()
+    
+    return render_template('chat.html', chat_message)
 
 
     
