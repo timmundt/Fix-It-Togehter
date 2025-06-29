@@ -44,7 +44,7 @@ def show_skills():
     skills=repairer.skills_rl
     all_skills=db.session.execute(db.select(Skill)).scalars().all()
 
-    return render_template('repairer_account.html', skills=skills, all_skills=all_skills)
+    return render_template('repairer_skills.html', skills=skills, all_skills=all_skills)
 
 
 @repairer_r.route('/skills-hinzufügen', methods=['POST'])
