@@ -3,31 +3,40 @@
 {% block title %}Meine Skills | FixItTogether{% endblock %}
 
 {% block user_content %}
-<h2 class="account-headline"> Meine Skills </h2> 
 
-<ul class="skills-list">
-  {% for skill in skills %}
-    <li>
-      {{ skill.model_series }}
-      <form action="{{ url_for('repairer.delete_skills') }}" method="post" class="inline-form">
-        <input type="hidden" name="skill_id" value="{{ skill.skill_id }}">
-        <button type="submit" class="skill-delete-button">Löschen</button>
-      </form>
-    </li>
-  {% endfor %}
-</ul>
+<header class="skills-section section-dark hero text-white py-3">
+  <div class="skills-container container">
+    <h2 class="account-headline text-start"> Meine Skills </h2> 
+    <ul class="list-group w-50 bg-dark mx-auto p-4 rounded shadow text-start mb-4">
+      {% for skill in skills %}
+        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center border-secondary">
+          {{ skill.model_series }}
+          <form action="{{ url_for('repairer.delete_skills') }}" method="post" class="m-0">
+            <input type="hidden" name="skill_id" value="{{ skill.skill_id }}">
+            <button type="submit" class="btn btn-danger btn-sm">Löschen</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</header>
 
-<h2 class="skills-headline">Alle Skills</h2>
-<ul class="skills-list">
-  {% for skill in all_skills %}
-    <li>
-      {{ skill.model_series }}
-      <form action="{{ url_for('repairer.add_skills') }}" method="post" class="inline-form">
-        <input type="hidden" name="skill_id" value="{{ skill.skill_id }}">
-        <button type="submit" class="skill-add-button">Hinzufügen</button>
-      </form>
-    </li>
-  {% endfor %}
-</ul>
+<header class="skills-section section-dark hero text-white py-3">
+  <div class="skills-container container">
+    <h2 class="account-headline text-start"> Skills hinzufügen </h2> 
+    <form action="{{ url_for('repairer.add_skills') }}" method="post" class="w-50 bg-dark mx-auto p-4 rounded shadow">
+      <div class="mb-3 text-start">
+        <label for="skill_id" class="form-label">Skill auswählen</label>
+        <select class="form-select" id="skill_id" name="skill_id" required>
+          <option value="" disabled selected>Bitte wähle einen Skill</option>
+          {% for skill in all_skills %}
+          <option value="{{ skill.skill_id }}">{{ skill.model_series }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Hinzufügen</button>
+    </form>
+  </div>
+</header>
 
 {% endblock %}

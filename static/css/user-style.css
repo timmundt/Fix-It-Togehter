@@ -57,6 +57,7 @@
 }
 
 .account-headline {
+  text-align: left;
   margin-bottom: 2rem;
 }
 
@@ -85,48 +86,14 @@
     display: inline;
 }
 
-.skill-delete-button {
-    padding: 4px 8px;
-    font-size: 0.8em;
-    margin-left: 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 1em;
-    cursor: pointer;
-    transition: opacity 0.2s;
+.skills-container h2 {
+    text-align: left;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.skill-delete-button:hover {
-    opacity: 0.7;
+.skills-section.hero {
+    min-height: auto;
+    align-items: flex-start;
 }
 
-.skill-add-button {
-    padding: 4px 8px;
-    font-size: 0.8em;
-    margin-left: 10px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 1em;
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-
-.skill-add-button:hover {
-    opacity: 0.7;
-}
-
-.skills-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.skills-list li {
-    margin-bottom: 8px;
-}
-
-.skills-header {
-    margin-top: 4rem;
-    margin-bottom: 2rem;
-}
