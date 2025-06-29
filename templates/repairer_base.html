@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{# Reperateur ändern (eventuell Name des eingeloggten Nutzers) #}
+{% block title %}Reperateuransicht | FixItTogether{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user-style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="user-layout">
+
+{# Sidebar #}
+  <div class="sidenav text-white p-3">
+        <a href="{{ url_for('repairer.get_account_info') }}">Konto</a>
+        <a href="#">Aufträge</a>
+        <a href="#">Anfragen</a>
+    </div>
+
+    <main class="user-content">
+        {% block user_content %}
+        {% endblock %}
+    </main>
+</div>
+
+{# Quelle: https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp #}
+{% endblock %}

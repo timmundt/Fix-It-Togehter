@@ -1,0 +1,35 @@
+{% extends "repairer_base.html" %}
+
+{% block title %}Mein Konto | FixItTogether{% endblock %}
+
+{% block user_content %}
+<h2 class="account-headline"> Reperateur Konto </h2> 
+
+<form method="POST">
+  <div class="mb-3">
+    <label for="first_name" class="form-label">Vorname</label>
+    <input type="text" id="first_name" name="first_name" class="form-control" value="{{ current_user.first_name }}">
+  </div>
+
+  <div class="mb-3">
+    <label for="last_name" class="form-label">Nachname</label>
+    <input type="text" id="last_name" name="last_name" class="form-control" value="{{ current_user.last_name }}">
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">E-Mail</label>
+    <input type="email" id="email" name="email" class="form-control" value="{{ current_user.email }}">
+  </div>
+
+  {# Passwort-Feld mit HTML-type, Eingabe automatisch zensiert#}
+  <div class="mb-3">
+    <label for="password" class="form-label">Passwort ändern (optional)</label>
+    <input type="password" id="password" name="password" class="form-control" placeholder="Neues Passwort eingeben">
+  </div>
+
+  <button type="submit" class="submit-button">Speichern</button>
+</form>
+
+{# Quelle: https://getbootstrap.com/docs/5.3/forms/overview/ #}
+        
+{% endblock %}
