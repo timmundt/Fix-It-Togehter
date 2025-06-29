@@ -30,7 +30,9 @@
         <select class="form-select" id="skill_id" name="skill_id" required>
           <option value="" disabled selected>Bitte wähle einen Skill</option>
           {% for skill in all_skills %}
-          <option value="{{ skill.skill_id }}">{{ skill.model_series }}</option>
+            {% if skill not in skills %}
+              <option value="{{ skill.skill_id }}">{{ skill.model_series }}</option>
+            {% endif %}
           {% endfor %}
         </select>
       </div>
