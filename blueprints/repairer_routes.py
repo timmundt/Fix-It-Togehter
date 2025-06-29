@@ -11,7 +11,7 @@ db=SQLAlchemy()
 
 
 #Nicht getestet
-@repairer_r.route('/accountinformation', methods=['GET'])
+@repairer_r.route('/accountinformation', methods=['GET', 'POST'])
 @login_required
 def get_account_info():
     if request.method == "POST":
