@@ -63,9 +63,9 @@ def add_skills(skill_id):
    return redirect(url_for('repairer.show_skills'))
 
 
-@repairer_r.route('/skill-löschen', methods=['POST'])
+@repairer_r.route('/skills-löschen', methods=['POST'])
 @login_required
-def delete_skill(skill_id):
+def delete_skills(skill_id):
     skill_id = request.form['skill_id']
     skill = db.session.execute(
         db.select(Skill).filter_by(skill_id=skill_id)).scalar_one()
