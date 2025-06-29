@@ -6,12 +6,28 @@ customer_r=Blueprint('customer', __name__)
 
 
 #Nicht getestet, template ändern
-customer_r.route('/account-information', methods=['GET'])
-@login_required
-def get_account_information(user_id):
-    current_user=User.query.get(user_id)
-    return render_template('custerom_account.html', current_user=current_user)
 
+#customer_r.route('/account-information', methods=['GET'])
+#@login_required
+#def get_account_information(user_id):
+#    current_user=User.query.get(user_id)
+#    return render_template('custerom_account.html', current_user=current_user)
+
+@customer_r.route('/account-information', methods=['GET', 'POST'])
+@login_required
+def get_account_info():
+    if request.method == "POST":
+        current_user.first_name = request.form["first_name"]
+        current_user.last_name = request.form["last_name"]
+        current_user.email = request.form["email"]
+        #Quelle für Passwort ändern bei Eingabe,ChatGPT
+        new_password = request.form["password"]
+        if new_password.strip():
+            current_user.password_hash = new_password
+        db.session.commit()
+        flash("Daten wurden gespeichret")
+        return redirect(url_for("customer.get_account_info"))
+    return render_template("customer_account.html")
 
 #Nicht Getestet, rendertemplate änder
 @customer_r.route('/repairers', methods=['GET'])
