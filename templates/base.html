@@ -28,12 +28,12 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     {% if current_user.is_authenticated %}
-                    {% if is_customer %}
+                    {% if current_user.customer %}
                     <li class="nav-item"><a class="nav-link"
-                            href="{{ url_for('staticpages.customer_profile') }}">Kundenbereich</a></li>
-                    {% elif is_repairer %}
+                            href="{{ url_for('customer.get_account_info') }}">Kundenbereich</a></li>
+                    {% elif current_user.repairer %}
                     <li class="nav-item"><a class="nav-link"
-                            href="{{ url_for('staticpages.repairer_profile') }}">Reparateurbereich</a></li>
+                            href="{{ url_for('repairer.get_account_info') }}">Reparateurbereich</a></li>
                     {% endif %}
                     <li class="nav-item"><a class="nav-link text-danger"
                             href="{{ url_for('auth.logout') }}">Abmelden</a></li>
