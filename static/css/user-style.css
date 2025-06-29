@@ -1,5 +1,5 @@
 /* Layout-Container */
-.customer-layout {
+.user-layout {
   display: flex;
   min-height: 80vh; 
 }
@@ -48,7 +48,7 @@
 }
 
 /* Hauptinhalt */
-.customer-content {
+.user-content {
   flex: 1;
   padding: 2rem;
   background: linear-gradient(to right, #222, #444);
