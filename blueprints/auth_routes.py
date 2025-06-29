@@ -31,10 +31,10 @@ def login():
         login_user(user)
 
         if customer:
-            return render_template('customer_account.html')
+            return redirect(url_for("customer.get_account_info"))
         
         if repairer:
-            return render_template('repairer_account.html')
+            return redirect(url_for("repairer.get_account_info"))
     
     else:
         return render_template('login.html')

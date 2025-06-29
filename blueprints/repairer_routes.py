@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, flash, render_template, redirect, request, u
 from flask_login import current_user, login_required
 from flask_sqlalchemy import SQLAlchemy
 from database import Repairer, Skill, Ticket, User
+from werkzeug.security import generate_password_hash
 
 
 repairer_r=Blueprint('repairer', __name__)
@@ -10,11 +11,21 @@ db=SQLAlchemy()
 
 
 #Nicht getestet
-@repairer_r.route('/accountinformation', methods=['GET'])
+@repairer_r.route('/accountinformation', methods=['GET', 'POST'])
 @login_required
-def get_account_information():
-    repiarer=db.session.execute(db.select(User).filter_by(user_id=current_user.user_id)).one()
-    return render_template('repairer_account.html', repairer=repiarer)
+def get_account_info():
+    if request.method == "POST":
+        current_user.first_name = request.form["first_name"]
+        current_user.last_name = request.form["last_name"]
+        current_user.email = request.form["email"]
+        #Quelle für Passwort ändern bei Eingabe,ChatGPT
+        new_password = request.form["password"]
+        if new_password.strip():
+            current_user.password_hash = generate_password_hash(new_password)
+        db.session.commit()
+        flash("Daten wurden gespeichert")
+        return redirect(url_for("repairer.get_account_info"))
+    return render_template("repairer_account.html")
 
 #Nicht getestet
 @repairer_r.route('/meine-anfragen', methods=['GET'])
@@ -35,7 +46,7 @@ def show_skills():
     skills=repairer.skills_rl
     all_skills=db.session.execute(db.select(Skill)).scalars().all()
 
-    return render_template('repairer_account.htmnl', skills=skills, all_skills=all_skills)
+    return render_template('repairer_account.html', skills=skills, all_skills=all_skills)
 
 
 @repairer_r.route('/skills-hinzufügen', methods=['POST'])
