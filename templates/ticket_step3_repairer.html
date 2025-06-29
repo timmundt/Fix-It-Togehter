@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Schritt 3 - Reparateur auswählen | Fix It Together{% endblock %}
+
+{% block content %}
+
+<header class="section-dark hero text-white d-flex align-items-center" style="min-height: 80vh;">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Schritt 3 - Reparateur für „{{ model }}“ auswählen/h2>
+
+        <form method="POST" class="w-50 mx-auto bg-dark p-4 rounded shadow">
+            <div class="mb-3 text-start">
+                <label for="repairer_id" class="form-label">Reparateur auswählen</label>
+                <select class="form-select" id="repairer_id" name="repairer_id" required>
+                    <option value="" disabled selected>Bitte wähle einen Reparateur</option>
+                    {% for repairer in repairers %}
+                        <option value="{{ rep.repairer_id }}">
+                            {{ rep.user.first_name }} {{ rep.user.last_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class= "btn btn-primary w-100">Weiter zur Übersicht</button>
+        </form>
+    </div>
+</header>
+{% endblock %}

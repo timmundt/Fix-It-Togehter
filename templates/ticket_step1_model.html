@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Schritt 1 - Modell wählen | Fix It Together{% endblock %}
+
+{% block content %}
+
+<header class = "section-dark hero text white d-flex align-items-center" style="min-height: 80vh;">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Schritt 1 - Modell deiner Kaffemaschine wählen</h2>
+        <form method = "POST" class = "w-50 mx-auto bg-dark p-4 rounded shadow">
+            <div class="mb-3 text-start">
+                <label for="model" class="form-label">Modell wählen</label>
+                <select class="form-select" id="model_series" name="model_series" required>
+                    <option value="" disabled selected>Bitte wähle das Modell deiner Kaffeemaschine</option>
+                    {% for model in skills %}
+                    <option value="{{ model }}">{{ model }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Weiter</button>
+        </form>
+    </div>
+</header>
+
+{% endblock%}

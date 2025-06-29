@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% block title %}Ticket-Bestätigung | Fix It Together{% endblock %}
+
+{% block content %}
+
+<header class="section-dark hero text-white d-flex align-items-center" style="min-height: 80vh;">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Ticket überprüfen</h2>
+
+        <div class="bg-dark p-4 rounded shadow w-50 mx-auto text-start">
+            <p><Strong>Modell:</Strong> {{ ticket.model_series }}</p>
+            <p><Strong>Beschreibung:</Strong> {{ ticket.init_message }}</p>
+            <p><Strong>Reparateur:</Strong> 
+                {{ repairer.user.first_name }} {{ repairer.user.last_name }}
+            </p>
+            <p><Strong>Erstellt am:</Strong> {{ ticket.timestamp }}</p>
+
+            <form method="POST" class="mt-4">
+                <button type="submit" class="btn btn-primary w-100">Ticket absenden</button>
+            </form>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+
+

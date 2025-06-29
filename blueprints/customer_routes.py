@@ -1,4 +1,5 @@
-from flask import Flask, Blueprint, flash, render_template, redirect, request, url_for
+from datetime import datetime
+from flask import Flask, Blueprint, flash, render_template, redirect, request, url_for, session
 from flask_login import current_user, login_required
 from database import db, ChatMessage, Repairer, Skill, Ticket, Customer, User
 from werkzeug.security import generate_password_hash
@@ -13,6 +14,83 @@ customer_r=Blueprint('customer', __name__)
 #def get_account_information(user_id):
 #    current_user=User.query.get(user_id)
 #    return render_template('custerom_account.html', current_user=current_user)
+
+@customer_r.route('/ticket/step1', methods=['GET', "POST"])
+@login_required
+def ticket_step1():
+    if request.method == "POST": 
+        session['ticket'] = {'model_series': request.form.get('model_series')}
+        return redirect(url_for('customer.ticket_step2'))
+    
+    skills = Skill.get_modelseries()
+    return render_template('ticket_step1_model.html', skills = skills)
+
+
+@customer_r.route('/ticket/step2', methods=['GET', "POST"])
+@login_required
+def ticket_step2():
+    if 'ticket' not in session:
+        flash("Bitte zuerst ein Modell auswählen.")
+        return redirect(url_for('customer.ticket_step1'))
+
+    if request.method == 'POST':
+        session['ticket']['init_message'] = request.form.get('init_message')
+        return redirect(url_for('customer.ticket_step3'))
+
+    return render_template('ticket_step2_message.html')
+
+
+@customer_r.route('/ticket/step3', methods=['GET', 'POST'])
+@login_required
+def ticket_step3():
+    if 'ticket' not in session or 'model_series' not in session['ticket']:
+        flash("Bitte wähle zuerst ein Modell.")
+        return redirect(url_for('customer.ticket_step1'))
+
+    model = session['ticket']['model_series']
+
+    # Hole alle Reparateur:innen, die das gewählte Modell beherrschen
+    repairers = db.session.execute(
+        db.select(Repairer)
+        .join(Repairer.skills_rl)
+        .filter(Skill.model_series == model)
+        .join(User)
+    ).scalars().all()
+
+    if not repairers:
+        flash("Leider wurde kein Reparateur für dieses Modell gefunden.")
+        return redirect(url_for('customer.ticket_step1'))
+
+    if request.method == 'POST':
+        session['ticket']['repairer_id'] = request.form.get('repairer_id')
+        return redirect(url_for('customer.ticket_confirm'))
+
+    return render_template('ticket_step3_repairer.html', repairers=repairers, model=model)
+
+def ticket_confirmation():
+    data = session.get('ticket')
+    if not data or not all(k in data for k in ('model_series', 'init_message', 'repairer_id')):
+        flash("Ticket-Daten nicht gefunden.")
+        return redirect(url_for('customer.ticket_step1'))
+    
+    # Optional: Reparateur-Namen anzeigen
+    repairer = db.session.get(Repairer, int(data['repairer_id']))
+    
+    if request.method == 'POST':
+        ticket = Ticket(
+            customer_id = current_user.customer_id,
+            model = data['model_series'],
+            init_message = data['init_message'],
+            repairer_id = data['repairer_id'],
+            timestamp = datetime.now() 
+        )
+        db.session.add(ticket)
+        db.session.commit()
+        session.pop('ticket', None)  # Clear the session data
+        flash("Dein Ticket wurde erfolgreich erstellt.")
+        return redirect(url_for('customer.get_tickets'))
+    return render_template('ticket_confirmation.html', data=data)
+
 
 @customer_r.route('/account-information', methods=['GET', 'POST'])
 @login_required
