@@ -49,6 +49,13 @@ class Skill(db.Model):
     skill_id=Column(Integer, primary_key=True, index=True)
     model_series=Column(String, nullable=False)
 
+    @classmethod
+    def get_modelseries(cls):
+        all_skills=db.session.execute(
+            db.select(cls.model_series)).scalars()
+        return all_skills
+    
+
 
 class Ticket(db.Model):
     ticket_id=Column(Integer, primary_key=True, index=True)
