@@ -3,5 +3,12 @@
 {% block title %}Meine Skills | FixItTogether{% endblock %}
 
 {% block user_content %}
+<h2 class="account-headline"> Meine Skills </h2> 
+
+<ul>
+  {% for skill in all_skills %}
+    <li>{{ skill.model_series }}</li>
+  {% endfor %}
+</ul>
 
 {% endblock %}
