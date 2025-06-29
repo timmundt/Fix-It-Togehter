@@ -6,6 +6,12 @@
 <h2 class="account-headline"> Meine Skills </h2> 
 
 <ul>
+  {% for skill in skills %}
+    <li>{{ skill.model_series }}</li>
+  {% endfor %}
+</ul>
+
+<ul>
   {% for skill in all_skills %}
     <li>{{ skill.model_series }}</li>
   {% endfor %}
