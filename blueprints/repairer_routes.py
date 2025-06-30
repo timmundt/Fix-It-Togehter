@@ -26,7 +26,7 @@ def get_account_info():
             else:
                 current_user.password_hash = generate_password_hash(new_password)
         db.session.commit()
-        flash("Daten wurden gespeichert")
+        flash("Daten wurden gespeichert", "success")
         return redirect(url_for("repairer.get_account_info"))
     return render_template("repairer_account.html")
 

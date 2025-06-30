@@ -114,7 +114,7 @@ def get_account_info():
             else:
                 current_user.password_hash = generate_password_hash(new_password)
         db.session.commit()
-        flash("Daten wurden gespeichret")
+        flash("Daten wurden gespeichret", "success")
         return redirect(url_for("customer.get_account_info"))
     return render_template("customer_account.html")
 
