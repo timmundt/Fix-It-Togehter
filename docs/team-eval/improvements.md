@@ -10,6 +10,9 @@ nav_order: 2
 
 <summary>Measures to be taken</summary>
 
+1. Früher mit dem Projekt anfangen, um mehr Puffer zu haben
+2. Aufgaben noch klarer verteilen, da wir einige git conflicts hatten, da wir auf unterschiedlichen branches manchmal in gleichen Files gearbeitet haben.
+
 </details>
 
 <!---

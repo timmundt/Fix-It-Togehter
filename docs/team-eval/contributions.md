@@ -20,23 +20,29 @@ nav_order: 4
 ## [Tim Lenart Mundt]
 
 Contributions
-: Erstellung GitHub Repo
-: Projektstruktur Erstellung
-: Projektdokumentation
+
++ Erstellung GitHub Repo
++ Projektstruktur Erstellung
++ Projektdokumentation
++ Hilfestellung bei Git 
++ Datenbankmodellierung
++ Routen-Erstellung 
++ Bugfixes
 
 ## [Denizcan Gueney]
 
 Contributions
-: Projektdokumentation
-: 
-: 
++ Projektdokumentation
++ Erstellung und Design der Templates
++ Routen-Erstellung und Erweiterung
+
 
 ## [Baran Celik]
 
 Contributions
-: Projektdokumentation
-: 
-: 
++ Projektdokumentation
++ Erstellung und Design der Templates
++ Routen-Erstellung und Erweiterung
 
 <!---
 Quelle von: https://github.com/hwrberlin/fswd-app/blob/main/docs/team-eval/contributions.md letzter Zugriff am: 12.06.2025
