@@ -150,7 +150,7 @@ def filter_by_repairers():
 def create_ticket():
     repairer_id=request.args.get('repairer_id')
     model_series=request.args('model_series')
-    ticket=Ticket(customer_id=current_user.id, repairer_id=repairer_id, model=model_series)
+    ticket=Ticket(customer_id=current_user.user_id, repairer_id=repairer_id, model=model_series)
     db.session.add(ticket)
     db.session.commit()
 
@@ -163,9 +163,8 @@ def create_ticket():
 @login_required
 def get_tickets():
     tickets=db.session.execute(
-        db.select(Ticket).where(customer_id=current_user.id)).scalars()
-    
-    return render_template('customer_account.html', tickets=tickets)
+        db.select(Ticket).where(Ticket.customer_id==current_user.user_id)).scalars().all()
+    return render_template('customer_requests.html', tickets=tickets)
 
 
 

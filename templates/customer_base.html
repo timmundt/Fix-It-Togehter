@@ -13,7 +13,7 @@
 {# Sidebar #}
   <div class="sidenav text-white p-3">
         <a href="{{ url_for('customer.get_account_info') }}">Konto</a>
-        <a href="#">Aufträge</a>
+        <a href="{{ url_for('customer.get_tickets') }}">Aufträge</a>
         <a href="{{ url_for('customer.ticket_step1') }}" class="ticket-button">Anfrage stellen</a>
     </div>
 
