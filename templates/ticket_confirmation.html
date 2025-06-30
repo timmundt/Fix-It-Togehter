@@ -8,12 +8,12 @@
         <h2 class="fw-bold mb-4">Ticket überprüfen</h2>
 
         <div class="bg-dark p-4 rounded shadow w-50 mx-auto text-start">
-            <p><Strong>Modell:</Strong> {{ ticket.model_series }}</p>
-            <p><Strong>Beschreibung:</Strong> {{ ticket.init_message }}</p>
+            <p><Strong>Modell:</Strong> {{ data.model_series }}</p>
+            <p><Strong>Beschreibung:</Strong> {{ data.init_message }}</p>
             <p><Strong>Reparateur:</Strong> 
                 {{ repairer.user.first_name }} {{ repairer.user.last_name }}
             </p>
-            <p><Strong>Erstellt am:</Strong> {{ ticket.timestamp }}</p>
+            
 
             <form method="POST" class="mt-4">
                 <button type="submit" class="btn btn-primary w-100">Ticket absenden</button>
