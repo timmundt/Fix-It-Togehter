@@ -8,7 +8,7 @@ Viele Produkte, unter anderem auch Kaffeemaschinen werden heutzutage so gebaut, 
 
 ## Our solution
 
-Die Lösung für das oben beschriebene Problem ist eine Plattformbasierte Website, in der Personen, die eine kaputte Kaffeemaschine haben, und Personen, die das nötige Know-how dazuhaben um diese reparieren zu können, agieren. Beide Parteien registrieren sich auf der Website und die Personen mit den Kaputten Kaffeemaschine stellen Anfragen an die Personen, die Kaffeemaschinen reparieren können. Dabei geht es nur um die Kontaktaufnahme. Ob der Reparateur Geld verlangt oder nicht wird unter den beiden Parteien geklärt. Die Website dient nur als Vermittlung.
+Die Lösung für das oben beschriebene Problem ist eine Plattformbasierte Website, in der Personen, die eine kaputte Kaffeemaschine von De Longhi haben, sich mit Personen connecten können, die diese Reparieren können. Dabei wird nach Modellserie gefiltert, da sich Kaffeemaschinen einer gleichen Modellserie im Aufbau sehr änhlich sind. Kunden können nach dieser Modellserie filtern, und bekommen angezeigt, wer diese Reparieren kann. Dabei geht es nur um die Kontaktaufnahme. Bezahlung oder anderes werden unter den beiden Parteien geklärt, ähnlich wie das frühere Ebay-Kleinanzeigen.
 
 ## Target user
 
@@ -24,7 +24,7 @@ Die Lösung für das oben beschriebene Problem ist eine Plattformbasierte Websit
 
 · Umweltbewusstsein: Hoch
 
-· Hat eine kaputte Kaffeemaschine
+· Hat eine kaputte Kaffeemaschine von De Longhi
 
 #### Ziele:
 
@@ -58,7 +58,7 @@ Die Lösung für das oben beschriebene Problem ist eine Plattformbasierte Websit
 
 · Umweltbewusstsein: Mittel
 
-· Hat über Jahre gelernt wie man Kaffeemaschine von einer Firma repariert.
+· Hat über Jahre gelernt wie man Kaffeemaschine von De Longhi repariert
 
 #### Ziele:
 
@@ -88,6 +88,7 @@ C --> D[Nach Repairern filtern]
 D --> E[Anfragen an Repairer senden]
 E --> G[Erfolgreich Repairer gefunden]
 G --> H[Kaffeemaschine repariert]
+H --> I[Eventuelle Bewertung für den Repairer schreiben]
 ```
 
 

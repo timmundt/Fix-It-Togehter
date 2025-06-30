@@ -52,8 +52,9 @@ class Skill(db.Model):
     @classmethod
     def get_modelseries(cls):
         all_skills=db.session.execute(
-            db.select(cls.model_series)).scalars()
+            db.select(cls.model_series)).scalars().all()
         return all_skills
+    
     
 
 
@@ -63,6 +64,7 @@ class Ticket(db.Model):
     repairer_id=Column(Integer, ForeignKey('repairer.repairer_id'),nullable=False)
     model=Column(String, nullable=False)
     init_message=Column(String, nullable=False)
+    timestamp=Column(Date, nullable=False)
     accepted=Column(Boolean, nullable=True, default=None)
     finished=Column(Boolean, default=False)
 
