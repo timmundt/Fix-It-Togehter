@@ -7,13 +7,6 @@ from werkzeug.security import generate_password_hash
 customer_r=Blueprint('customer', __name__)
 
 
-#Nicht getestet, template ändern
-
-#customer_r.route('/account-information', methods=['GET'])
-#@login_required
-#def get_account_information(user_id):
-#    current_user=User.query.get(user_id)
-#    return render_template('custerom_account.html', current_user=current_user)
 
 @customer_r.route('/ticket/step1', methods=['GET', "POST"])
 @login_required
@@ -24,6 +17,7 @@ def ticket_step1():
     
     skills = Skill.get_modelseries()
     return render_template('ticket_step1_model.html', skills = skills)
+
 
 
 @customer_r.route('/ticket/step2', methods=['GET', "POST"])
@@ -43,6 +37,7 @@ def ticket_step2():
         return redirect(url_for('customer.ticket_step3'))
 
     return render_template('ticket_step2_init_message.html')
+
 
 
 @customer_r.route('/ticket/step3', methods=['GET', 'POST'])
@@ -68,10 +63,14 @@ def ticket_step3():
 
     if request.method == 'POST':
         session['ticket']['repairer_id'] = request.form.get('repairer_id')
-        return redirect(url_for('customer.ticket_confirm'))
+        return redirect(url_for('customer.ticket_confirmation'))
 
     return render_template('ticket_step3_repairer.html', repairers=repairers, model=model)
 
+
+
+@customer_r.route('/ticket-bestätigung', methods=['GET','POST'])
+@login_required
 def ticket_confirmation():
     data = session.get('ticket')
     if not data or not all(k in data for k in ('model_series', 'init_message', 'repairer_id')):
@@ -97,6 +96,7 @@ def ticket_confirmation():
     return render_template('ticket_confirmation.html', data=data)
 
 
+
 @customer_r.route('/account-information', methods=['GET', 'POST'])
 @login_required
 def get_account_info():
@@ -112,6 +112,7 @@ def get_account_info():
         flash("Daten wurden gespeichret")
         return redirect(url_for("customer.get_account_info"))
     return render_template("customer_account.html")
+
 
 #Nicht Getestet, rendertemplate änder
 @customer_r.route('/repairers', methods=['GET'])
