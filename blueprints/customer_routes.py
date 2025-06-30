@@ -176,13 +176,20 @@ def create_ticket():
     
 
 
-#Nicht Getestet, render template änder
-@customer_r.route('/get-tickets', methods=['GET'])
+@customer_r.route('/get-tickets')
 @login_required
 def get_tickets():
-    tickets=db.session.execute(
-        db.select(Ticket).where(Ticket.customer_id==current_user.user_id)).scalars().all()
-    return render_template('customer_requests.html', tickets=tickets)
+    status = request.args.get('status')  # open / finished
+    query = db.select(Ticket).filter_by(customer_id=current_user.customer.customer_id)
+
+    if status == 'open':
+        query = query.filter(Ticket.finished == False)
+    elif status == 'finished':
+        query = query.filter(Ticket.finished == True)
+
+    tickets = db.session.execute(query.order_by(Ticket.timestamp.desc())).scalars().all()
+
+    return render_template('get_tickets.html', tickets=tickets, status=status)
 
 
 
