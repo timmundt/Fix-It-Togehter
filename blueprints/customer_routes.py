@@ -106,8 +106,13 @@ def get_account_info():
         current_user.email = request.form["email"]
         #Quelle für Passwort ändern bei Eingabe,ChatGPT
         new_password = request.form["password"]
+        password_confirm =request.form["password_confirm"]
         if new_password.strip():
-            current_user.password_hash = generate_password_hash(new_password)
+            if new_password != password_confirm:
+                flash("Passwörter stimmen nicht überein", "danger")
+                return redirect(url_for("customer.get_account_info"))
+            else:
+                current_user.password_hash = generate_password_hash(new_password)
         db.session.commit()
         flash("Daten wurden gespeichret")
         return redirect(url_for("customer.get_account_info"))
