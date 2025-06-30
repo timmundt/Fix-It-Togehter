@@ -18,6 +18,16 @@
     </div>
 
     <main class="user-content">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-danger w-50 mx-auto">
+          {% for message in messages %}
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Schließen"></button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
         {% block user_content %}
         {% endblock %}
     </main>
