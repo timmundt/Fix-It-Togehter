@@ -13,6 +13,7 @@ nav_order: 3
 1. Datenbank: Plain-SQL oder SQLAlchemy?
 2. Flask-Login oder manuelles Session-Handling?
 3. Flask-Routen auslagern?
+4. Bootstrap oder manuelles CSS?
 
 </details>
 
@@ -118,6 +119,17 @@ Wir hatten für den Bereich Routen Auslagern drei Optionen:
 | **Lesbarkeit**| ❌ Routen gehen unter anderem Code unter | ❌ Besser, aber bei viele Routen immer noch unübersichtlich | ✔️ Sehr gut, Routen werden sauber strukturiert
 | **Warbarkeit**| ❌ Änderungen erforden lange Suche Code | ❌ Änderung erfordern lange Suche bei viel Code | ✔️ Änderungen sind lokal in der Datei mit wenig Code 
 |**Erweiterbarkeit** | ❌ Alles muss zentral ergänzt werden | ❌ Bei viel Code immer noch schwer Erweiterbar | ✔️ Neue Use-Case/Funktionen lassen sich leicht lokal intrigieren
+
+## 04: Bootstrap oder manuelles CSS?
+
+### Meta
+
+Status
+: Work in progress - **Decided** - Obsolete
+
+Updated
+: 21-06-2025
+
 
 
 
