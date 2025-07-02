@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint, flash, render_template, redirect, request, url_for
 from flask_login import current_user, login_required
 from flask_sqlalchemy import SQLAlchemy
-from database import db, Repairer, Skill, Ticket, User
+from database import ChatMessage, db, Repairer, Skill, Ticket, User
 from werkzeug.security import generate_password_hash
 
 
@@ -83,7 +83,40 @@ def delete_skills():
     
     return redirect(url_for('repairer.show_skills'))
         
+@repairer_r.route('/meine-anfragen', methods=['GET'])
+@login_required
+def get_tickets():
+    tickets=db.session.execute(db.select(Ticket).where(Ticket.repairer_id==current_user.user_id)).scalars().all()
 
+    return render_template('repairer_tickets.html', tickets=tickets)
+
+
+@repairer_r.route('/ticket-annehmen',methods=['POST'])
+@login_required
+def accept_ticket(ticket_id):
+    ticket=db.session.execute(db.select(Ticket).filter_by(ticket_id=ticket_id))
+    ticket.accepted=True
+    db.session.commit()
+    return redirect(url_for(''))
+
+@repairer_r.route('/ticket-ablehen', methods=['POST'])
+@login_required
+def decline_ticket(ticket_id):
+    ticket=db.session.execute(db.select(Ticket).filter_by(ticket_id=ticket_id))
+    ticket.accpted=False
+    db.session.commit()
+    return redirect(url_for(''))
+
+@repairer_r.route('chat-öffnen', methods=['POST'])
+@login_required
+def open_chat(ticket_id):
+    chat_message=db.session.execute(
+        db.select(Ticket).filter_by(ticket_id=ChatMessage.ticket_id)).scalars().all()
+    
+    return render_template('chat.html', chat_message)
+    
+
+    
 
 
 

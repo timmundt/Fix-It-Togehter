@@ -7,10 +7,7 @@ from database import User, db, Customer, Repairer
 auth_r= Blueprint('auth', __name__)
 
 
-#Query nicht mehr benutzen 
 
-
-#Nicht getestet
 @auth_r.route('/login',methods=['GET','POST'])
 def login():
     if request.method=='POST':
@@ -40,7 +37,7 @@ def login():
         return render_template('login.html')
 
 
-#Nicht getestet
+
 @auth_r.route('/register', methods=['GET','POST'])
 def register():
     if request.method=='POST':
@@ -79,7 +76,7 @@ def register():
     return render_template('register.html')
 
 
-#Nicht getestet
+
 @auth_r.route('/logout')
 @login_required
 def logout():
