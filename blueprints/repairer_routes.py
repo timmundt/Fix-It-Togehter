@@ -120,7 +120,7 @@ def decline_ticket():
 
     db.session.delete(ticket)    
     db.session.commit()
-    return redirect(url_for('repairer.get_tickets'))
+    return redirect(url_for('repairer.get_requests'))
 
 @repairer_r.route('/chat-öffnen', methods=['POST'])
 @login_required
