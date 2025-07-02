@@ -68,6 +68,10 @@ class Ticket(db.Model):
     timestamp=Column(Date, nullable=False)
     accepted=Column(Boolean, nullable=True, default=None)
     finished=Column(Boolean, default=False)
+    
+    customer = db.relationship("Customer")
+    repairer = db.relationship("Repairer")
+
 
 
 class ChatMessage(db.Model):

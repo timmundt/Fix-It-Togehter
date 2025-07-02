@@ -22,6 +22,7 @@
         <div>
           <div class="ticket-header">{{ ticket.model }}</div>
           <div class="ticket-info"><strong>Beschreibung:</strong> {{ ticket.init_message }}</div>
+          <div class="ticket-info"><strong>Kunde:</strong> {{ ticket.customer.user.first_name }} {{ ticket.customer.user.last_name }}</div>
           <div class="ticket-info"><strong>Datum:</strong> {{ ticket.timestamp.strftime('%d.%m.%Y') }}</div>
           <div class="ticket-info ticket-status">
             <strong>Status:</strong>
