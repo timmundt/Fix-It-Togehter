@@ -142,7 +142,20 @@ def close_ticket():
     
     ticket.finished=True
     db.session.commit()
-    return redirect(url_for('repairer.get_tickets'))
+    return redirect(url_for('repairer.closed_tickets'))
+
+@repairer_r.route('/abgeschlossene-tickets', methods=['GET'])
+@login_required
+def closed_tickets():
+    tickets = db.session.execute(
+        db.select(Ticket).where(
+            and_(Ticket.repairer_id==current_user.repairer.repairer_id, 
+                 Ticket.accepted.is_(True),
+                 Ticket.finished.is_(False)
+            )
+        )
+    ).scalars().all()
+    return render_template('repairer.get_closed_tickets.html', tickets=tickets)
 
     
 
