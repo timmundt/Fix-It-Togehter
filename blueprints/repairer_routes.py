@@ -87,19 +87,24 @@ def get_requests():
 
     return render_template('repairer_requests.html', tickets=tickets)
 
+#ChatGPT:
 @repairer_r.route('/meine-aufträge', methods=['GET'])
 @login_required
 def get_tickets():
-    tickets=db.session.execute(
-        db.select(Ticket).where(
-            and_(Ticket.repairer_id==current_user.repairer.repairer_id, 
-                 Ticket.accepted.is_(True),
-                 Ticket.finished.is_(False)
-            )
-        )
-    ).scalars().all()
+    status = request.args.get("status")
+    query = db.select(Ticket).where(
+        Ticket.repairer_id == current_user.repairer.repairer_id,
+        Ticket.accepted.is_(True)
+    )
 
-    return render_template('repairer_tickets.html', tickets=tickets)
+    if status == "open":
+        query = query.where(Ticket.finished.is_(False))
+    elif status == "finished":
+        query = query.where(Ticket.finished.is_(True))
+
+    tickets = db.session.execute(query).scalars().all()
+
+    return render_template('repairer_tickets.html', tickets=tickets, status=status)
 
 @repairer_r.route('/ticket-annehmen',methods=['POST'])
 @login_required
@@ -142,20 +147,9 @@ def close_ticket():
     
     ticket.finished=True
     db.session.commit()
-    return redirect(url_for('repairer.closed_tickets'))
+    return redirect(url_for('repairer.get_tickets'))
 
-@repairer_r.route('/abgeschlossene-tickets', methods=['GET'])
-@login_required
-def closed_tickets():
-    tickets = db.session.execute(
-        db.select(Ticket).where(
-            and_(Ticket.repairer_id==current_user.repairer.repairer_id, 
-                 Ticket.accepted.is_(True),
-                 Ticket.finished.is_(False)
-            )
-        )
-    ).scalars().all()
-    return render_template('repairer.get_closed_tickets.html', tickets=tickets)
+
 
     
 
