@@ -89,7 +89,7 @@ def get_tickets():
         db.select(Ticket).where((Ticket.repairer_id==current_user.repairer.repairer_id)and(Ticket.accepted.is_(True)))
     ).scalars().all()
 
-    return render_template('repairer_requests.html', tickets=tickets)
+    return render_template('repairer_tickets.html', tickets=tickets)
 
 @repairer_r.route('/ticket-annehmen',methods=['POST'])
 @login_required
