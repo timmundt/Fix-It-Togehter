@@ -10,6 +10,14 @@
         <div class="card-body">
           <h5 class="card-title">{{ ticket.model }}</h5>
           <p class="card-text">{{ ticket.init_message }}</p>  
+          <form action="{{ url_for('repairer.open_chat') }}" method="post">
+            <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
+          <button type="submit" class="btn btn-success btn-sm">Chat</button>
+          </form>
+          <form action="{{ url_for('repairer.close_ticket') }}" method="post">
+            <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
+          <button type="submit" class="btn btn-danger btn-sm">Abschließen</button>
+          </form>
         </div>
       </div>
     {% endfor %}

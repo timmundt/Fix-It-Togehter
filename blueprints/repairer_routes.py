@@ -108,26 +108,40 @@ def accept_ticket():
         db.select(Ticket).filter_by(ticket_id=ticket_id)).scalar_one()
     ticket.accepted=True
     db.session.commit()
-    return redirect(url_for('repairer.get_tickets'))
+    return redirect(url_for('repairer.get_requests'))
 
 @repairer_r.route('/ticket-ablehen', methods=['POST'])
 @login_required
 def decline_ticket():
     ticket_id = request.form["ticket_id"]
     ticket=db.session.execute(
-        db.select(Ticket).filter_by(ticket_id=ticket_id))
-    ticket.accepted=False
+        db.select(Ticket).filter_by(ticket_id=ticket_id)
+    ).scalar_one()
+
+    db.session.delete(ticket)    
     db.session.commit()
-    return redirect(url_for('repairer.get_requests'))
+    return redirect(url_for('repairer.get_tickets'))
 
 @repairer_r.route('/chat-öffnen', methods=['POST'])
 @login_required
-def open_chat(ticket_id):
+def open_chat():
+    ticket_id = request.form["ticket_id"]
     chat_message=db.session.execute(
         db.select(Ticket).filter_by(ticket_id=ChatMessage.ticket_id)).scalars().all()
     
     return render_template('chat.html', chat_message)
+
+@repairer_r.route('/ticket-abschliessen', methods=['POST'])
+@login_required
+def close_ticket():
+    ticket_id = request.form["ticket_id"]
+    ticket=db.session.execute(
+        db.select(Ticket).filter_by(ticket_id=ticket_id)
+    ).scalar_one()
     
+    ticket.finished=True
+    db.session.commit()
+    return redirect(url_for('repairer.get_tickets'))
 
     
 
