@@ -102,19 +102,23 @@ def get_tickets():
 
 @repairer_r.route('/ticket-annehmen',methods=['POST'])
 @login_required
-def accept_ticket(ticket_id):
-    ticket=db.session.execute(db.select(Ticket).filter_by(ticket_id=ticket_id)).scalar_one()
+def accept_ticket():
+    ticket_id = request.form["ticket_id"]
+    ticket=db.session.execute(
+        db.select(Ticket).filter_by(ticket_id=ticket_id)).scalar_one()
     ticket.accepted=True
     db.session.commit()
-    return redirect(url_for(''))
+    return redirect(url_for('repairer.get_tickets'))
 
 @repairer_r.route('/ticket-ablehen', methods=['POST'])
 @login_required
-def decline_ticket(ticket_id):
-    ticket=db.session.execute(db.select(Ticket).filter_by(ticket_id=ticket_id))
+def decline_ticket():
+    ticket_id = request.form["ticket_id"]
+    ticket=db.session.execute(
+        db.select(Ticket).filter_by(ticket_id=ticket_id))
     ticket.accepted=False
     db.session.commit()
-    return redirect(url_for(''))
+    return redirect(url_for('repairer.get_requests'))
 
 @repairer_r.route('/chat-öffnen', methods=['POST'])
 @login_required

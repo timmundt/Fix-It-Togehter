@@ -4,4 +4,24 @@
 
 {% block user_content %}
 
+  {% if tickets %}
+    {% for ticket in tickets%}
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ ticket.model }}</h5>
+          <p class="card-text">{{ ticket.init_message }}</p>
+          <form action="{{ url_for('repairer.accept_ticket') }}" method="post">
+            <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
+          <button type="submit" class="btn btn-success btn-sm">Annehmen</button>
+          </form>
+          <form action="{{ url_for('repairer.decline_ticket') }}" method="post">
+            <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
+          <button type="submit" class="btn btn-danger btn-sm">Ablehnen</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>Keine offenen Anfragen</p>
+  {% endif %}
 {% endblock %}
