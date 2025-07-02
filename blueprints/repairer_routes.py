@@ -107,7 +107,7 @@ def decline_ticket(ticket_id):
     db.session.commit()
     return redirect(url_for(''))
 
-@repairer_r.route('chat-öffnen', methods=['POST'])
+@repairer_r.route('/chat-öffnen', methods=['POST'])
 @login_required
 def open_chat(ticket_id):
     chat_message=db.session.execute(
