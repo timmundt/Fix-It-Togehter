@@ -88,13 +88,13 @@ def delete_skills():
 def get_tickets():
     tickets=db.session.execute(db.select(Ticket).where(Ticket.repairer_id==current_user.user_id)).scalars().all()
 
-    return render_template('repairer_tickets.html', tickets=tickets)
+    return render_template('repairer_requests.html', tickets=tickets)
 
 
 @repairer_r.route('/ticket-annehmen',methods=['POST'])
 @login_required
 def accept_ticket(ticket_id):
-    ticket=db.session.execute(db.select(Ticket).filter_by(ticket_id=ticket_id))
+    ticket=db.session.execute(db.select(Ticket).filter_by(ticket_id=ticket_id)).scalar_one()
     ticket.accepted=True
     db.session.commit()
     return redirect(url_for(''))
