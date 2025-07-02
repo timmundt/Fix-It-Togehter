@@ -13,6 +13,7 @@ nav_order: 3
 1. Datenbank: Plain-SQL oder SQLAlchemy?
 2. Flask-Login oder manuelles Session-Handling?
 3. Flask-Routen auslagern?
+4. Bootstrap oder manuelles CSS?
 
 </details>
 
@@ -52,7 +53,7 @@ Wir hatten für den Bereich Datenbanken zwei Optionen:
 | **Fehleranfälligkeit** | ❌ Höhere Fehleranfälligkeit durch manuelle SQL Statemants | ✔️ IDE-Unterstützung reduziert typische Tippfehler im Code 
 | **Redundanzen** | ❌ Häufig sich wiederholender Code | ✔️ Weniger Redundanzen durch abstrakte CRUD Operationen
 
-## 03: Flask-Login oder manuelles Session-Handling?
+## 02: Flask-Login oder manuelles Session-Handling?
 
 ### Meta
 
@@ -118,6 +119,42 @@ Wir hatten für den Bereich Routen Auslagern drei Optionen:
 | **Lesbarkeit**| ❌ Routen gehen unter anderem Code unter | ❌ Besser, aber bei viele Routen immer noch unübersichtlich | ✔️ Sehr gut, Routen werden sauber strukturiert
 | **Warbarkeit**| ❌ Änderungen erforden lange Suche Code | ❌ Änderung erfordern lange Suche bei viel Code | ✔️ Änderungen sind lokal in der Datei mit wenig Code 
 |**Erweiterbarkeit** | ❌ Alles muss zentral ergänzt werden | ❌ Bei viel Code immer noch schwer Erweiterbar | ✔️ Neue Use-Case/Funktionen lassen sich leicht lokal intrigieren
+
+
+## 04: Bootstrap oder manuelles CSS?
+
+### Meta
+
+Status
+: Work in progress - **Decided** - Obsolete
+
+Updated
+: 22.06.2025
+
+### Problem statement
+
+In unserem Projekt wollen wir ein benutzerfreundliches Design gewährleisten. Die Frage hierbei ist, ob wir dies manuelle und aufwendig gestalten, oder auf ein bestehendes Framework wie Bootstrap zurückgreifen. Ziel dabei ist es, die UI effizient und wartbar zu gestalten.
+
+
+### Decision
+
+Wir haben uns für Bootstrap entschieden, da es einen sehr schnellen Start für solide Designs und UI Komponeten ermöglicht. Das manuelle schreiben von CSS wäre hier aufwendiger und mehr fehleranfällig.
+
+### Regarded options
+
+Wir hatten für den Bereich Styling und CSS hatten wir zwei Optionen:
+
++ Manuelles CSS
++ Bootstrap Framework
+
+| Kriterium | Manuelles Session-Handling | Flask-Login
+| :---: | :---: | :---: |
+| **Know-How** | ❌ Teilweise vorhanden, aber hoher Aufwand für komplexe UI's| ✔️Sehr gute Dokumentation
+|**Komplexität**| ❌ Hoch, bei komplexem Design und Komponenten | ✔️ Gering durch vorgefertigte Komponenten
+|**Entwicklunggeschwindikeit**| ❌ Langsam durch's selbst schreiben | ✔️ Schnell durch vorgefertigte Komponenten
+|**Design-Konsistenz**| ❌ Muss immer sichergestellt sein | ✔️ Durch Framework automatisch gegeben
+
+
 
 
 
