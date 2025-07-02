@@ -31,16 +31,6 @@ def get_account_info():
     return render_template("repairer_account.html")
 
 #Nicht getestet
-@repairer_r.route('/meine-anfragen', methods=['GET'])
-@login_required
-def get_repairer_tickets():
-    repairer=db.session.execute(
-        db.select(Repairer).filter_by(user_id=current_user.user_id)).scalar()
-    tickets=repairer.ticket_rl
-
-    return render_template('repairer_account.html', tickets=tickets)
-
-#Nicht getestet
 @repairer_r.route('/meine-skills', methods=['GET'])
 @login_required
 def show_skills():
