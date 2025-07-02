@@ -31,8 +31,9 @@ def ticket_step2():
         return redirect(url_for('customer.ticket_step1'))
 
     if request.method == 'POST':
-        print("DEBUG: POST request erkannt")
-        session['ticket']['init_message'] = request.form.get('init_message')
+        ticket_data = session.get('ticket', {})
+        ticket_data['init_message'] = request.form.get('init_message')
+        session['ticket'] = ticket_data
         print("SESSION NACHHER:", session.get('ticket'))
         return redirect(url_for('customer.ticket_step3'))
 
@@ -43,6 +44,9 @@ def ticket_step2():
 @customer_r.route('/ticket/step3', methods=['GET', 'POST'])
 @login_required
 def ticket_step3():
+    print("STEP 3 AUFGERUFEN")
+    print("Aktuelle SESSION:", session.get('ticket'))
+
     if 'ticket' not in session or 'model_series' not in session['ticket']:
         flash("Bitte wähle zuerst ein Modell.")
         return redirect(url_for('customer.ticket_step1'))
@@ -62,7 +66,10 @@ def ticket_step3():
         return redirect(url_for('customer.ticket_step1'))
 
     if request.method == 'POST':
-        session['ticket']['repairer_id'] = request.form.get('repairer_id')
+        ticket_data = session.get('ticket', {})
+        ticket_data['repairer_id'] = request.form.get('repairer_id')
+        session['ticket'] = ticket_data  # WICHTIG!
+        print("DEBUG after Step 3:", session['ticket'])
         return redirect(url_for('customer.ticket_confirmation'))
 
     return render_template('ticket_step3_repairer.html', repairers=repairers, model=model)
@@ -72,28 +79,39 @@ def ticket_step3():
 @customer_r.route('/ticket-bestätigung', methods=['GET','POST'])
 @login_required
 def ticket_confirmation():
+    print("STEP 4 AUFGERUFEN")
+    print("Aktuelle SESSION:", session.get('ticket'))
     data = session.get('ticket')
+    print("DEBUG: SESSION DATA IN TICKET_CONFIRMATION:", data)
     if not data or not all(k in data for k in ('model_series', 'init_message', 'repairer_id')):
         flash("Ticket-Daten nicht gefunden.")
         return redirect(url_for('customer.ticket_step1'))
     
-    # Optional: Reparateur-Namen anzeigen
-    repairer = db.session.get(Repairer, int(data['repairer_id']))
+    
     
     if request.method == 'POST':
-        ticket = Ticket(
-            customer_id = current_user.customer_id,
-            model = data['model_series'],
-            init_message = data['init_message'],
-            repairer_id = data['repairer_id'],
-            timestamp = datetime.now() 
-        )
-        db.session.add(ticket)
-        db.session.commit()
-        session.pop('ticket', None)  # Clear the session data
-        flash("Dein Ticket wurde erfolgreich erstellt.")
-        return redirect(url_for('customer.get_tickets'))
-    return render_template('ticket_confirmation.html', data=data)
+        try:
+            ticket = Ticket(
+                customer_id = current_user.user_id,
+                model = data['model_series'],
+                init_message = data['init_message'],
+                repairer_id = data['repairer_id'],
+                timestamp = datetime.now() 
+            )
+            db.session.add(ticket)
+            db.session.commit()
+            print("DEBUG: Ticket erfolgreich erstellt:", ticket)
+            session.pop('ticket', None)  # Clear the session data
+            flash("Dein Ticket wurde erfolgreich erstellt.")
+            return redirect(url_for('customer.get_tickets'))
+        except Exception as e:
+            print("DEBUG: Fehler beim Erstellen des Tickets:", e)
+            flash("Es gab ein Problem bei der Erstellung deines Tickets. Bitte versuche es erneut.", "danger")
+            return redirect(url_for('customer.ticket_step1'))
+    
+    # Optional: Reparateur-Namen anzeigen
+    repairer = db.session.get(Repairer, int(data['repairer_id']))
+    return render_template('ticket_confirmation.html', data=data, repairer=repairer)
 
 
 
@@ -150,7 +168,7 @@ def filter_by_repairers():
 def create_ticket():
     repairer_id=request.args.get('repairer_id')
     model_series=request.args('model_series')
-    ticket=Ticket(customer_id=current_user.id, repairer_id=repairer_id, model=model_series)
+    ticket=Ticket(customer_id=current_user.user_id, repairer_id=repairer_id, model=model_series)
     db.session.add(ticket)
     db.session.commit()
 
@@ -163,9 +181,8 @@ def create_ticket():
 @login_required
 def get_tickets():
     tickets=db.session.execute(
-        db.select(Ticket).where(customer_id=current_user.id)).scalars()
-    
-    return render_template('customer_account.html', tickets=tickets)
+        db.select(Ticket).where(Ticket.customer_id==current_user.user_id)).scalars().all()
+    return render_template('customer_requests.html', tickets=tickets)
 
 
 
