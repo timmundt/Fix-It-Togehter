@@ -93,7 +93,8 @@ def get_tickets():
     tickets=db.session.execute(
         db.select(Ticket).where(
             and_(Ticket.repairer_id==current_user.repairer.repairer_id, 
-                 Ticket.accepted.is_(True)
+                 Ticket.accepted.is_(True),
+                 Ticket.finished.is_(False)
             )
         )
     ).scalars().all()
