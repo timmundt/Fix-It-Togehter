@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 from flask_sqlalchemy import SQLAlchemy
 from database import ChatMessage, db, Repairer, Skill, Ticket, User
 from werkzeug.security import generate_password_hash
+from sqlalchemy import and_
 
 
 repairer_r=Blueprint('repairer', __name__)
@@ -77,7 +78,11 @@ def delete_skills():
 @login_required
 def get_requests():
     tickets=db.session.execute(
-        db.select(Ticket).where((Ticket.repairer_id==current_user.repairer.repairer_id)and(Ticket.accepted.is_(None)))
+        db.select(Ticket).where(
+            and_(Ticket.repairer_id==current_user.repairer.repairer_id,
+                 Ticket.accepted.is_(None)
+            )
+        )
     ).scalars().all()
 
     return render_template('repairer_requests.html', tickets=tickets)
@@ -86,7 +91,11 @@ def get_requests():
 @login_required
 def get_tickets():
     tickets=db.session.execute(
-        db.select(Ticket).where((Ticket.repairer_id==current_user.repairer.repairer_id)and(Ticket.accepted.is_(True)))
+        db.select(Ticket).where(
+            and_(Ticket.repairer_id==current_user.repairer.repairer_id, 
+                 Ticket.accepted.is_(True)
+            )
+        )
     ).scalars().all()
 
     return render_template('repairer_tickets.html', tickets=tickets)
@@ -103,7 +112,7 @@ def accept_ticket(ticket_id):
 @login_required
 def decline_ticket(ticket_id):
     ticket=db.session.execute(db.select(Ticket).filter_by(ticket_id=ticket_id))
-    ticket.accpted=False
+    ticket.accepted=False
     db.session.commit()
     return redirect(url_for(''))
 
