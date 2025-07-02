@@ -1,9 +1,10 @@
 from flask import Flask, Blueprint, flash, render_template, redirect, request, url_for
 from flask_login import current_user, login_required
 from flask_sqlalchemy import SQLAlchemy
-from database import ChatMessage, db, Repairer, Skill, Ticket, User
+from database import ChatMessage, Customer, db, Repairer, Skill, Ticket, User
 from werkzeug.security import generate_password_hash
 from sqlalchemy import and_
+from sqlalchemy.orm import joinedload
 
 
 repairer_r=Blueprint('repairer', __name__)
@@ -92,10 +93,10 @@ def get_requests():
 @login_required
 def get_tickets():
     status = request.args.get("status")
-    query = db.select(Ticket).where(
-        Ticket.repairer_id == current_user.repairer.repairer_id,
-        Ticket.accepted.is_(True)
-    )
+    query = db.select(Ticket).options(
+    joinedload(Ticket.customer).joinedload(Customer.user)).where(
+    Ticket.repairer_id == current_user.repairer.repairer_id,
+    Ticket.accepted.is_(True))
 
     if status == "open":
         query = query.where(Ticket.finished.is_(False))
