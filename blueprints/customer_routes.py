@@ -92,7 +92,7 @@ def ticket_confirmation():
     if request.method == 'POST':
         try:
             ticket = Ticket(
-                customer_id = current_user.user_id,
+                customer_id = current_user.customer.customer_id,
                 model = data['model_series'],
                 init_message = data['init_message'],
                 repairer_id = data['repairer_id'],
