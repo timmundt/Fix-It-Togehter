@@ -75,11 +75,21 @@ def delete_skills():
         
 @repairer_r.route('/meine-anfragen', methods=['GET'])
 @login_required
-def get_tickets():
-    tickets=db.session.execute(db.select(Ticket).where(Ticket.repairer_id==current_user.user_id)).scalars().all()
+def get_requests():
+    tickets=db.session.execute(
+        db.select(Ticket).where((Ticket.repairer_id==current_user.repairer.repairer_id)and(Ticket.accepted.is_(None)))
+    ).scalars().all()
 
     return render_template('repairer_requests.html', tickets=tickets)
 
+@repairer_r.route('/meine-aufträge', methods=['GET'])
+@login_required
+def get_tickets():
+    tickets=db.session.execute(
+        db.select(Ticket).where((Ticket.repairer_id==current_user.repairer.repairer_id)and(Ticket.accepted.is_(True)))
+    ).scalars().all()
+
+    return render_template('repairer_requests.html', tickets=tickets)
 
 @repairer_r.route('/ticket-annehmen',methods=['POST'])
 @login_required
