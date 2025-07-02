@@ -97,3 +97,58 @@
     align-items: flex-start;
 }
 
+
+
+/* --- Stil für Ticket-Karten in der Übersicht --- */
+
+.ticket-card {
+    background-color: #2c2c2c;
+    border: 1px solid #555;
+    border-radius: 12px;
+    color: #f0f0f0;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ticket-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.ticket-card .ticket-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #5dade2;
+    margin-bottom: 0.5rem;
+}
+
+.ticket-card .ticket-info {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 0.75rem;
+}
+
+.ticket-card .ticket-info strong {
+    color: #e0e0e0;
+}
+
+.ticket-card .ticket-status {
+    font-weight: bold;
+}
+
+.ticket-card .ticket-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.ticket-card .btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
