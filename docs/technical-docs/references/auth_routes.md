@@ -1,6 +1,6 @@
 ---
 title: Authenticate Routes
-parent: References
+parent: Funktionen und Routen
 nav_order: 1
 ---
 
@@ -8,11 +8,11 @@ nav_order: 1
 
 **Route:** /register
 
-**Methods:** GET, POST
+**Methoden:** GET, POST
 
-**Purpose:** Damit kann sich ein neuer User registriren, um die vollen Funktionen der App nutzen zu können. Dabei ist Wichtig das der User alle Felder ausfüllt, und keine E-Mail benutzt, die bereits vorhanden ist.
+**Zweck:** Damit kann sich ein neuer User registriren, um die vollen Funktionen der App nutzen zu können. Dabei ist Wichtig das der User alle Felder ausfüllt, und keine E-Mail benutzt, die bereits vorhanden ist.
 
-**Sample output:**
+**Mögliche Outputs:**
 
 **Sucess:** 
 

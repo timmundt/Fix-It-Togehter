@@ -3,19 +3,19 @@ title: Startseite
 nav_order: 0
 ---
 
-# Fix It Together
+# Team Pyoners - Fix It Together
 
-## Vorstellung unsere Idee
+Fix It Together ist eine einfache Webanwendung, die darauf abzielt Personen mit deffekten De'Longhi Kaffeemaschinen und Personen, die diese repariren können, zusammenzubringen. Dabei geht es um die reine Kontaktaufnahme. Bezahlung oder Versand werden unter den beiden Parteien geklärt. 
 
-Unser Projekt zielt darauf ab, Privatpersonen mit defekten Kaffeemaschinen und Leuten, die diese reparieren können, zusammenzubringen. Dabei geht es um die reine Kontaktaufnahme. Zahlung, Reparatur, evtl. Versand etc., wird unter dem Customer und dem Repairer geklärt.
+Unser Ziel ist es, das so wenig Kaffeemaschine wie möglich verschwendet werden. Meistens sind nur Kleinigkeiten defekkt, die mit ein paar Handgriffen selber repariert werden können. 
 
-## Team members from team Pyoners
+## Teammitglieder vom Team Pyoners
 
 ### Tim Lenart Mundt
 
 Über: Wirtschaftsinformatikstudent an der HWR mit Interesse an Datenanalyse und Datenbankentwicklung.
 
-Zuständig für: Data Model, Backend, Projektstruktur
+Zuständig für: Datenmodel, Backend, Projektstruktur
 
 Matrikelnummer: 77207437046
 

@@ -1,18 +1,23 @@
 ---
-title: Value Propostion
+title: Kundennutzen und Personas
 nav_order: 1
 ---
 
-## Value Propostion 
-Viele Produkte, unter anderem auch Kaffeemaschinen werden heutzutage so gebaut, dass sie schneller kaputtgehen. Dabei sind meisten Defekte nur kleinere Sachen wie Verkalkung, Verstopfung oder eine defekte Wasserpumpe. Diese Mängel können leicht behoben werden, wenn man das nötige Know-how dazu hat. Doch viele Personen trauen es sich nicht zu, es einfach mal selbst zu versuchen. Die Reparaturpreise von den Herstellern sind dabei so hoch angesetzt, dass es nicht wirtschaftlich ist, diese direkt beim Hersteller reparieren zu lassen. Viele Leute kaufen sich dann einfach eine neue Kaffeemaschine und die alte wird weggeschmissen, was wiederum auch nicht nachhaltig ist.
+## Problem 
 
-## Our solution
+Viele Produkte, unter anderem auch Kaffeemaschinen werden heutzutage so gebaut, dass sie schneller kaputtgehen. Dabei sind die meisten Defekte nur kleinere Sachen wie Verkalkung, Verstopfung oder eine defekte Wasserpumpe. Diese Mängel können leicht behoben werden, wenn man das nötige Know-how dazu hat. Doch viele Personen trauen es sich nicht zu, es einfach mal selbst zu versuchen. Die Reparaturpreise von den Herstellern sind dabei so hoch angesetzt, dass es nicht wirtschaftlich ist, diese direkt beim Hersteller reparieren zu lassen. Zudem dauert eine Reperatur beim Hersteller auch viel zu lange. Kaffeetrinker können nicht 1-3 Wochen warten, bis ihre liebe Kaffeemaschine wieder zuhause ist. Die meisten kaufen sich dann eine neue Kaffeemaschine, was widerum auch nicht gut für die Umwelt ist.
 
-Die Lösung für das oben beschriebene Problem ist eine Plattformbasierte Website, in der Personen, die eine kaputte Kaffeemaschine von De Longhi haben, sich mit Personen connecten können, die diese Reparieren können. Dabei wird nach Modellserie gefiltert, da sich Kaffeemaschinen einer gleichen Modellserie im Aufbau sehr änhlich sind. Kunden können nach dieser Modellserie filtern, und bekommen angezeigt, wer diese Reparieren kann. Dabei geht es nur um die Kontaktaufnahme. Bezahlung oder anderes werden unter den beiden Parteien geklärt, ähnlich wie das frühere Ebay-Kleinanzeigen.
+## Unsere Lösung
 
-## Target user
+Die Lösung für das oben beschriebene Problem ist eine Plattformbasierte Website, in der Personen, die eine kaputte Kaffeemaschine von De'Longhi haben, sich mit Personen connecten können, die diese Reparieren können. Dabei wird nach Modellserie gefiltert, da sich Kaffeemaschinen einer gleichen Modellserie im Aufbau sehr änhlich sind. Kunden können nach dieser Modellserie filtern, und bekommen angezeigt, wer diese Reparieren kann. Dabei geht es nur um die Kontaktaufnahme. Bezahlung oder anderes werden unter den beiden Parteien geklärt, ähnlich wie das frühere Ebay-Kleinanzeigen.
 
-### Customer
+## Warum grade De'Longhi?
+
+De'Longhi Kaffeemaschinen sind im Preis etwas höher angesetzt. Würde man jetzt Kaffeemaschinen reparieren die im Schnitt 50-60 Euro kosten, würde sich das auch auf Fix It Together wirtschaftlich nicht lohnen. Zudem sind De'Longhi Kaffeemaschinen in Deutschland weit verbreitet, grade wegen ihrer guten Qulität. 
+
+## Benutzergruppen
+
+### Kunde
 
 · Name: Sabine
 
@@ -46,7 +51,7 @@ Die Lösung für das oben beschriebene Problem ist eine Plattformbasierte Websit
 
 · Findet schnell eine Person, der ihre defekte Kaffeemaschine zu ihrem Wunschpreis reparieren kann.
 
-### Repairer
+### Reperateur
 
 · Name: Thomas
 
