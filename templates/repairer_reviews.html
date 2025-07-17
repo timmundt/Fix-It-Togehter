@@ -1,0 +1,24 @@
+{% extends 'customer_base.html' %}
+{% block title %}Rezensionen von {{ repairer.user.first_name }}{% endblock %}
+
+{% block user_content %}
+<div class="container py-5">
+  <h2 class="fw-bold text-white mb-4">Rezensionen von {{ repairer.user.first_name }} {{ repairer.user.last_name }}</h2>
+
+  {% if rezensionen %}
+    {% for review in rezensionen %}
+      <div class="card bg-dark text-white mb-3">
+        <div class="card-body">
+          <h5 class="card-title">⭐ {{ review.stars }} / 5</h5>
+          <p class="card-text">{{ review.commentar or "Kein Kommentar" }}</p>
+          <p class="card-text small text-muted">Am {{ review.timestamp.strftime('%d.%m.%Y') }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="text-white">Es liegen noch keine Rezensionen vor.</p>
+  {% endif %}
+
+  <a href="{{ request.referrer or url_for('customer.get_tickets') }}" class="btn btn-outline-light mt-3">Zurück</a>
+</div>
+{% endblock %}

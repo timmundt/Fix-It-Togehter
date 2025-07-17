@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import Flask, Blueprint, flash, render_template, redirect, request, url_for, session
 from flask_login import current_user, login_required
-from database import db, ChatMessage, Repairer, Skill, Ticket, Customer, User
+from database import db, ChatMessage, Repairer, Skill, Ticket, Customer, User, Rezension
 from werkzeug.security import generate_password_hash
 
 customer_r=Blueprint('customer', __name__)
@@ -53,6 +53,8 @@ def ticket_step3():
 
     model = session['ticket']['model_series']
 
+    sort = request.args.get('sort')
+
     # Hole alle Reparateur:innen, die das gewählte Modell beherrschen
     repairers = db.session.execute(
         db.select(Repairer)
@@ -60,6 +62,24 @@ def ticket_step3():
         .filter(Skill.model_series == model)
         .join(User)
     ).scalars().all()
+
+    if sort == 'high':
+        repairers.sort(key=lambda r: r.average_rating or 0, reverse=True)
+    elif sort == 'low':
+        repairers.sort(key=lambda r: r.average_rating or 0)
+
+    
+    for r in repairers:
+        rezensionen = (
+            db.session.query(Rezension)
+            .join(Ticket)
+            .filter(Ticket.repairer_id == r.repairer_id)
+            .all()
+        )
+        if rezensionen:
+            r.average_rating = round(sum([rez.stars for rez in rezensionen]) / len(rezensionen), 1)
+        else:
+            r.average_rating = None
 
     if not repairers:
         flash("Leider wurde kein Reparateur für dieses Modell gefunden.")
@@ -107,7 +127,7 @@ def ticket_confirmation():
             flash("Es gab ein Problem bei der Erstellung deines Tickets. Bitte versuche es erneut.", "danger")
             return redirect(url_for('customer.ticket_step1'))
     
-    # Optional: Reparateur-Namen anzeigen
+    # Reparateur-Namen anzeigen
     repairer = db.session.get(Repairer, int(data['repairer_id']))
     return render_template('ticket_confirmation.html', data=data, repairer=repairer)
 
