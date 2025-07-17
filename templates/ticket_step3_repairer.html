@@ -2,25 +2,60 @@
 {% block title %}Schritt 3 - Reparateur auswählen | Fix It Together{% endblock %}
 
 {% block user_content %}
-
 <header class="section-dark hero text-white d-flex align-items-center" style="min-height: 80vh;">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-4">Schritt 3 - Reparateur für „{{ model }}“ auswählen</h2>
+<div class="container py-5">
+    <h2 class="fw-bold text-white mb-4 text-center">Schritt 3 - Reparateur für „{{ model }}“ auswählen</h2>
 
-        <form method="POST" class="w-50 mx-auto bg-dark p-4 rounded shadow">
-            <div class="mb-3 text-start">
-                <label for="repairer_id" class="form-label">Reparateur auswählen</label>
-                <select class="form-select" id="repairer_id" name="repairer_id" required>
-                    <option value="" disabled selected>Bitte wähle einen Reparateur</option>
-                    {% for repairer in repairers %}
-                        <option value="{{ repairer.repairer_id }}">
-                            {{ repairer.user.first_name }} {{ repairer.user.last_name }}
-                        </option>
-                    {% endfor %}
-                </select>
+    <!-- Filter nach Bewertung -->
+    <form method="GET" class="mb-4 text-center">
+        <label for="sort" class="text-white me-2">Sortieren nach Bewertung:</label>
+        <select class="form-select w-auto d-inline" id="status" name="status" onchange="this.form.submit()">
+            <option value="" {% if not sort %}selected{% endif %}>Keine Sortierung</option>
+            <option value="high" {% if sort=='high' %}selected{% endif %}>Beste zuerst</option>
+            <option value="low" {% if sort=='low' %}selected{% endif %}>Schlechteste zuerst</option>
+        </select>
+    </form>
+
+    <form method="POST">
+    <div class="row">
+      {% for repairer in repairers %}
+      <div class="col-md-6 col-lg-4 mb-4">
+        <label class="ticket-card d-block cursor-pointer p-3">
+          <input
+            type="radio"
+            name="repairer_id"
+            value="{{ repairer.repairer_id }}"
+            class="form-check-input me-2"
+            required
+          >
+          <div>
+            <div class="ticket-header fs-5 mb-1">{{ repairer.user.first_name }} {{ repairer.user.last_name }}</div>
+            <div class="ticket-info"><strong>Fachgebiet:</strong>
+              {% set matched_skill = repairer.skills_rl | selectattr("model_series", "equalto", model) | list %}
+              {{ matched_skill[0].model_series if matched_skill else "Allrounder" }}
             </div>
-            <button type="submit" class= "btn btn-primary w-100">Weiter zur Übersicht</button>
-        </form>
+            <div class="ticket-info"><strong>Bewertung:</strong>
+              {% if repairer.average_rating %}
+                {% for i in range(repairer.average_rating|int) %}⭐{% endfor %}
+                ({{ repairer.average_rating }} / 5)
+              {% else %}
+                Noch keine Bewertungen
+              {% endif %}
+            </div>
+            <div class="mt-2">
+              <a href="{{ url_for('review.repairer_reviews', repairer_id=repairer.repairer_id) }}"
+                class="btn btn-outline-light btn-sm">Rezensionen ansehen</a>
+            </div>
+          </div>
+        </label>
+      </div>
+      {% endfor %}
     </div>
+
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary px-5">Weiter zur Übersicht</button>
+    </div>
+  </form>
+</div>
 </header>
 {% endblock %}
