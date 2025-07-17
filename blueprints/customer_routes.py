@@ -63,17 +63,18 @@ def ticket_step3():
         .join(User)
     ).scalars().all()
 
+    # Sortiere die Reparateur:innen nach Bewertung
     if sort == 'high':
         repairers.sort(key=lambda r: r.average_rating or 0, reverse=True)
     elif sort == 'low':
         repairers.sort(key=lambda r: r.average_rating or 0)
 
-    
+    # Berechne die durchschnittliche Bewertung für den Reparateur:in mir dem gewählten Modell
     for r in repairers:
         rezensionen = (
             db.session.query(Rezension)
             .join(Ticket)
-            .filter(Ticket.repairer_id == r.repairer_id)
+            .filter(Ticket.repairer_id == r.repairer_id,Ticket.model == model)
             .all()
         )
         if rezensionen:

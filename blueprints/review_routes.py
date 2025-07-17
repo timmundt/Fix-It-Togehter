@@ -44,6 +44,8 @@ def submit_review(ticket_id):
 @review_r.route('/repairer/<int:repairer_id>/reviews')
 @login_required
 def repairer_reviews(repairer_id):
+    model = request.args.get("model")
+
     repairer = db.session.execute(
         db.select(Repairer).filter_by(repairer_id=repairer_id)
     ).scalar_one_or_none()
@@ -52,11 +54,11 @@ def repairer_reviews(repairer_id):
         flash("Reparateur wurde nicht gefunden.", "danger")
         return redirect(url_for('customer.get_tickets'))
 
-    # Alle Rezensionen für diesen Reparateur über die Tickets
+    #Alle Rezensionen für den Reparateur und das Modell abrufen
     rezensionen = (
         db.session.query(Rezension)
         .join(Ticket)
-        .filter(Ticket.repairer_id == repairer_id)
+        .filter(Ticket.repairer_id == repairer_id, Ticket.model == model)
         .order_by(Rezension.timestamp.desc())
         .all()
     )
@@ -64,7 +66,8 @@ def repairer_reviews(repairer_id):
     return render_template(
         'repairer_reviews.html',
         repairer=repairer,
-        rezensionen=rezensionen
+        rezensionen=rezensionen,
+        model=model
     )
 
 
