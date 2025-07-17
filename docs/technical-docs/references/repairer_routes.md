@@ -1,6 +1,6 @@
 ---
 title: Repairer Routes
-parent: References
+parent: Funktionen und Routen
 nav_order: 4
 ---
 

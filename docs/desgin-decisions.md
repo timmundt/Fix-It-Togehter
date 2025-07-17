@@ -1,10 +1,10 @@
 ---
-title: Design Decisions
+title: Design Entscheidungen
 nav_order: 3
 ---
 
 
-# Design decisions
+# Design Entscheidungen
 
 <details open markdown="block">
 
@@ -27,18 +27,18 @@ Status
 Updated
 : 14-06-2025
 
-### Problem statement
+### Problem
 
 Sollten wir CRUD Befehle in Plain-SQL oder in Python als ORM (object-relational-mapper) in unserem Projekt benutzen?
 
 Unsere Applikation ist in Python mit Flak geschrieben und mit einer SQLite Datenbank verbunden. Ziel dabei ist es, eine langfristige und wartbare Lösung für den Datebankzugriff zu wählen, ohne dabei unnötige Komplexität einzuführen.
 
 
-### Decision
+### Unsere Entscheidung
 
 Wir haben uns für SQLAlchemy entschieden. Der ORM Ansatz spricht uns mehr an, als reine Plain-SQL. Zum einem erhöht SQLAlchemy die Wartbarkeit und Lesbarkeit einzelner SQL Statemants im ORM Ansatz, da die Datenbanklogik in strukturierten Python Klassen abgebildet wird. Zum anderen sind wir auch dafür offen, Technologien die wir noch nicht benutzt haben in Projekte zu intrigieren trotz anfänglicher Einstiegshürde. SQLAlchemy bietet damit eine moderen und sauber Möglichkeit, mit relationalen Datenbanken zu arbeiten.
 
-### Regarded options
+### Mögliche Optionen
 
 Wir hatten für den Bereich Datenbanken zwei Optionen:
 
@@ -63,16 +63,16 @@ Status
 Updated
 : 24-06-2025
 
-### Problem statement
+### Problem
 
 Unser Projekt hat eine Login Funktion intrigiert, um sicherzustellen dass bestimmte Rolen nur auf bestimmte Routen zugreiffen sollen. Ziel dabei soll es sein möglichst einfach eine hohe Sicherheit, sowie hohe Wartbarkeit gewährleisten zu können. 
 
 
-### Decision
+### Unsere Entscheidung
 
 Wir haben uns für Flask-Login entschieden, statt den Login manuell zu handhaben. Manuelles Session-Handling ist einfach viel zu Fehleranfällig und hat viele Redundanzen im Code. Flask-Login hingegen bietet eine sehr gute alternative zum einfachen Login und Session-Handling. 
 
-### Regarded options
+### Mögliche Optionen
 
 Wir hatten für den Bereich Login und Session-Handling zwei Optionen:
 
@@ -97,16 +97,16 @@ Status
 Updated
 : 21-06-2025
 
-### Problem statement
+### Problem
 
 In einem Projekt was wächst führt das definieren der Routen in einer einzigen File schnell zu Problemen hinsichtlich der Übersichlickeit, Skalierbarkeit und Wartbarkeit. Bei zunehmender Komplexität des Projektes und das hinzufügen weitere Features wie zum Beispiel Rezensionen oder Chats, wird der Code der Routen in einer einzige File schwer lesbar und man kann nicht schnell genug zu bestimmten Routen navigiern wenn die Routen zum Beispiel einen Umfang von 1500 Zeilen Code haben.
 
 
-### Decision
+### Unsere Entscheidung
 
 Wir haben zuerst überlegt ob wir die Routen in einer einzigen File auslagern, statt sie in der Main zu definieren. Doch uns wurde schnell klar, dass auch diese Lösung nicht zum gewünschten Ergebniss führt. Daher haben wir uns dazu entschieden, die Routen nach Use-Case und User-Gruppe auszulagern. Die führt zu einer viel bessern Wartung des Codes. 
 
-### Regarded options
+### Mögliche Optionen
 
 Wir hatten für den Bereich Routen Auslagern drei Optionen:
 
@@ -142,23 +142,23 @@ Status
 Updated
 : 22.06.2025
 
-### Problem statement
+### Problem 
 
 In unserem Projekt wollen wir ein benutzerfreundliches Design gewährleisten. Die Frage hierbei ist, ob wir dies manuelle und aufwendig gestalten, oder auf ein bestehendes Framework wie Bootstrap zurückgreifen. Ziel dabei ist es, die UI effizient und wartbar zu gestalten.
 
 
-### Decision
+### Unsere Entscheidung
 
 Wir haben uns für Bootstrap entschieden, da es einen sehr schnellen Start für solide Designs und UI Komponeten ermöglicht. Das manuelle schreiben von CSS wäre hier aufwendiger und mehr fehleranfällig.
 
-### Regarded options
+### Mögliche Entscheidungen
 
 Wir hatten für den Bereich Styling und CSS hatten wir zwei Optionen:
 
 + Manuelles CSS
 + Bootstrap Framework
 
-| Kriterium | Manuelles Session-Handling | Flask-Login
+| Kriterium | Manuelles CSS | Bootstrap Framework
 | :---: | :---: | :---: |
 | **Know-How** | ❌ Teilweise vorhanden, aber hoher Aufwand für komplexe UI's| ✔️Sehr gute Dokumentation
 |**Komplexität**| ❌ Hoch, bei komplexem Design und Komponenten | ✔️ Gering durch vorgefertigte Komponenten
