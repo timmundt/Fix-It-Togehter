@@ -1,0 +1,50 @@
+{% extends 'customer_base.html' %}
+{% block title %}Meine Aufträge | Fix It Together{% endblock %}
+
+{% block user_content %}
+<div class="container py-5">
+  <h2 class="fw-bold text-white mb-4">Meine Aufträge</h2>
+
+  <!-- 🔍 Filter -->
+  <form method="GET" class="mb-4">
+    <label for="status" class="text-white me-2">Status filtern:</label>
+    <select class="form-select w-auto d-inline" id="status" name="status" onchange="this.form.submit()">
+      <option value="" {% if not status %}selected{% endif %}>Alle</option>
+      <option value="open" {% if status == 'open' %}selected{% endif %}>Laufend</option>
+      <option value="finished" {% if status == 'finished' %}selected{% endif %}>Abgeschlossen</option>
+    </select>
+  </form>
+
+  <!-- 📦 Ticket-Kacheln -->
+  <div class="row">
+    {% for ticket in tickets %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="ticket-card">
+        <div>
+          <div class="ticket-header">{{ ticket.model }}</div>
+          <div class="ticket-info"><strong>Beschreibung:</strong> {{ ticket.init_message }}</div>
+          <div class="ticket-info"><strong>Reparateur:</strong> {{ ticket.repairer.user.first_name }} {{ ticket.repairer.user.last_name }}</div>
+          <div class="ticket-info"><strong>Datum:</strong> {{ ticket.timestamp.strftime('%d.%m.%Y') }}</div>
+          <div class="ticket-info ticket-status">
+            <strong>Status:</strong>
+            {% if ticket.finished %}
+              <span class="text-success">Abgeschlossen</span>
+            {% else %}
+              <span class="text-warning">In Bearbeitung</span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <a href="{{ url_for('customer.open_chat', ticket_id=ticket.ticket_id) }}" class="btn btn-outline-primary btn-sm">💬 Chat</a>
+          {% if ticket.finished %}
+            {# <a href="{{ url_for('review.create', ticket_id=ticket.ticket_id) }}" class="btn btn-outline-success btn-sm">⭐ Rezension</a> #}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% else %}
+      <p class="text-white">Keine Tickets gefunden.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

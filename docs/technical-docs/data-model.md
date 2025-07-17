@@ -4,21 +4,23 @@ parent: Technical Docs
 nav_order: 2
 ---
 
-Für die Realisierung unseres Projektes brauchen laut jetzigen Stand 3 Tabellen, eine Tabelle für die Customer, eine Tabelle für die Repairer und eine Tabelle für die Tickets.
+## ER-Modell 
 
-Wichtig: Das ist die erste Einschätzung, wie die einzelnen Tabellen in unserm Data Model aussehen könnten und somit noch nicht final. Änderung werden entsprechend dokumentiert.
+![ER-Modell](../assets/datamodel.png)
 
-## Customer
+**Hinweis: Das Datenmodell wurde mit dem Tool draw-io erstellt.**
 
-Customer(#customer_id,name,vorname,email,passwort,ort)
+Es gibt User, die entweder Customer oder Repairer sein können. Kunden erstellen Tickets, die auf einen bestimmten Repairer referenzieren. Tickets haben Chatmessages und eventuell eine Rezension. Repairer haben bestimmte Skills.
 
-## Repairer
 
-Repairer(#repairer_id,name,vorname,email,passwort,ort,Firma_X, Firma_Y, Firma_Z ...)
+| Entität | Beschreibung |
+| :---: | :---: |
+| **User** | Ein User hat eine E-Mail, einen Vor- und Nachnamen, ein Passwort und eine Rolle. Ein User ist entweder ein Customer oder ein Repairer, aber nicht beides gleichzeitig.
+|**Customer**| Verweist auf genau einen User. Ein Customer kann mehrer Tickets erstellen.
+|**Repairer**| Verweist auf genau einen User. Ein Repairer kann viele Tickets bearbeiten und kann viele Skills haben.
+|**Ticket**| Ein Ticket ist die zentrale Tabelle für die Reperaturen. Ein Ticket gehört zu genau einem Customer und einem Repairer. Das Ticket hat die Modellinfo, also um welche De'Longhi Reihe es sich handelt, eine Init-Message, den Timestamp wann das Ticket erstellt wurde, den Status des Tickets sowie ob das Ticket angenommen oder abgelehnt wurde. Dabei hat das Ticket noch Chat-Messages und eventuell eine Rezension, die vom Customer erstellt wird, wenn das Ticket abgeschlossen ist. 
+|**Chatmessage**| Jede Chatmessage gehört zu genau einem Ticket, damit der Customer und der Repairer kommunizieren können. Die Chatmessage enthält einen Text, den Timestamp und optional ein Bild. 
+|**Rezension**| Eine Rezension ist Optional pro fertigem Ticket. Sie wird vom Customer erstellt. Eine Rezension enthält eine Sternebewertung (1-5), ein Kommentar und das Datum.
+|**Skill**| Enthält eine De'Longhi Modellreihe. Ein Repairer kann viele Skills haben, daher ist es eine n zu m Beziehung zwischen Repairer und Skills.  
 
-Wichtig: Wir haben es uns beim Repairer so gedacht, dass der Repairer in seinem Konto Profil hinterlegt, welche Firma er reparieren kann. Das wird dann in dieser Tabelle entsprechend mit true oder false gespeichert.
-
-## Ticket
-
-ticket(#ticket_id #fk customer_id,#fk repairer_id,accepted)
 

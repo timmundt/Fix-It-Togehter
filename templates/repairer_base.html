@@ -14,8 +14,8 @@
   <div class="sidenav text-white p-3">
         <a href="{{ url_for('repairer.get_account_info') }}">Konto</a>
         <a href="{{ url_for('repairer.show_skills') }}">Skills</a>
-        <a href="#">Aufträge</a>
-        <a href="#">Anfragen</a>
+        <a href="{{ url_for('repairer.get_requests') }}">Anfragen</a>
+        <a href="{{ url_for('repairer.get_tickets') }}">Aufträge</a>
     </div>
 
     <main class="user-content">

@@ -1,0 +1,40 @@
+{% extends "repairer_base.html" %}
+
+{% block title %}Meine Anfragen | FixItTogether{% endblock %}
+
+{% block user_content %}
+
+ <div class="container py-5">
+  <h2 class="fw-bold text-white mb-4">Offene Anfragen</h2>
+
+  <div class="row">
+    {% for ticket in tickets %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="ticket-card">
+        <div>
+          <div class="ticket-header">{{ ticket.model }}</div>
+          <div class="ticket-info"><strong>Beschreibung:</strong> {{ ticket.init_message }}</div>
+          {% if ticket.customer %}
+            <div class="ticket-info"><strong>Kunde:</strong> {{ ticket.customer.user.first_name }} {{ ticket.customer.user.last_name }}</div>
+          {% endif %}
+        </div>
+        <div class="ticket-footer">
+          <form action="{{ url_for('repairer.accept_ticket') }}" method="post" class="d-inline">
+            <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
+            <button type="submit" class="btn btn-outline-success btn-sm">✔ Annehmen</button>
+          </form>
+          <form action="{{ url_for('repairer.decline_ticket') }}" method="post" class="d-inline">
+            <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
+            <button type="submit" class="btn btn-outline-danger btn-sm">✖ Ablehnen</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% else %}
+      <p class="text-white">Keine offenen Anfragen.</p>
+    {% endfor %}
+  </div>
+</div>
+
+  
+{% endblock %}

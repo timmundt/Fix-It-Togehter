@@ -1,0 +1,57 @@
+{% extends "repairer_base.html" %}
+
+{% block title %}Meine Aufträge | FixItTogether{% endblock %}
+
+{% block user_content %}
+<div class="container py-5">
+  <h2 class="fw-bold text-white mb-4">Meine Aufträge</h2>
+
+  <form method="GET" class="mb-4">
+    <label for="status" class="text-white me-2">Status filtern:</label>
+    <select class="form-select w-auto d-inline" id="status" name="status" onchange="this.form.submit()">
+      <option value="" {% if not status %}selected{% endif %}>Alle</option>
+      <option value="open" {% if status == 'open' %}selected{% endif %}>Laufend</option>
+      <option value="finished" {% if status == 'finished' %}selected{% endif %}>Abgeschlossen</option>
+    </select>
+  </form>
+
+  <div class="row">
+    {% for ticket in tickets %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="ticket-card">
+        <div>
+          <div class="ticket-header">{{ ticket.model }}</div>
+          <div class="ticket-info"><strong>Beschreibung:</strong> {{ ticket.init_message }}</div>
+          <div class="ticket-info"><strong>Kunde:</strong> {{ ticket.customer.user.first_name }} {{ ticket.customer.user.last_name }}</div>
+          <div class="ticket-info"><strong>Datum:</strong> {{ ticket.timestamp.strftime('%d.%m.%Y') }}</div>
+          <div class="ticket-info ticket-status">
+            <strong>Status:</strong>
+            {% if ticket.finished %}
+              <span class="text-success">Abgeschlossen</span>
+            {% else %}
+              <span class="text-warning">In Bearbeitung</span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <form action="{{ url_for('repairer.open_chat') }}" method="post" class="d-inline">
+            <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
+            <button type="submit" class="btn btn-outline-primary btn-sm">💬 Chat</button>
+          </form>
+          {% if not ticket.finished %}
+          <form action="{{ url_for('repairer.close_ticket') }}" method="post" class="d-inline">
+            <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
+            <button type="submit" class="btn btn-outline-success btn-sm">✅ Abschließen</button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% else %}
+      <p class="text-white">Keine Tickets gefunden.</p>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}
