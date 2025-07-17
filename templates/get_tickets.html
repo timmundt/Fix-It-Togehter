@@ -37,7 +37,13 @@
         <div class="ticket-footer">
           <a href="{{ url_for('customer.open_chat', ticket_id=ticket.ticket_id) }}" class="btn btn-outline-primary btn-sm">💬 Chat</a>
           {% if ticket.finished %}
-            {# <a href="{{ url_for('review.create', ticket_id=ticket.ticket_id) }}" class="btn btn-outline-success btn-sm">⭐ Rezension</a> #}
+            {% if not ticket.rezension %}
+              <a href="{{ url_for('review.submit_review', ticket_id=ticket.ticket_id) }}" class="btn btn-outline-success btn-sm">Rezension schreiben</a>
+            {% else %}
+              <div class= "mt-2 text-white small">
+              <p>⭐ {{ ticket.rezension.stars}} - {{ticket.rezension.commentar}}</p>
+              </div>
+            {% endif %}
           {% endif %}
         </div>
       </div>
