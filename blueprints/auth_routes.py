@@ -82,5 +82,5 @@ def register():
 def logout():
     logout_user()
     flash('Du wurdest erfolgreich ausgeloggt!')
-    return redirect(url_for('staticpages.home'))
+    return redirect(url_for('auth.login'))
     
