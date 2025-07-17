@@ -44,7 +44,7 @@ class Rezension(db.Model):
     commentar=Column(String)
     timestamp=Column(DateTime, nullable=False)
 
-    skills_rl=db.relationship('Ticket', backref=db.backref('rezension', uselist=False))
+    ticket_rl=db.relationship('Ticket', backref=db.backref('rezension', uselist=False))
 
 
 class Skill(db.Model):

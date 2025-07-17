@@ -4,6 +4,7 @@ from blueprints.staticpage_routes import staticpages_r
 from blueprints.auth_routes import auth_r
 from blueprints.customer_routes import customer_r
 from blueprints.repairer_routes import repairer_r
+from blueprints.review_routes import review_r
 from database import User, db, insert_dummy_data, insert_skills
 
 
@@ -22,6 +23,7 @@ app.register_blueprint(staticpages_r)
 app.register_blueprint(auth_r)
 app.register_blueprint(customer_r)
 app.register_blueprint(repairer_r)
+app.register_blueprint(review_r)
 
 
 @login_manger.user_loader
