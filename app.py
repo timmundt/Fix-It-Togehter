@@ -2,6 +2,7 @@ from flask import Flask
 from flask_login import LoginManager
 from blueprints.staticpage_routes import staticpages_r
 from blueprints.auth_routes import auth_r
+from blueprints.chat_routes import chat_r
 from blueprints.customer_routes import customer_r
 from blueprints.repairer_routes import repairer_r
 from database import User, db, insert_dummy_data, insert_skills
