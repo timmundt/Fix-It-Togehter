@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="ticket-footer">
-          <a href="{{ url_for('customer.open_chat', ticket_id=ticket.ticket_id) }}" class="btn btn-outline-primary btn-sm">💬 Chat</a>
+          <a href="{{ url_for('chat.open_chat', ticket_id=ticket.ticket_id) }}" class="btn btn-outline-primary btn-sm">💬 Chat</a>
           {% if ticket.finished %}
             {% if not ticket.rezension %}
               <a href="{{ url_for('review.submit_review', ticket_id=ticket.ticket_id) }}" class="btn btn-outline-success btn-sm">Rezension schreiben</a>

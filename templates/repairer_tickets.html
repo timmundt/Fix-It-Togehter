@@ -34,10 +34,7 @@
           </div>
         </div>
         <div class="ticket-footer">
-          <form action="{{ url_for('repairer.open_chat') }}" method="post" class="d-inline">
-            <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
-            <button type="submit" class="btn btn-outline-primary btn-sm">💬 Chat</button>
-          </form>
+          <a href="{{ url_for('chat.open_chat', ticket_id=ticket.ticket_id) }}" class="btn btn-outline-primary btn-sm">💬 Chat</a>
           {% if not ticket.finished %}
           <form action="{{ url_for('repairer.close_ticket') }}" method="post" class="d-inline">
             <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
