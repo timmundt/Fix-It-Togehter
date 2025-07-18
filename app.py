@@ -21,6 +21,7 @@ login_manger.login_view='auth.login'
 
 app.register_blueprint(staticpages_r)
 app.register_blueprint(auth_r)
+app.register_blueprint(chat_r)
 app.register_blueprint(customer_r)
 app.register_blueprint(repairer_r)
 
