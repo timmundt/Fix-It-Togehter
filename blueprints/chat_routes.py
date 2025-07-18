@@ -25,7 +25,9 @@ def open_chat(ticket_id):
       db.select(ChatMessage).where(ChatMessage.ticket_id == ticket_id).order_by(ChatMessage.timestamp)
     ).scalars().all()
 
-    return render_template('chat.html', ticket=ticket, chat_messages=chat_messages)
+    layout_template = 'customer_base.html' if current_user.customer else 'repairer_base.html'
+
+    return render_template('chat.html', ticket=ticket, chat_messages=chat_messages, layout_template=layout_template)
 
 @chat_r.route('/chat/send', methods=['POST'])
 @login_required
