@@ -1,1 +1,27 @@
 {% extends layout_template %}
+
+{% block title %}Chat zum Auftrag{% endblock %}
+
+{% block user_content %}
+  <h2 class="mb-4">Chat zum Auftrag: {{ ticket.model }}</h2>
+
+  <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 1rem; margin-bottom: 2rem;">
+    {% for message in chat_messages %}
+      <div style="margin-bottom: 1rem;">
+        <strong>{{ message.sender_role|capitalize }}:</strong><br>
+        <span>{{ message.message }}</span><br>
+        <small class="text-muted">{{ message.timestamp.strftime('%d.%m.%Y %H:%M') }}</small>
+      </div>
+    {% else %}
+      <p class="text-muted">Noch keine Nachrichten vorhanden.</p>
+    {% endfor %}
+  </div>
+
+  <form method="POST" action="{{ url_for('chat.send_message') }}">
+    <input type="hidden" name="ticket_id" value="{{ ticket.ticket_id }}">
+    <div class="mb-3">
+      <textarea name="content" class="form-control" rows="3" placeholder="Nachricht eingeben..." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Senden</button>
+  </form>
+{% endblock %}
