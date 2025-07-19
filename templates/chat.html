@@ -12,15 +12,18 @@
         {% if message.sender_role == 'repairer' %} align-items-end {% else %} align-items-start {% endif %} 
         mb-3">
 
-        <div class="p-2 rounded 
-          {% if message.sender_role == 'repairer' %}
-            bg-primary text-white
-          {% else %}
-            background-color: #097969 text-white
-          {% endif %}" style="max-width: 75%;">
-          <div>{{ message.message }}</div>
-          <div class="small mt-1" style="color: #bbb;">{{ message.timestamp.strftime('%d.%m.%Y %H:%M') }}</div>
+      <div  class="p-2 rounded text-white"
+            style="max-width: 75%;
+              {% if message.sender_role == 'repairer' %}
+                background-color: #0d6efd;
+              {% elif message.sender_role == 'customer' %}
+                background-color: #097969;
+              {% endif %}">
+        <div>{{ message.message }}</div>
+        <div class="small mt-1" style="color: #bbb;">
+          {{ message.timestamp.strftime('%d.%m.%Y %H:%M') }}
         </div>
+      </div>
       </div>
     {% else %}
       <p class="text-muted">Noch keine Nachrichten vorhanden.</p>
