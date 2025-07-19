@@ -12,9 +12,11 @@ Die Anwendnug besteht dabei aus einem Flask-Backend, einer SQLAlchemy Datenbank 
 
 ## Struktur 
 
-Die Anwendung besteht aus zwei Bereichen:
+Diese Model-View-Controller Diagramm beschreibt die Architektur der Anwendung: 
 
-### 1. Frontend
+<img src="../assets/mvc_diagramm.png" width="600">
+
+### 1. View
 
 · HTML: Grundstrukur für die einzelenen Templates. Beschreibt was dargestellt wird, nicht wie es aussieht.
 
@@ -24,19 +26,26 @@ Die Anwendung besteht aus zwei Bereichen:
 
 · Jinja2: Ermöglicht die dynmaische Gestatlung von einzelene Templates via Python direkt in HTML.
 
-### 2. Backend 
+### 2. Controller
 
 · Flask: Web-Basiertes Framework für Python. Flask übernimmt das Routing in der Anwendung, das verarbeiten von HTTP-Anfragen, das rendern der einzelenen Templates und das Einbinden der Datenbank. Damit ist Flask der Kommunikateur zwischen dem Frontend und der Datenbank. 
 
 · Flask-Login: Eine Libary für Flask, um Login-Sessions einfach und sicher zu handeln.
 
+· Jinja2: Ermöglicht die dynmaische Gestatlung von einzelene Templates via Python direkt in HTML.
+
+### 3. Model 
+
 · SQLAlchemy: Datenbank Libary für Python ohne Plain-SQL schreibben zu müssen. 
 
 · SQLite: Speichert Daten der Nutzer, Tickets, Chatnachirchten etc. 
 
+
 ## Logik der Anwendung 
 
 ### Authentifizerung 
+
+<img src="../assets/mvc_diagram_example.png" width="1400">
 
 · User regestrieren sich mit E-Mail, Passwort, Name und Role(Customer oder Repairer)
 
@@ -67,7 +76,6 @@ Die Anwendung besteht aus zwei Bereichen:
 · Nur der Reperateur kann das Ticket abschließen 
 
 
-### UML-Diagramm der Anwendungsarchitektur
 
 
 
