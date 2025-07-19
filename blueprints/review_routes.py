@@ -13,9 +13,6 @@ def submit_review(ticket_id):
         db.select(Ticket).filter_by(ticket_id=ticket_id)
     ).scalar_one_or_none()
     
-    #if ticket.customer_id != current_user.user_id:
-        #flash("Du kannst nur Rezensionen für deine eigenen Tickets schreiben.")
-        #return redirect(url_for('customer.get_account_info'))
     
     if request.method == 'POST':
         stars = request.form.get('stars')
@@ -28,9 +25,7 @@ def submit_review(ticket_id):
             timestamp=datetime.utcnow()
         )
         
-        #if not stars or not commentar:
-            #lash("Bitte fülle alle Felder aus.", "danger")
-            #return redirect(url_for('review.submit_review', ticket_id=ticket_id))
+
         
         db.session.add(new_review)
         db.session.commit()
@@ -40,6 +35,7 @@ def submit_review(ticket_id):
     
     return render_template('submit_review.html', ticket=ticket)
 
+#Quelle für die Review Routes: https://chatgpt.com/share/687be667-3568-8005-9ebd-c42d425b8360
 
 @review_r.route('/repairer/<int:repairer_id>/reviews')
 @login_required
@@ -70,4 +66,4 @@ def repairer_reviews(repairer_id):
         model=model
     )
 
-
+#Quelle für die Review Routes: https://chatgpt.com/share/687be667-3568-8005-9ebd-c42d425b8360

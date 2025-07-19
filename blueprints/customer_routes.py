@@ -18,13 +18,13 @@ def ticket_step1():
     skills = Skill.get_modelseries()
     return render_template('ticket_step1_model.html', skills = skills)
 
+#Quelle ChatGPT, hilfe bei der Sessionverwaltung und Ticketerstellung und Debugging
+#https://chatgpt.com/share/6866576f-daf8-8005-86b5-a1c42e29fb28
 
 
 @customer_r.route('/ticket/step2', methods=['GET', "POST"])
 @login_required
 def ticket_step2():
-    print("DEBUG: STEP 2 ROUTE HIT")
-    print("SESSION VORHER:", session.get('ticket'))
 
     if 'ticket' not in session:
         flash("Bitte zuerst ein Modell auswählen.")
@@ -34,18 +34,17 @@ def ticket_step2():
         ticket_data = session.get('ticket', {})
         ticket_data['init_message'] = request.form.get('init_message')
         session['ticket'] = ticket_data
-        print("SESSION NACHHER:", session.get('ticket'))
         return redirect(url_for('customer.ticket_step3'))
 
     return render_template('ticket_step2_init_message.html')
 
+#Quelle ChatGPT, hilfe bei der Sessionverwaltung und Ticketerstellung und Debugging
+#https://chatgpt.com/share/6866576f-daf8-8005-86b5-a1c42e29fb28
 
 
 @customer_r.route('/ticket/step3', methods=['GET', 'POST'])
 @login_required
 def ticket_step3():
-    print("STEP 3 AUFGERUFEN")
-    print("Aktuelle SESSION:", session.get('ticket'))
 
     if 'ticket' not in session or 'model_series' not in session['ticket']:
         flash("Bitte wähle zuerst ein Modell.")
@@ -89,21 +88,19 @@ def ticket_step3():
     if request.method == 'POST':
         ticket_data = session.get('ticket', {})
         ticket_data['repairer_id'] = request.form.get('repairer_id')
-        session['ticket'] = ticket_data  # WICHTIG!
-        print("DEBUG after Step 3:", session['ticket'])
+        session['ticket'] = ticket_data  
         return redirect(url_for('customer.ticket_confirmation'))
 
     return render_template('ticket_step3_repairer.html', repairers=repairers, model=model)
 
+#Quelle ChatGPT, hilfe bei der Sessionverwaltung und Ticketerstellung und Debugging
+#https://chatgpt.com/share/6866576f-daf8-8005-86b5-a1c42e29fb28
 
 
 @customer_r.route('/ticket-bestätigung', methods=['GET','POST'])
 @login_required
 def ticket_confirmation():
-    print("STEP 4 AUFGERUFEN")
-    print("Aktuelle SESSION:", session.get('ticket'))
     data = session.get('ticket')
-    print("DEBUG: SESSION DATA IN TICKET_CONFIRMATION:", data)
     if not data or not all(k in data for k in ('model_series', 'init_message', 'repairer_id')):
         flash("Ticket-Daten nicht gefunden.")
         return redirect(url_for('customer.ticket_step1'))
@@ -119,12 +116,10 @@ def ticket_confirmation():
             )
             db.session.add(ticket)
             db.session.commit()
-            print("DEBUG: Ticket erfolgreich erstellt:", ticket)
             session.pop('ticket', None)  # Clear the session data
             flash("Dein Ticket wurde erfolgreich erstellt.")
             return redirect(url_for('customer.get_tickets'))
         except Exception as e:
-            print("DEBUG: Fehler beim Erstellen des Tickets:", e)
             flash("Es gab ein Problem bei der Erstellung deines Tickets. Bitte versuche es erneut.", "danger")
             return redirect(url_for('customer.ticket_step1'))
     
@@ -132,6 +127,8 @@ def ticket_confirmation():
     repairer = db.session.get(Repairer, int(data['repairer_id']))
     return render_template('ticket_confirmation.html', data=data, repairer=repairer)
 
+#Quelle ChatGPT, hilfe bei der Sessionverwaltung und Ticketerstellung und Debugging
+#https://chatgpt.com/share/6866576f-daf8-8005-86b5-a1c42e29fb28
 
 
 @customer_r.route('/account-information', methods=['GET', 'POST'])
