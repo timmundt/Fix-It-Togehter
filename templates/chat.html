@@ -3,14 +3,24 @@
 {% block title %}Chat zum Auftrag{% endblock %}
 
 {% block user_content %}
-  <h2 class="mb-4">Chat zum Auftrag: {{ ticket.model }}</h2>
+<div class="container py-5">
+  <h2 class="fw-bold text-white mb-4">Chat zum Auftrag: {{ ticket.model }}</h2>
 
-  <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 1rem; margin-bottom: 2rem;">
+  <div class="border rounded p-3 mb-4" style="max-height: 400px; overflow-y: auto; background-color: #1e1e1e;">
     {% for message in chat_messages %}
-      <div style="margin-bottom: 1rem;">
-        <strong>{{ message.sender_role|capitalize }}:</strong><br>
-        <span>{{ message.message }}</span><br>
-        <small class="text-muted">{{ message.timestamp.strftime('%d.%m.%Y %H:%M') }}</small>
+      <div class="d-flex flex-column 
+        {% if message.sender_role == 'repairer' %} align-items-end {% else %} align-items-start {% endif %} 
+        mb-3">
+
+        <div class="p-2 rounded 
+          {% if message.sender_role == 'repairer' %}
+            bg-primary text-white
+          {% else %}
+            bg-light
+          {% endif %}" style="max-width: 75%;">
+          <div>{{ message.message }}</div>
+          <div class="small mt-1" style="color: #bbb;">{{ message.timestamp.strftime('%d.%m.%Y %H:%M') }}</div>
+        </div>
       </div>
     {% else %}
       <p class="text-muted">Noch keine Nachrichten vorhanden.</p>
@@ -22,6 +32,7 @@
     <div class="mb-3">
       <textarea name="content" class="form-control" rows="3" placeholder="Nachricht eingeben..." required></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Senden</button>
+    <button type="submit" class="btn btn-outline-primary">Senden</button>
   </form>
+</div>
 {% endblock %}
