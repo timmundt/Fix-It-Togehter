@@ -125,7 +125,7 @@ def decline_ticket():
         db.select(Ticket).filter_by(ticket_id=ticket_id)
     ).scalar_one()
 
-    db.session.delete(ticket)    
+    ticket.accepted=False   
     db.session.commit()
     return redirect(url_for('repairer.get_requests'))
 
