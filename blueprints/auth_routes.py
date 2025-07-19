@@ -34,7 +34,7 @@ def login():
             return redirect(url_for("repairer.get_account_info"))
     
     else:
-        return render_template('login.html')
+        return render_template('logregTemplates/login.html')
 
 
 
@@ -73,7 +73,7 @@ def register():
             db.session.commit()
             return redirect(url_for('auth.login'))
     
-    return render_template('register.html')
+    return render_template('logregTemplates/register.html')
 
 
 

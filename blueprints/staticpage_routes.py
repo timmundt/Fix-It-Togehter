@@ -4,24 +4,24 @@ staticpages_r=Blueprint('staticpages', __name__)
 
 @staticpages_r.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('homeTemplates/index.html')
 
 
 @staticpages_r.route('/startseite')
 def home():
-    return render_template('index.html')
+    return render_template('homeTemplates/index.html')
 
 @staticpages_r.route('/impressum')
 def imprint():
-    return render_template('imprint.html')
+    return render_template('homeTemplates/imprint.html')
 
 @staticpages_r.route('/nutzungsbedingungen')
 def terms_of_use():
-    return render_template('terms_of_use.html')
+    return render_template('homeTemplates/terms_of_use.html')
 
 @staticpages_r.route('/datenschutz')
 def privacy_policy():
-    return render_template('privacy_policy.html')
+    return render_template('homeTemplates/privacy_policy.html')
 
 @staticpages_r.route('/kunde')
 def customer_profile():
