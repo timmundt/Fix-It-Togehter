@@ -167,6 +167,8 @@ def get_tickets():
         query = query.filter(Ticket.finished == False)
     elif status == 'finished':
         query = query.filter(Ticket.finished == True)
+    elif status == 'declined':
+        query = query.filter(Ticket.accepted == False)
 
     tickets = db.session.execute(query.order_by(Ticket.timestamp.desc())).scalars().all()
 
