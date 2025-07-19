@@ -12,7 +12,7 @@ nav_order: 3
 
 **Zweck:** Wenn der Customer in seiner Sidebar auf neues Ticket erstellen drückt, wird diese Route abgerufen. Hier wählt der Customer zunächst aus, welches Modell von De'Longhi er reparieren lassen möchte.
 
-**Mögliche Outputs:** 
+**Möglicher Output:** 
 
 <img src="../../assets/references_assets/ticket_step1.png" width="600">
 
@@ -22,7 +22,9 @@ nav_order: 3
 
 **Methoden:** GET, POST 
 
-**Zweck:** Im zweiten Schritt der Ticketerstellung schreibt der Customer eine kurze Nachircht darüber, was an der Kaffeemaschine nicht geht. 
+**Zweck:** Im zweiten Schritt der Ticketerstellung schreibt der Customer eine kurze Nachircht darüber, was an der Kaffeemaschine nicht geht.
+
+**Möglicher output:**
 
 <img src="../../assets/references_assets/ticket_step2.png" width="600">
 
@@ -34,7 +36,7 @@ nav_order: 3
 
 **Zweck:** Im dritten Schritt der Ticketerstellung wählt der Customer den Repairer aus, denn er eine Anfrage schicken möchte. Dabei sieht er in einer Kartenansicht den Namen des Repairers, die Kaffeemaschinenmodelle die er reparieren kann, und seine Bewertungen anhand eines Sternesystems. 
 
-**Mögliche outputs:**
+**Möglicher output:**
 
 <img src="../../assets/references_assets/ticket_step3.png" width="600">
 
@@ -46,7 +48,7 @@ nav_order: 3
 
 **Zweck:** Im vierten Schritt kann der Customer komplette Ticket, das er erstellt hat einsehen und dieses dann absenden. Nach dem das Ticket abgesendet wurde wird er auf die Seite weitergeleitet, wo er seine laufenden Anfragen einsehen kann. 
 
-**Mögliche outputs:** 
+**Möglicher output:** 
 
 <img src="../../assets/references_assets/ticket_confirmation.png" width="600">
 
@@ -62,7 +64,7 @@ nav_order: 3
 
 **Zweck:** Diese Route ist das Dashboard des Customers. Hier kann er seine Accountinformationen einsehen und diese auch ändern. 
 
-**Mögliche outputs:** 
+**Möglicher output:** 
 
 <img src="../../assets/references_assets/customer_account_information.png" width="600">
 
@@ -75,7 +77,7 @@ nav_order: 3
 
 **Zweck:** Diese Route ist dafür da, alle Anfragen und Aufträge des Customers anzuzeigen. Dabei spielt der Status des Tickets keine Rolle. 
 
-**Mögliche outputs:** 
+**Möglicher output:** 
 
 <img src="../../assets/references_assets/customer_get_tickets.png" width="600">
 

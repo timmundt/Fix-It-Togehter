@@ -1,5 +1,5 @@
 ---
-title: Authenticate Routes
+title: Authentifizierungs Routen 
 parent: Funktionen und Routen
 nav_order: 1
 ---
@@ -10,9 +10,9 @@ nav_order: 1
 
 **Methoden:** GET, POST
 
-**Zweck:** Damit kann sich ein neuer User registriren, um die vollen Funktionen der App nutzen zu können. Dabei ist Wichtig das der User alle Felder ausfüllt, und keine E-Mail benutzt, die bereits vorhanden ist.
+**Zweck:** Damit kann sich ein neuer User registrieren, um die vollen Funktionen der App nutzen zu können. Dabei ist Wichtig das der User alle Felder ausfüllt, und keine E-Mail benutzt, die bereits vorhanden ist.
 
-**Mögliche Outputs:**
+**Möglicher Output:**
 
 **Sucess:** 
 
@@ -44,9 +44,9 @@ nav_order: 1
 
 **Methods:** GET, POST
 
-**Purpose:** Der User wird von seiner bestehende Session ausgeloggt, und zurück zur Login Seite weitergeleitet.
+**Zweck:** Der User wird von seiner bestehende Session ausgeloggt, und zurück zur Login Seite weitergeleitet.
 
-**Sample output:** 
+**Möglicher output:** 
 
 <img src="../../assets/references_assets/logout.png" width="400">
 
