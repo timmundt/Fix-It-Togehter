@@ -27,7 +27,9 @@
           <div class="ticket-info"><strong>Datum:</strong> {{ ticket.timestamp.strftime('%d.%m.%Y') }}</div>
           <div class="ticket-info ticket-status">
             <strong>Status:</strong>
-            {% if ticket.finished %}
+            {% if ticket.accepted is false %}
+              <span class="text-danger">Abgelehnt</span>
+            {% elif ticket.finished %}
               <span class="text-success">Abgeschlossen</span>
             {% else %}
               <span class="text-warning">In Bearbeitung</span>
