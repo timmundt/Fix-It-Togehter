@@ -157,7 +157,7 @@ def get_account_info():
 
 
 
-@customer_r.route('/get-tickets')
+@customer_r.route('/get-tickets', methods=['GET'])
 @login_required
 def get_tickets():
     status = request.args.get('status')  # open / finished
