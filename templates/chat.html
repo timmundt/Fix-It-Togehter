@@ -16,7 +16,7 @@
           {% if message.sender_role == 'repairer' %}
             bg-primary text-white
           {% else %}
-            bg-light
+            background-color: #097969 text-white
           {% endif %}" style="max-width: 75%;">
           <div>{{ message.message }}</div>
           <div class="small mt-1" style="color: #bbb;">{{ message.timestamp.strftime('%d.%m.%Y %H:%M') }}</div>
