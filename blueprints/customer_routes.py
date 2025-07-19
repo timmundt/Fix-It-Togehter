@@ -173,24 +173,6 @@ def get_tickets():
     return render_template('get_tickets.html', tickets=tickets, status=status)
 
 
-@customer_r.route('/delete-ticket/<int:ticket_id>', methods=['POST'])
-@login_required
-def delete_ticket(ticket_id):
-    ticket = db.session.execute(db.select(Ticket).filter_by(ticket_id=ticket_id))
-    db.session.delete(ticket)
-    db.session.commit()
-    
-    return redirect (url_for('customer.get_tickets'))
-    
-
-
-@customer_r.route('/open-chat/<int:ticket_id>', methods=['GET'])
-@login_required
-def open_chat(ticket_id):
-    chat_message=db.session.execute(
-        db.select(Ticket).filter_by(ticket_id=ChatMessage.ticket_id)).scalars()
-    
-    return render_template('chat.html', chat_message)
 
 
     

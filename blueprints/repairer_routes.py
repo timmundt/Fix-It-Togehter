@@ -32,7 +32,7 @@ def get_account_info():
         return redirect(url_for("repairer.get_account_info"))
     return render_template("repairer_account.html")
 
-#Nicht getestet
+
 @repairer_r.route('/meine-skills', methods=['GET'])
 @login_required
 def show_skills():
@@ -129,14 +129,7 @@ def decline_ticket():
     db.session.commit()
     return redirect(url_for('repairer.get_requests'))
 
-@repairer_r.route('/chat-öffnen', methods=['POST'])
-@login_required
-def open_chat():
-    ticket_id = request.form["ticket_id"]
-    chat_message=db.session.execute(
-        db.select(Ticket).filter_by(ticket_id=ChatMessage.ticket_id)).scalars().all()
-    
-    return render_template('chat.html', chat_message)
+
 
 @repairer_r.route('/ticket-abschliessen', methods=['POST'])
 @login_required
