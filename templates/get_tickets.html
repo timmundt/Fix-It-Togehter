@@ -12,6 +12,7 @@
       <option value="" {% if not status %}selected{% endif %}>Alle</option>
       <option value="open" {% if status == 'open' %}selected{% endif %}>Laufend</option>
       <option value="finished" {% if status == 'finished' %}selected{% endif %}>Abgeschlossen</option>
+      <option value="declined" {% if status == 'declined' %}selected{% endif %}>Abgelehnt</option>
     </select>
   </form>
 
