@@ -143,7 +143,7 @@ def close_ticket():
     db.session.commit()
     return redirect(url_for('repairer.get_tickets'))
 
-#Hilfe bei Formularverarbeitung (Ticket annehmen, ablehnen und abschließen) von ChatGPT
+#Hilfe bei Formularverarbeitung (Skills hinzufügen, löschen, Ticket annehmen, ablehnen und abschließen) von ChatGPT
 #https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6
 
     

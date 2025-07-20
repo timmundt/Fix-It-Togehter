@@ -72,6 +72,8 @@ Icon-Quellen: https://icons.getbootstrap.com/ zuletzt aufgerufen am: 03.07.2025
 | `/ticket-annehmen`            | POST          | `accept_ticket()`             | `repairer_requets.html`               | [ChatGPT] (https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6) | Tickets akzeptieren
 | `/ticket-ablehnen`            | POST          | `decline_ticket()`             | `repairer_requets.html`               | [ChatGPT] (https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6) | Tickets ablehnen
 | `/ticket-abschließen`            | POST          | `close_ticket()`             | `repairer_tickets.html`               | [ChatGPT] (https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6) | Tickets schließen
+| `/skills-hinzufügen`            | POST          | `add_skills()`             | `repairer_skills.html`               | [ChatGPT] (https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6) | Skills Hinzufügen in die Liste 
+| `/skills-löschen`            | POST          | `delete_skills()`             | `repairer_skills.html`               | [ChatGPT] (https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6) | Skills entfernen aus der Liste 
 
 
 
