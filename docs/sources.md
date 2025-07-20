@@ -81,7 +81,7 @@ Icon-Quellen: https://icons.getbootstrap.com/ zuletzt aufgerufen am: 03.07.2025
 ## Screenshots der Quellen:
 
 [Screenshots von D.G Link](https://drive.google.com/drive/folders/1yaMuLX8WIxFJhwy6uMOENw6PvbHgQn-J?usp=drive_link)
-
+[Screenshots von B.C Link](https://drive.google.com/drive/folders/14RGe2UdOeTiQN9LVI2CNyzP3vovrMlvH?usp=drive_link)
 
 
 
