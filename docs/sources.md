@@ -87,8 +87,8 @@ Icon-Quellen: https://icons.getbootstrap.com/ zuletzt aufgerufen am: 03.07.2025
 ---
 
 ## 📂 Screenshots von B.C  
-[🔗 Link zu Google Drive](https://drive.google.com/drive/folders/14RGe2UdOeTiQN9LVI2CNyzP3vovrMlvH?usp=drive_link)
-
+[🔗 Link zu Google Drive](https://cloud.hwr-berlin.de/s/wY9CfKsgMjMc2zM)
+🔒 **Passwort:** `FIXITTOGETHER`
 
 
 
