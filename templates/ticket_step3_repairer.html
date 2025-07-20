@@ -9,7 +9,7 @@
     <!-- Filter nach Bewertung -->
     <form method="GET" class="mb-4 text-center">
         <label for="sort" class="text-white me-2">Sortieren nach Bewertung:</label>
-        <select class="form-select w-auto d-inline" id="status" name="status" onchange="this.form.submit()">
+        <select class="form-select w-auto d-inline" id="status" name="sort" onchange="this.form.submit()">
             <option value="" {% if not sort %}selected{% endif %}>Keine Sortierung</option>
             <option value="high" {% if sort=='high' %}selected{% endif %}>Beste zuerst</option>
             <option value="low" {% if sort=='low' %}selected{% endif %}>Schlechteste zuerst</option>

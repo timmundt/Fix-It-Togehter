@@ -62,12 +62,6 @@ def ticket_step3():
         .join(User)
     ).scalars().all()
 
-    # Sortiere die Reparateur:innen nach Bewertung
-    if sort == 'high':
-        repairers.sort(key=lambda r: r.average_rating or 0, reverse=True)
-    elif sort == 'low':
-        repairers.sort(key=lambda r: r.average_rating or 0)
-
     # Berechne die durchschnittliche Bewertung für den Reparateur:in mit dem gewählten Modell
     for r in repairers:
         rezensionen = (
@@ -80,6 +74,12 @@ def ticket_step3():
             r.average_rating = round(sum([rez.stars for rez in rezensionen]) / len(rezensionen), 1)
         else:
             r.average_rating = None
+
+    # Sortiere die Reparateur:innen nach Bewertung
+    if sort == 'high':
+        repairers.sort(key=lambda r: r.average_rating or 0, reverse=True)
+    elif sort == 'low':
+        repairers.sort(key=lambda r: r.average_rating or 0)
 
     if not repairers:
         flash("Leider wurde kein Reparateur für dieses Modell gefunden.")
