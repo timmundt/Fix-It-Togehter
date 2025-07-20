@@ -62,6 +62,8 @@ Icon-Quellen: https://icons.getbootstrap.com/ zuletzt aufgerufen am: 03.07.2025
 | `/account-information`       | GET, POST    | `get_account_info()`        | `customer_account.html`          | [ChatGPT] (hier einfügen link)                                                                     | Anzeige und Bearbeitung der Accountdaten, inkl. Passwortänderung             |
 
 
+
+
 ## Screenshots der Quellen:
 
 [Screenshots von D.G Link](https://drive.google.com/drive/folders/1yaMuLX8WIxFJhwy6uMOENw6PvbHgQn-J?usp=drive_link)

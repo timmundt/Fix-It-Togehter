@@ -18,7 +18,7 @@ login_manger=LoginManager()
 login_manger.init_app(app)
 login_manger.login_view='auth.login'
 
-#Quelle ChatGPT
+#Quelle für login_manager Initaliserung: https://chatgpt.com/c/687ce6a1-7c68-800e-a30e-e9110dda021a
 
 app.register_blueprint(staticpages_r)
 app.register_blueprint(auth_r)
@@ -32,7 +32,7 @@ app.register_blueprint(review_r)
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-#Quelle ChatGPT
+#Quelle für login_manger Initalisierung: https://chatgpt.com/c/687ce6a1-7c68-800e-a30e-e9110dda021a
 
 
 if __name__ == '__main__':
