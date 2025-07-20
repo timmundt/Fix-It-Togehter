@@ -8,7 +8,7 @@ nav_order: 1
 
 <details open markdown="block">
 
-<summary>Authentifizerungsrouten</summary>
+<summary>Authentifizerungs Routen</summary>
 
 - [Authentifizierungs Routen](#authentifizierungs-routen)
     - [register()](#register)

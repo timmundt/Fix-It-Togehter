@@ -8,7 +8,7 @@ nav_order: 3
 
 <details open markdown="block">
 
-<summary>Alle Customer Routen</summary>
+<summary>Customer Routen</summary>
 
 - [Customer Routen](#customer-routen)
     - [ticket\_step1()](#ticket_step1)
