@@ -65,3 +65,6 @@ def send_message():
   db.session.commit()
 
   return redirect(url_for('chat.open_chat', ticket_id=ticket_id))
+
+#Hilfe bei Sessionauswertung, Rollenprüfung und Formularverarbeitung von ChatGPT
+#https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6
