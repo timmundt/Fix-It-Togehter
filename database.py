@@ -138,8 +138,8 @@ def insert_dummy_data():
 
         skills=db.session.execute(db.select(Skill)).scalars().all()
 
-        repairer1.skills_rl.extend([skills[0],skills[1], skills[2]])
-        repairer2.skills_rl.extend([skills[3],skills[4],skills[5]])
+        repairer1.skills_rl.extend(skills)
+        repairer2.skills_rl.extend(skills)
 
         db.session.add_all([user1,user2,user3,user4,repairer1,repairer2,customer1,customer2])
         db.session.commit()
@@ -184,10 +184,26 @@ def insert_dummy_data():
         db.session.add_all([chatmessage1, chatmessage2, chatmessage3])
         db.session.commit()
 
+        ticket7=Ticket(customer_id=customer2.customer_id, repairer_id=repairer2.repairer_id, model=skills[0].model_series,
+                       init_message="Kaffeemaschine geht nicht an", timestamp=datetime.now(), accepted=True, finished=True)
+        ticket8=Ticket(customer_id=customer2.customer_id, repairer_id=repairer2.repairer_id, model=skills[1].model_series,
+                       init_message="Kaffee aus der Maschine schmeckt sehr verdünnt.", timestamp=datetime.now(), accepted=True, finished=True)
+        ticket9=Ticket(customer_id=customer2.customer_id, repairer_id=repairer2.repairer_id, model=skills[2].model_series,
+                       init_message="Kaffeemaschine zeigt Fehler 168.", timestamp=datetime.now(), accepted=True, finished=True)
+        
+        db.session.add_all([ticket7,ticket8,ticket9])
+        db.session.commit()
 
+        review4=Rezension(ticket_id=ticket7.ticket_id, stars=2, commentar="Wirkt sehr inkompetent",
+                          timestamp=datetime.now())
+        review5=Rezension(ticket_id=ticket8.ticket_id, stars=1, commentar="Absolut unfreundlich!",
+                          timestamp=datetime.now())
+        review6=Rezension(ticket_id=ticket9.ticket_id, stars=3, commentar="Kaffeemaschine ist Repariert und funktioniert auch wieder, aber der Repairer bräuchte deutlich länger als angesetzt war!",
+                          timestamp=datetime.now())
+        
+        db.session.add_all([review4,review5,review6])
+        db.session.commit()
                 
-
-
 
 
 

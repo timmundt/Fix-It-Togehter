@@ -19,7 +19,7 @@ nav_order: 4
 
 ## [Tim Lenart Mundt]
 
-Aufgaben im Porjekt:
+Aufgaben im Projekt:
 
 + Erstellung GitHub Repo
 + Projektstruktur Erstellung
