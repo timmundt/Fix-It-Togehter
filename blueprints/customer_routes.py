@@ -141,7 +141,7 @@ def get_account_info():
         current_user.first_name = request.form["first_name"]
         current_user.last_name = request.form["last_name"]
         current_user.email = request.form["email"]
-        #Quelle für Passwort ändern bei Eingabe,ChatGPT
+        #Quelle für Passwort ändern bei Eingabe,ChatGPT https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6
         new_password = request.form["password"]
         password_confirm =request.form["password_confirm"]
         if new_password.strip():
