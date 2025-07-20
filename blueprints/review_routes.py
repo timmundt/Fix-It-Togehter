@@ -54,7 +54,7 @@ def repairer_reviews(repairer_id):
     rezensionen = (
         db.session.query(Rezension)
         .join(Ticket)
-        .filter(Ticket.repairer_id == repairer_id, Ticket.model == model)
+        .filter(Ticket.repairer_id == repairer_id)
         .order_by(Rezension.timestamp.desc())
         .all()
     )
