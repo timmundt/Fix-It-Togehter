@@ -174,6 +174,8 @@ def get_tickets():
 
     return render_template('get_tickets.html', tickets=tickets, status=status)
 
+#Quelle ChatGPT, Filterung der Tickets nach Status und generelle Anzeige der Tickets
+#https://chatgpt.com/share/6866576f-daf8-8005-86b5-a1c42e29fb28
 
 
 
