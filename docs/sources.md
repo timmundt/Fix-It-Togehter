@@ -69,7 +69,9 @@ Icon-Quellen: https://icons.getbootstrap.com/ zuletzt aufgerufen am: 03.07.2025
 | `/ticket-bestätigung`        | GET, POST    | `ticket_confirmation()`     | `ticket_confirmation.html`       | [ChatGPT](https://chatgpt.com/share/6866576f-daf8-8005-86b5-a1c42e29fb28) | Zusammenfassung & finale Ticketerstellung, Speichern in DB                   |
 | `/get-tickets`               | GET          | `get_tickets()`             | `get_tickets.html`               | [ChatGPT] (hier einfügen link) | hier einfügen  |
 | `/account-information`       | GET, POST    | `get_account_info()`        | `customer_account.html`          | [ChatGPT] (hier einfügen link)                                                                     | Anzeige und Bearbeitung der Accountdaten, inkl. Passwortänderung             |
-
+| `/ticket-annehmen`            | POST          | `accept_ticket()`             | `repairer_requets.html`               | [ChatGPT] (https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6) | Tickets akzeptieren
+| `/ticket-ablehnen`            | POST          | `decline_ticket()`             | `repairer_requets.html`               | [ChatGPT] (https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6) | Tickets ablehnen
+| `/ticket-abschließen`            | POST          | `close_ticket()`             | `repairer_tickets.html`               | [ChatGPT] (https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6) | Tickets schließen
 
 
 
