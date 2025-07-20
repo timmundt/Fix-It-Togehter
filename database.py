@@ -154,6 +154,36 @@ def insert_dummy_data():
         db.session.add_all([ticket1,ticket2,ticket3])
         db.session.commit()
 
+        ticket4=Ticket(customer_id=customer1.customer_id, repairer_id=repairer1.repairer_id, model=skills[0].model_series,
+                       init_message="Wasserpumpe deffekt", timestamp=datetime.now(), accepted=True, finished=True)
+        ticket5=Ticket(customer_id=customer1.customer_id, repairer_id=repairer1.repairer_id, model=skills[0].model_series,
+                       init_message="Maschine ist wahrscheinlich verkalkt", timestamp=datetime.now(), accepted=True, finished=True)
+        ticket6=Ticket(customer_id=customer1.customer_id, repairer_id=repairer1.repairer_id, model=skills[0].model_series,
+                       init_message="Mahlwerk ist wahrscheinlich deffekt", timestamp=datetime.now(), accepted=True, finished=True)
+        
+        db.session.add_all([ticket4,ticket5, ticket6])
+        db.session.commit()
+
+        review1=Rezension(ticket_id=ticket4.ticket_id, stars=5, commentar="Alles Super geklappt!",
+                          timestamp=datetime.now())
+        review2=Rezension(ticket_id=ticket5.ticket_id, stars=1, commentar="Absolut unfreundlich!",
+                          timestamp=datetime.now())
+        review3=Rezension(ticket_id=ticket6.ticket_id, stars=4, commentar="Etwas länger gebraucht als erwartet!",
+                          timestamp=datetime.now())
+        
+        db.session.add_all([review1,review2,review3])
+        db.session.commit()
+
+        chatmessage1=ChatMessage(ticket_id=ticket1.ticket_id, message="Können sie das Problem detalierter beschreiben?",
+                                 timestamp=datetime.now(), sender_role="repairer")
+        chatmessage2=ChatMessage(ticket_id=ticket1.ticket_id, message="Klar, wenn ich auf Cafe Crema drücke macht die Maschine so" \
+        "ein komisches Geräusch und dann läuft nur Wasser heraus kein Kaffee.", timestamp=datetime.now(), sender_role="customer")
+        chatmessage3=ChatMessage(ticket_id=ticket1.ticket_id, message="Okay alles klar, dann ist wahrscheinlich das Mahlwerk deffekt oder es klemmt.",
+                                 timestamp=datetime.now(), sender_role="repairer")
+        
+        db.session.add_all([chatmessage1, chatmessage2, chatmessage3])
+        db.session.commit()
+
 
                 
 
