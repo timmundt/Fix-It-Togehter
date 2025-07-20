@@ -68,7 +68,7 @@ def ticket_step3():
     elif sort == 'low':
         repairers.sort(key=lambda r: r.average_rating or 0)
 
-    # Berechne die durchschnittliche Bewertung für den Reparateur:in mir dem gewählten Modell
+    # Berechne die durchschnittliche Bewertung für den Reparateur:in mit dem gewählten Modell
     for r in repairers:
         rezensionen = (
             db.session.query(Rezension)
@@ -95,6 +95,9 @@ def ticket_step3():
 
 #Quelle ChatGPT, hilfe bei der Sessionverwaltung und Ticketerstellung und Debugging
 #https://chatgpt.com/share/6866576f-daf8-8005-86b5-a1c42e29fb28
+
+#Quelle ChatGPT, hilfe bei Repairer Auswahl mit durchnschnittlicher Bewertung, Sortierung nach Bewertung
+#https://chatgpt.com/share/687cc85e-8760-8005-a71a-6fdb9f03e4e6
 
 
 @customer_r.route('/ticket-bestätigung', methods=['GET','POST'])

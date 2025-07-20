@@ -35,6 +35,9 @@ Contributions
 + Projektdokumentation
 + Erstellung und Design der Templates
 + Routen-Erstellung und Erweiterung
++ Bugfixes
++ Projektstruktur Erweiterung
+
 
 
 ## [Baran Celik]
