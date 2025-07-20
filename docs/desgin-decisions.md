@@ -10,14 +10,47 @@ nav_order: 3
 
 <summary>Unsere Design Decisions</summary>
 
-1. Datenbank: Plain-SQL oder SQLAlchemy?
-2. Flask-Login oder manuelles Session-Handling?
-3. Flask-Routen auslagern?
-4. Bootstrap oder manuelles CSS?
-5. Wie soll die Templatestruktur aussehen?
-6. Gemeinsames User-Modell oder getrennte Rollen in der Datenbank?
-7. Braucht man ein Login, um den vollen Funktionsumfang der Website benutzen zu können?
-8. Wer soll das Ticket als beendet markieren?
+- [Design Entscheidungen](#design-entscheidungen)
+  - [01: Datenbank: Plain-SQL oder SQLAlchemy?](#01-datenbank-plain-sql-oder-sqlalchemy)
+    - [Meta](#meta)
+    - [Problem](#problem)
+    - [Unsere Entscheidung](#unsere-entscheidung)
+    - [Mögliche Optionen](#mögliche-optionen)
+  - [02: Flask-Login oder manuelles Session-Handling?](#02-flask-login-oder-manuelles-session-handling)
+    - [Meta](#meta-1)
+    - [Problem](#problem-1)
+    - [Unsere Entscheidung](#unsere-entscheidung-1)
+    - [Mögliche Optionen](#mögliche-optionen-1)
+  - [03: Flask-Routen auslagern?](#03-flask-routen-auslagern)
+    - [Meta](#meta-2)
+    - [Problem](#problem-2)
+    - [Unsere Entscheidung](#unsere-entscheidung-2)
+    - [Mögliche Optionen](#mögliche-optionen-2)
+  - [04: Bootstrap oder manuelles CSS?](#04-bootstrap-oder-manuelles-css)
+    - [Meta](#meta-3)
+    - [Problem](#problem-3)
+    - [Unsere Entscheidung](#unsere-entscheidung-3)
+    - [Mögliche Entscheidungen](#mögliche-entscheidungen)
+  - [05: Wie soll die Templatestruktur aussehen?](#05-wie-soll-die-templatestruktur-aussehen)
+    - [Meta](#meta-4)
+    - [Problem:](#problem-4)
+    - [Unsere Entscheidung:](#unsere-entscheidung-4)
+    - [Mögliche Entscheidungen:](#mögliche-entscheidungen-1)
+  - [06: Gemeinsames User-Modell oder getrennte Rollen in der Datenbank?](#06-gemeinsames-user-modell-oder-getrennte-rollen-in-der-datenbank)
+    - [Meta](#meta-5)
+    - [Problem:](#problem-5)
+    - [Unsere Entscheidung:](#unsere-entscheidung-5)
+    - [Mögliche Optionen:](#mögliche-optionen-3)
+  - [07: Braucht man ein Login, um den vollen Funktionsumfang der Website benutzen zu können?](#07-braucht-man-ein-login-um-den-vollen-funktionsumfang-der-website-benutzen-zu-können)
+    - [Meta](#meta-6)
+    - [Problem:](#problem-6)
+    - [Unsere Entscheidung:](#unsere-entscheidung-6)
+    - [Mögliche Entscheidungen](#mögliche-entscheidungen-2)
+  - [08: Wer soll das Ticket als beendet markieren?](#08-wer-soll-das-ticket-als-beendet-markieren)
+    - [Meta](#meta-7)
+    - [Problem:](#problem-7)
+    - [Unsere Entscheidung:](#unsere-entscheidung-7)
+    - [Mögliche Entscheidungen](#mögliche-entscheidungen-3)
 
 </details>
 
@@ -189,7 +222,7 @@ Wir hatten für den Bereich Templatestrukturierung zwei Optionen:
 |**Skalierbarkeit**| ✔️Bei wachsendem Projekt sehr gut | ❌Bei wachsendem Projekt schwerer
 |**Redudanzen**| ✔️Wenig durch Vererbung | ❌Viele Redudanzen im Code
 
-## 06: Gemeinsames User-Modell oder getrennte Rollen in der Datebank?
+## 06: Gemeinsames User-Modell oder getrennte Rollen in der Datenbank?
 
 ### Meta
 
