@@ -19,19 +19,20 @@ nav_order: 4
 
 ## [Tim Lenart Mundt]
 
-Contributions
+Aufgaben im Porjekt:
 
 + Erstellung GitHub Repo
 + Projektstruktur Erstellung
 + Projektdokumentation
 + Hilfestellung bei Git 
-+ Datenbankmodellierung
++ Datenbankmodellierung und Erstellung der Datenbank in SQLAlchemy
 + Routen-Erstellung 
 + Bugfixes
 
 ## [Denizcan Gueney]
 
-Contributions
+Aufgaben im Projekt:
+
 + Projektdokumentation
 + Erstellung und Design der Templates
 + Routen-Erstellung und Erweiterung
@@ -42,7 +43,8 @@ Contributions
 
 ## [Baran Celik]
 
-Contributions
+Aufgaben im Projekt:
+
 + Projektdokumentation
 + Erstellung und Design der Templates
 + Routen-Erstellung und Erweiterung

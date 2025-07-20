@@ -18,7 +18,21 @@ Um den Webserver zu schließen muss ins Terminal geklickt werden, wo der Webserv
 
 **Hinweis:** Um unnötige Fehler in Session zu vermeiden, sollten alle Tabs der Anwendung geschloßen werden, bevor man den Webserver beendet. Tut man dies nicht und sendet weiter Anfragen an den Webserver, der schon beendet wurde, kann es zu inkonsistenzen der Session kommen und man bekommt den HTTP-Fehler 403. Dann müsste man alle Cookies löschen, um die Session der Anwednung zu resetten. 
 
+**Test-Profile:** 
 
+Um die Anwendung mit ihrem Umfang testen zu können, ohne ständig zwischen Profilen wechseln zu müssen, haben wir Dummy Daten angelegt. Wichtig sind dabei zwei Accounts mit folgenden Daten:
+
+Customer:
+
+Email: customer1@test.com
+
+Passwort: 0000
+
+Repairer: 
+
+Email: repairer1@test.com
+
+Passwort: 0000
 
 
 
