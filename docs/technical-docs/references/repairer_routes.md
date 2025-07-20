@@ -4,6 +4,25 @@ parent: Funktionen und Routen
 nav_order: 4
 ---
 
+# Repairer Routen
+
+<details open markdown="block">
+
+<summary>Repairer Routen</summary>
+
+- [Repairer Routen](#repairer-routen)
+    - [get\_account\_info()](#get_account_info)
+    - [show\_skills()](#show_skills)
+    - [add\_skills()](#add_skills)
+    - [delete\_skills()](#delete_skills)
+    - [get\_requests()](#get_requests)
+    - [decline\_ticket()](#decline_ticket)
+    - [accept\_ticket()](#accept_ticket)
+    - [get\_tickets()](#get_tickets)
+    - [close\_ticket()](#close_ticket)
+
+</details>
+
 ### get_account_info()
 
 **Route:** /accountinformation

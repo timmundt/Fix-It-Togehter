@@ -4,6 +4,19 @@ parent: Funktionen und Routen
 nav_order: 1
 ---
 
+# Authentifizierungs Routen
+
+<details open markdown="block">
+
+<summary>Authentifizerungsrouten</summary>
+
+- [Authentifizierungs Routen](#authentifizierungs-routen)
+    - [register()](#register)
+    - [login()](#login)
+    - [logout()](#logout)
+
+</details>
+
 ### register()
 
 **Route:** /register

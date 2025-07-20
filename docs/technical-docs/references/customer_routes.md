@@ -4,6 +4,23 @@ parent: Funktionen und Routen
 nav_order: 3
 ---
 
+# Customer Routen
+
+<details open markdown="block">
+
+<summary>Alle Customer Routen</summary>
+
+- [Customer Routen](#customer-routen)
+    - [ticket\_step1()](#ticket_step1)
+    - [ticket\_step2()](#ticket_step2)
+    - [ticket\_step3()](#ticket_step3)
+    - [ticket\_confirmation()](#ticket_confirmation)
+    - [get\_account\_info()](#get_account_info)
+    - [get\_tickets()](#get_tickets)
+
+</details>
+
+
 ### ticket_step1()
 
 **Route:** /ticket/step1
@@ -16,6 +33,7 @@ nav_order: 3
 
 <img src="../../assets/references_assets/ticket_step1.png" width="600">
 
+
 ### ticket_step2()
 
 **Route:** /ticket/step2
@@ -27,6 +45,7 @@ nav_order: 3
 **Möglicher output:**
 
 <img src="../../assets/references_assets/ticket_step2.png" width="600">
+
 
 ### ticket_step3()
 
