@@ -36,8 +36,9 @@ Aufgaben im Projekt:
 + Projektdokumentation
 + Erstellung und Design der Templates
 + Routen-Erstellung und Erweiterung
-+ Bugfixes
 + Projektstruktur Erweiterung
++ Entwicklung neuer Funktionalitäten innerhalb der Anwendung
++ Bugfixes
 
 
 
@@ -48,8 +49,9 @@ Aufgaben im Projekt:
 + Projektdokumentation
 + Erstellung und Design der Templates
 + Routen-Erstellung und Erweiterung
-+ Bugfixes
 + Projektstruktur Erweiterung
++ Entwicklung neuer Funktionalitäten innerhalb der Anwendung
++ Bugfixes
 
 <!---
 Quelle von: https://github.com/hwrberlin/fswd-app/blob/main/docs/team-eval/contributions.md letzter Zugriff am: 12.06.2025
