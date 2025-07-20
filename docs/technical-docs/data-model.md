@@ -6,9 +6,7 @@ nav_order: 2
 
 ## ER-Modell 
 
-![ER-Modell](../assets/datamodel.png)
-
-**Hinweis: Das Datenmodell wurde mit dem Tool draw-io erstellt.**
+<img src="../assets/datamodel.png" width="1600">
 
 Es gibt User, die entweder Customer oder Repairer sein können. Kunden erstellen Tickets, die auf einen bestimmten Repairer referenzieren. Tickets haben Chatmessages und eventuell eine Rezension. Repairer haben bestimmte Skills.
 
