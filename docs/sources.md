@@ -47,6 +47,15 @@ Icon-Quellen: https://icons.getbootstrap.com/ zuletzt aufgerufen am: 03.07.2025
 | `get_tickets.html`              | [Link](https://chatgpt.com/share/687be667-3568-8005-9ebd-c42d425b8360) | Anzeige bereits abgegebener Rezensionen zu vergangenen Tickets                                       |
 | `customer_base.html`            | [Link](https://chatgpt.com/share/6866576f-daf8-8005-86b5-a1c42e29fb28) | Navigation (Sidenav) – basiert auf Vorlage, wurde jedoch angepasst                                   |
 | `base.html`                     | [Link](https://chatgpt.com/share/6866576f-daf8-8005-86b5-a1c42e29fb28) | Clickbarer Footer mit Links zu Impressum, Datenschutz, Nutzungsbedingungen usw.                     |
+| `repairer_account.html`         | [Link](https://getbootstrap.com/docs/5.3/forms/overview/) | Formular für Accountinformationen 
+
+| `repairer_base.html`         | [Link](https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp) | Sidebar mit den jeweilig relevanten Elementen und Verlinkungen     |
+| `repairer_requests.html`         | [Link](https://getbootstrap.com/docs/5.3/components/card/) | Template zur Anzeige offener Tickets: Eigene Entwicklung unter Verwendung von Bootstrap Cards. Styling auf Basis von "get_tickets" angepasst |
+| `repairer_skills.html`         | [Link](https://getbootstrap.com/docs/4.0/components/list-group/) [Link](https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6)  | Bootstrap List Group um die Skills zu listen. ChatGPT als Hilfestellung für Befüllung der Liste. |
+| `repairer_skills.html`         | [Link](https://getbootstrap.com/docs/5.3/forms/overview/) [Link](https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6)  | Bootstrap Formular um neue Skills zu wählen. ChatGPT als Hilfestellung für Befüllung des Formulars. |
+| `repairer_tickets.html`         | [Link](https://getbootstrap.com/docs/5.3/components/card/) | Template zur Anzeige aller angenommenen Tickets: Eigene Entwicklung unter Verwendung von Bootstrap Cards. Styling auf Basis von "get_tickets" angepasst |
+| `chat.html`                     | [Link](https://chatgpt.com/share/687cd496-0290-800b-a7a3-4420414825d6) | Chat-Funktion größtenteils mit ChatGPT implementiert. Anpassungen wurden aber vorgenommen. |
+| `customer_account.html`         | [Link](https://getbootstrap.com/docs/5.3/forms/overview/) | Formular für Accountinformationen 
 
 
 ## Quellenübersicht für das Routing:
