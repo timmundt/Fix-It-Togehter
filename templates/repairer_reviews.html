@@ -3,7 +3,7 @@
 
 {% block user_content %}
 <div class="container py-5">
-  <h2 class="fw-bold text-white mb-4">Rezensionen von {{ repairer.user.first_name }} {{ repairer.user.last_name }}</h2>
+  <h2 class="fw-bold text-white mb-4">Rezensionen für {{ repairer.user.first_name }} {{ repairer.user.last_name }}</h2>
 
   {% if rezensionen %}
     {% for review in rezensionen %}
@@ -22,3 +22,5 @@
   <a href="{{ request.referrer or url_for('customer.get_tickets') }}" class="btn btn-outline-light mt-3">Zurück</a>
 </div>
 {% endblock %}
+
+<!-- Quelle ChatGPT für Anzeige der Reparateur-Rezensionen mit Sternen und falls vorhanden Kommentar: https://chatgpt.com/share/687cc85e-8760-8005-a71a-6fdb9f03e4e6

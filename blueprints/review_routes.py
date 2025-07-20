@@ -35,7 +35,7 @@ def submit_review(ticket_id):
     
     return render_template('submit_review.html', ticket=ticket)
 
-#Quelle für die Review Routes: https://chatgpt.com/share/687be667-3568-8005-9ebd-c42d425b8360
+#Quelle für die Reviewerstellung-Route: https://chatgpt.com/share/687be667-3568-8005-9ebd-c42d425b8360
 
 @review_r.route('/repairer/<int:repairer_id>/reviews')
 @login_required
@@ -66,4 +66,4 @@ def repairer_reviews(repairer_id):
         model=model
     )
 
-#Quelle für die Review Routes: https://chatgpt.com/share/687be667-3568-8005-9ebd-c42d425b8360
+#Quelle für die Anzeigefunktion aller Rezension für den Reparateur mit dem Modell: https://chatgpt.com/share/687cc85e-8760-8005-a71a-6fdb9f03e4e6
