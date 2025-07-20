@@ -1,10 +1,12 @@
 # Schritte um die App auszuführen 
 
-**Schritt 1:** Installiere ein: [Python Virtual Environment](https://hwrberlin.github.io/fswd/python-vscode.html#32-use-the-python-virtual-environment-as-default-for-this-workspace) 
+**Schritt 1:** Den Befehl: `git clone https://github.com/timmundt/Fix-It-Togehter`in einem Code Editor (am besten VS Code) in einem Terminal eingeben und ausführen.
 
-**Schritt 2:** Installiere alle nötigen requirments mit dem Befehl: `pip install -r requirements.txt`
+**Schritt 2:** Installiere ein: [Python Virtual Environment](https://hwrberlin.github.io/fswd/python-vscode.html#32-use-the-python-virtual-environment-as-default-for-this-workspace) 
 
-**Schritt 3:** Damit die Datebank initalisert wird und die Anwendung korrekt funktioniert muss als erstes der Befehl:
+**Schritt 3:** Installiere alle nötigen requirments mit dem Befehl: `pip install -r requirements.txt`
+
+**Schritt 4:** Damit die Datebank initalisert wird und die Anwendung korrekt funktioniert muss als erstes der Befehl:
 
 `python3 app.py` ausgeführt werden. 
 
