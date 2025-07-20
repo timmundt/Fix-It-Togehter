@@ -22,9 +22,8 @@ Diese Model-View-Controller Diagramm beschreibt die Architektur der Anwendung:
 
 · CSS: Beschreibt wie einzelen Elemente auf den Templates aussehen. 
 
-· Bootsrap: Frontend Framework um schnell Webseiten zu erstellen.
+· Bootsrap: Frontend Framework um schnell einzelen Teile zu erstellen und designen.
 
-· Jinja2: Ermöglicht die dynmaische Gestatlung von einzelene Templates via Python direkt in HTML.
 
 ### 2. Controller
 
