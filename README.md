@@ -1,83 +1,23 @@
-# Generally 
+# Schritte um die App auszuführen 
 
-This repository is a project work at the HWR Berlin in the module full stack development. Our idea is a platform-based website where people with broken coffee machines and people that can fix broken coffee machines can connect together. The repository includes our source code and the documentation of our project.
+**Schritt 1:** Installiere ein: [Python Virtual Environment](https://hwrberlin.github.io/fswd/python-vscode.html#32-use-the-python-virtual-environment-as-default-for-this-workspace) 
 
-Git Basics:
+**Schritt 2:** Installiere alle nötigen requirments mit dem Befehl: `pip install -r requirements.txt`
 
-Auf welcher Branch bin ich?
+**Schritt 3:** Damit die Datebank initalisert wird und die Anwendung korrekt funktioniert muss als erstes der Befehl:
 
-`git branch`
+`python3 app.py` ausgeführt werden. 
 
-Branch erstellen:
+Auf Windows lautet der Befehl: `python app.py`
 
-`git branch -b checkout branchname`
+Im Projektordner muss jetzt der der **instance** Ordner vorliegen. Dieser enthält die SQLite Datebank. 
 
-Branch zum erstenmal auf Github pushen: 
+Nachdem die Datebank zum ersten mal initalisiert wurde reicht der Befehl: `flask run`
 
-`git push -u origin branchname`
+Um den Webserver zu schließen muss ins Terminal geklickt werden, wo der Webserver läuft und **COMMAND+C** auf Mac gedrückt werden. Auf Windows schließt man den Webserver mit **STRG+C**.
 
-Branch wechseln:
+**Hinweis:** Um unnötige Fehler in Session zu vermeiden, sollten alle Tabs der Anwendung geschloßen werden, bevor man den Webserver beendet. Tut man dies nicht und sendet weiter Anfragen an den Webserver, der schon beendet wurde, kann es zu inkonsistenzen der Session kommen und man bekommt den HTTP-Fehler 403. Dann müsste man alle Cookies löschen, um die Session der Anwednung zu resetten. 
 
-`git checkout branch-name`
-
-Neues Branch starten:
-
-`git checkout main`
-
-`git pull origin main`
-
-`git checkout -b branchname`
-
-`git push -u origin branchname`
-
-Merge vorbereiten(commit und push auf aktueller Branch nicht vergessen!):
-
-`git checkout main`
-
-`git pull origin main` 
-
-`git checkout branchname-der-gemergert-weden-soll`
-
-`git merge main #Eventuelle Konflike lösen`
-
-Wichtig:
-Immer vor dem pushen die main pullen!!!!!!
-
-Commits im Präsenz schreiben!
-
-Keine Konflikte ignorieren!
-
-# Steps to execute the app 
-
-**Step 1:** set up a [Python Virtual Environment](https://hwrberlin.github.io/fswd/python-vscode.html#32-use-the-python-virtual-environment-as-default-for-this-workspace) 
-
-**Step 2:** Install all necessary requirments via this command: `pip install -r requirements.txt`
-
-**Important:** Your terminal should be look like this: 
-
-On unix based distrubution systems: 
-
-```console
-venvtimmundt@MacBook-Pro webapp 
-```
-
-On windows: 
-
-```console
-(venv) 
-````
-
-Important is venv at the front!
-
-**Step 3:** 
-
-To initialize the database u must run the following command: 
-
-```console
-python3 app.py
-```
-
-If u only exectue `flask run` the database will not be initialized and the app is not working in a correct way.
 
 
 
